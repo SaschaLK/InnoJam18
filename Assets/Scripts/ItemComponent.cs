@@ -7,6 +7,11 @@ using UnityEngine.Events;
 [RequireComponent(typeof(InteractiveComponent))]
 public class ItemComponent : MonoBehaviour {
 
+    public PlayerController Holder;
+
+    public Vector3 HoldOffset;
+    public Quaternion HoldRotation;
+
     /// <summary>
     /// Invoked by PlayerController.PickupItem
     /// </summary>

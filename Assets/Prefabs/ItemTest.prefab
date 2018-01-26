@@ -22,10 +22,11 @@ GameObject:
   - component: {fileID: 33978034243995608}
   - component: {fileID: 65573039197443496}
   - component: {fileID: 23899149111816204}
+  - component: {fileID: 54769557100251110}
   - component: {fileID: 114427572379781322}
   - component: {fileID: 114007151134884154}
   - component: {fileID: 114970734132745996}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ItemTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,6 +87,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1206422789709286}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54769557100251110
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206422789709286}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &65573039197443496
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -109,6 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4cee83d62539464ba04d78c1ae1266a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Holder: {fileID: 0}
+  HoldOffset: {x: 0, y: 0, z: 0}
+  HoldRotation: {x: 0, y: 0, z: 0, w: 0}
   OnPickup:
     m_PersistentCalls:
       m_Calls: []
@@ -124,6 +143,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  OnUseWith:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!114 &114427572379781322
 MonoBehaviour:
   m_ObjectHideFlags: 1
