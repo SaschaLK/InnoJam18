@@ -2,8 +2,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class TestInteractive : MonoBehaviour, IInteractive {
+public class InteractiveComponent : MonoBehaviour {
+
+    public UnityEvent Use;
 
     void Start() {
 		
@@ -12,9 +15,5 @@ public class TestInteractive : MonoBehaviour, IInteractive {
 	void Update() {
 		
 	}
-
-    public void Use() {
-        throw new NotImplementedException();
-    }
 
 }
