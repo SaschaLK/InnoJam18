@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+[RequireComponent(typeof(InteractiveComponent))]
+public class ItemComponent : MonoBehaviour {
+
+    /// <summary>
+    /// Invoked by PlayerController.PickupItem
+    /// </summary>
+    public UnityEvent OnPickup = new UnityEvent();
+    /// <summary>
+    /// Invoked by PlayerController.DropItem
+    /// </summary>
+    public UnityEvent OnDrop = new UnityEvent();
+    /// <summary>
+    /// Invoked by PlayerController.UseItem
+    /// </summary>
+    public UnityEvent OnUse = new UnityEvent();
+    /// <summary>
+    /// Invoked by PlayerController.UseItemWith
+    /// </summary>
+    public ItemUseWithEvent OnUseWith = new ItemUseWithEvent();
+
+}
