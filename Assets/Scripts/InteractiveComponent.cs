@@ -6,14 +6,9 @@ using UnityEngine.Events;
 
 public class InteractiveComponent : MonoBehaviour {
 
-    public UnityEvent Use;
-
-    void Start() {
-		
-	}
-	
-	void Update() {
-		
-	}
+    /// <summary>
+    /// Invoked by PlayerController.Interact
+    /// </summary>
+    public UnityEvent OnInteract = new UnityEvent();
 
 }

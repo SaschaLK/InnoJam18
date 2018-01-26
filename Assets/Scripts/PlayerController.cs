@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour {
     Collider collider;
     Rigidbody rigidbody;
 
+    public ItemComponent Item { get; protected set; }
+
 	void Awake() {
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
@@ -49,14 +51,88 @@ public class PlayerController : MonoBehaviour {
             closest = interactive;
         }
 
+        bool use = Input.GetButtonDown("Fire1");
         if (closest != null) {
             closestDist = Mathf.Pow(closestDist, 0.5f);
-            if (Input.GetButtonDown("Fire1")) {
-                closest.Use.Invoke();
+            if (use) {
+                if (Item != null) {
+                    UseItemWith();
+                } else {
+                    Interact();
+                }
             }
+        } else if (use) {
+            UseItem();
         }
 
-	}
+    }
+
+    /// <summary>
+    /// Interact with passed object or with closest object.
+    /// </summary>
+    public void Interact(InteractiveComponent interactive = null) {
+        if (interactive == null)
+            interactive = closest;
+        if (interactive == null)
+            return;
+
+        interactive.OnInteract.Invoke();
+        PickupItem();
+    }
+
+    /// <summary>
+    /// Pick up passed item or closest item.
+    /// </summary>
+    public void PickupItem(ItemComponent item = null) {
+        if (item == null && closest != null)
+            item = closest.GetComponent<ItemComponent>();
+        if (item == null)
+            return;
+
+        DropItem();
+        Item = item;
+        item.OnPickup.Invoke();
+    }
+
+    /// <summary>
+    /// Use passed or currently held item.
+    /// </summary>
+    public void UseItem(ItemComponent item = null) {
+        if (item == null)
+            item = Item;
+        if (item == null)
+            return;
+
+        item.OnUse.Invoke();
+    }
+
+    /// <summary>
+    /// Use passed or currently held item with / on the passed or closest interactive object.
+    /// </summary>
+    public void UseItemWith(ItemComponent item = null, InteractiveComponent with = null) {
+        if (item == null)
+            item = Item;
+        if (item == null)
+            return;
+
+        if (with == null)
+            with = closest;
+        if (with == null)
+            return;
+
+        item.OnUseWith.Invoke(with);
+    }
+
+    /// <summary>
+    /// Drop currently held item.
+    /// </summary>
+    public void DropItem() {
+        if (Item == null)
+            return;
+
+        Item.OnDrop.Invoke();
+        Item = null;
+    }
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.black;

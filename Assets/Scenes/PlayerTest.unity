@@ -129,7 +129,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &4903654
 MeshRenderer:
@@ -238,11 +238,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1008558143539894, guid: 4a6d3373740228f41a5f79c6998fb9cd, type: 2}
       propertyPath: m_Name
-      value: InteractiveTest (1)
+      value: InteractiveTest Top
       objectReference: {fileID: 0}
     - target: {fileID: 114682879583300096, guid: 4a6d3373740228f41a5f79c6998fb9cd,
         type: 2}
       propertyPath: Use.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Test Top
+      objectReference: {fileID: 0}
+    - target: {fileID: 114682879583300096, guid: 4a6d3373740228f41a5f79c6998fb9cd,
+        type: 2}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Test Top
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -329,7 +334,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &605490306
 MeshRenderer:
@@ -413,7 +418,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &977431519
 MeshRenderer:
@@ -527,6 +532,48 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7186854db41293f4dab58df6b0be2136, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1112609548
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4087662401808890, guid: 3d896b38990a3064580ef53b1f4b8b82, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087662401808890, guid: 3d896b38990a3064580ef53b1f4b8b82, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087662401808890, guid: 3d896b38990a3064580ef53b1f4b8b82, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087662401808890, guid: 3d896b38990a3064580ef53b1f4b8b82, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087662401808890, guid: 3d896b38990a3064580ef53b1f4b8b82, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087662401808890, guid: 3d896b38990a3064580ef53b1f4b8b82, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087662401808890, guid: 3d896b38990a3064580ef53b1f4b8b82, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087662401808890, guid: 3d896b38990a3064580ef53b1f4b8b82, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 3d896b38990a3064580ef53b1f4b8b82, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1124299515
 GameObject:
@@ -648,6 +695,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1008558143539894, guid: 4a6d3373740228f41a5f79c6998fb9cd, type: 2}
+      propertyPath: m_Name
+      value: InteractiveTest Bottom
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4a6d3373740228f41a5f79c6998fb9cd, type: 2}
   m_IsPrefabParent: 0
@@ -667,7 +718,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &2012995513
 MeshRenderer:
@@ -751,7 +802,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &2051834102
 MeshRenderer:
