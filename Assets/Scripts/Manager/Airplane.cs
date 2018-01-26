@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Airplane : MonoBehaviour {
 
-	//public List<Station> stations;
+	public List<InteractiveComponent> stations;
 
 	public float totalHeight;
 	public float riseFall = 0;

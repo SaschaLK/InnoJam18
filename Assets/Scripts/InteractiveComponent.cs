@@ -11,4 +11,13 @@ public class InteractiveComponent : MonoBehaviour {
     /// </summary>
     public UnityEvent OnInteract = new UnityEvent();
 
+	/// <summary>
+	/// Inflicts Damage caused by fire etc
+	/// </summary>
+	/// <param name="damage"></param>
+	public void InflictDamage(int damage)
+	{
+		Debug.Log(this.name + " is damaged by " + damage);
+	}
+
 }
