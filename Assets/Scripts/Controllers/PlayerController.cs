@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour {
             Tooltip.ShowText(closest.DisplayName);
             closestDist = Mathf.Pow(closestDist, 0.5f);
             if (use && !drop) {
-                if (Item != null) {
+                if (Item != null && closest.GetComponent<ItemComponent>() == null) {
                     UseItemWith();
                 } else {
                     Interact();
@@ -170,7 +170,12 @@ public class PlayerController : MonoBehaviour {
         if (item == null)
             return;
 
+        ItemComponent prevItem = Item;
         DropItem(); // Drop any previous items.
+        if (prevItem != null) {
+            // Put the prev item at the replacing item's pos.
+            prevItem.transform.position = item.transform.position;
+        }
 
         Item = item;
 
