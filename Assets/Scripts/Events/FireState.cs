@@ -9,8 +9,8 @@ public class FireState : StationState{
     private void Awake() {
         interactive = GetComponentInParent<InteractiveComponent>();
 
-        _CanUse = interactive.CanUse;
-        interactive.CanUse = CanUse;
+        _CanUse = interactive.CanUse; // Speichere vorherige Bedingung zwischen.
+        interactive.CanUse = CanUse; // Neue Interactive CanUse Bedingung.
     }
 
     private void OnEnable()
@@ -35,8 +35,8 @@ public class FireState : StationState{
     bool CanUse(PlayerController player) {
         // if (!fireState && vorherigeBedingung)
 
-        if (this != null)
-            return false;
+        if (this != null) // Während das Feuer am Leben ist...
+            return false; // ... können wir das derzeitige Interactive nicht verwenden.
 
         if (_CanUse != null)
             return _CanUse(player);

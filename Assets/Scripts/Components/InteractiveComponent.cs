@@ -42,6 +42,7 @@ public sealed class InteractiveComponent : MonoBehaviour {
         OnDamage.Invoke(damage);
 
         if (health <= 0) {
+            health = 0f;
             OnDestroy.Invoke();
         }
     }

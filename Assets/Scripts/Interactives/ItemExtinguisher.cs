@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ItemExtinguisher : ItemBase {
 
+    public float DepletePerUsage = 10f;
+
     protected override void Awake() {
         base.Awake();
     }
 
     public override void OnUseWith(InteractiveComponent with) {
-
+        Destroy(with.GetComponent<FireState>());
+        item.interactive.InflictDamage(DepletePerUsage);
     }
 
     public override bool CanUse(PlayerController player) {
@@ -17,7 +20,8 @@ public class ItemExtinguisher : ItemBase {
     }
 
     public override bool CanUseWith(PlayerController player, InteractiveComponent with) {
-        return true;
+        FireState fire = with.GetComponent<FireState>();
+        return fire != null && item.interactive.health >= DepletePerUsage;
     }
 
 }
