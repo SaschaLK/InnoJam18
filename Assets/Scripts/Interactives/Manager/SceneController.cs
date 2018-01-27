@@ -11,6 +11,8 @@ public class SceneController : NetworkBehaviour {
 
     public Airplane airplane;
 
+   
+
     [SerializeField]
     ControlLamp sinkingLamp;
 
@@ -25,6 +27,7 @@ public class SceneController : NetworkBehaviour {
 
     private float timer;
     private float timeEvent;
+    float difficultyIncrease = 0;
 
     public bool evade = true;
 
@@ -32,9 +35,9 @@ public class SceneController : NetworkBehaviour {
 
     private void Awake()
     {
-        if (!isServer) return;
         instance = this;
         this.gameCamera = GetComponent<Camera>();
+        currentEvents = new List<GameEvent>();
     }
 
     void Start(){
@@ -48,8 +51,6 @@ public class SceneController : NetworkBehaviour {
         if (!isServer) return;
 
         timer += Time.deltaTime;
-
-        float difficultyIncrease = 0;
 
         // increase difficulty every 10 seconds
         if(Mathf.FloorToInt(Time.timeSinceLevelLoad) % 10 == 0) {

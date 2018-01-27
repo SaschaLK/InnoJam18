@@ -59,11 +59,7 @@ public class InteractiveCharger : InteractiveBase
             return;
         }
 
-        if (Charging.item.interactive.health < 0f)
-            Charging.item.interactive.health = 0f;
-        Charging.item.interactive.health += ChargePerSecond * Time.deltaTime;
-        if (Charging.item.interactive.health > 100f)
-            Charging.item.interactive.health = 100f;
+        Charging.ChargeUp(ChargePerSecond * Time.deltaTime);
     }
 
     public override void OnInteract(PlayerController player) {

@@ -15,7 +15,7 @@ public class ItemDepletable : ItemBase {
     }
 
     public override bool CanUseWith(PlayerController player, InteractiveComponent with) {
-        return item.interactive.health >= DepletePerUsage;
+        return item.interactive.HealthLargerThan(DepletePerUsage); 
     }
 
 }

@@ -11,8 +11,63 @@ public sealed class InteractiveComponent : NetworkBehaviour {
     public string DisplayName;
 
     [SyncVar]
-    public float health = 100;
+    private float health = 100;
 
+    public bool HealthLargerThan(float t)
+    {
+        return health >= t;
+    }
+
+    public void ChargeUp(float chrg)
+    {
+        if (!isServer) return;
+        health = Math.Min(100, Math.Max(0, health) + chrg);
+    }
+
+    public void TakeFatalDamage()
+    {
+        TakeDamage(health);
+    }
+
+        public void TakeDamage(float damage)
+    {
+        if (!isServer) return;
+        health -= damage;
+
+        // let the clients see some fun screenshake, yeah!
+        CmdTakeDamage(damage);
+
+        if (health <= 0)
+        {
+            health = 0f;
+            CmdDestroyCommand(); // destroy on all clients
+        }
+    }
+
+    [Command]
+    public void CmdTakeDamage(float damage)
+    {
+        RpcTakeDamage(damage);
+    }
+
+    [ClientRpc]
+    public void RpcTakeDamage(float damage)
+    {
+        ScreenShakeController.Instance.Trigger(transform, 1f, damage / 200);
+    }
+
+    [Command]
+    public void CmdDestroyCommand()
+    {
+        RpcDestroyCommand();
+    }
+
+    [ClientRpc]
+    public void RpcDestroyCommand()
+    {
+        OnDestroy.Invoke();
+    }
+   
     public bool Highlight = false;
     public Outline Outline { get; private set; }
 
