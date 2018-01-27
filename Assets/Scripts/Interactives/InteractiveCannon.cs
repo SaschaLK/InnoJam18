@@ -25,11 +25,12 @@ public class InteractiveCannon : InteractiveBase {
         Vector3 pos = transform.position;
 
         if (Crystal == null) {
-            ItemCrystal[] crystals = FindObjectsOfType<ItemCrystal>();
+            // ItemCrystal[] crystals = FindObjectsOfType<ItemCrystal>();
+            Collider[] crystals = Physics.OverlapSphere(pos, UsageRadius);
             float closestDist = UsageRadius * UsageRadius;
             ItemCrystal closest = null;
             for (int i = 0; i < crystals.Length; i++) {
-                ItemCrystal crystal = crystals[i];
+                ItemCrystal crystal = crystals[i].GetComponent<ItemCrystal>();
                 if (crystal == null || crystal.item.Holder != null)
                     continue;
 
@@ -49,11 +50,12 @@ public class InteractiveCannon : InteractiveBase {
             Crystal = null;
 
         if (Projectile == null) {
-            ItemComponent[] items = FindObjectsOfType<ItemComponent>();
+            // ItemComponent[] items = FindObjectsOfType<ItemComponent>();
+            Collider[] items = Physics.OverlapSphere(pos, UsageRadius);
             float closestDist = UsageRadius * UsageRadius;
             ItemComponent closest = null;
             for (int i = 0; i < items.Length; i++) {
-                ItemComponent item = items[i];
+                ItemComponent item = items[i].GetComponent<ItemComponent>();
                 if (item == null || item.Holder != null || item.GetComponent<ItemCrystal>() != null)
                     continue;
 

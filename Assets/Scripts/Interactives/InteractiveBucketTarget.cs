@@ -26,11 +26,12 @@ public class InteractiveBucketTarget : InteractiveBase {
         if (Bucket == null) {
             Vector3 pos = transform.position;
 
-            ItemBucket[] buckets = FindObjectsOfType<ItemBucket>();
+            // ItemBucket[] buckets = FindObjectsOfType<ItemBucket>();
+            Collider[] buckets = Physics.OverlapSphere(pos, UsageRadius);
             float closestDist = UsageRadius * UsageRadius;
             ItemBucket closest = null;
             for (int i = 0; i < buckets.Length; i++) {
-                ItemBucket bucket = buckets[i];
+                ItemBucket bucket = buckets[i].GetComponent<ItemBucket>();
                 if (bucket == null || (StateInput != BucketState.Any && bucket.State != StateInput) || bucket.transform.parent != null)
                     continue;
 

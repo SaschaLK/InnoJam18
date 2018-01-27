@@ -24,11 +24,12 @@ public class InteractiveCharger : InteractiveBase {
         if (Charging == null) {
             Vector3 pos = transform.position;
 
-            ItemChargeable[] chargeables = FindObjectsOfType<ItemChargeable>();
+            // ItemChargeable[] chargeables = FindObjectsOfType<ItemChargeable>();
+            Collider[] chargeables = Physics.OverlapSphere(pos, UsageRadius);
             float closestDist = UsageRadius * UsageRadius;
             ItemChargeable closest = null;
             for (int i = 0; i < chargeables.Length; i++) {
-                ItemChargeable chargeable = chargeables[i];
+                ItemChargeable chargeable = chargeables[i].GetComponent<ItemChargeable>();
                 if (chargeable == null || !ChargingName.Contains(chargeable.name) || chargeable.transform.parent != null)
                     continue;
 
