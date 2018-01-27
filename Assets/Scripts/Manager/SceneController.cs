@@ -20,6 +20,8 @@ public class SceneController : MonoBehaviour {
     [SerializeField]
     ControlLamp evadeRightLamp;
 
+    private float minEventTime = 10f;
+    private float maxEventTime = 30f;
 
     private float timer;
     private float timeEvent;
@@ -33,18 +35,25 @@ public class SceneController : MonoBehaviour {
     }
 
     void Start(){
-        timeEvent = Random.Range(5f, 20f);
-        //EnemyAttack ea = new EnemyAttack(airplane, gameCamera);
+        timeEvent = Random.Range(minEventTime, maxEventTime);
     }
 
     private void Update()
     {
         timer += Time.deltaTime;
 
+        float difficultyIncrease = 0;
+
+        // increase difficulty every 10 seconds
+        if(Mathf.FloorToInt(Time.timeSinceLevelLoad) % 10 == 0)
+        {
+            difficultyIncrease++;
+        }
+
         if (timer >= timeEvent)
         {
             timer = 0;
-            timeEvent = Random.Range(5f, 20f); //TODO: make this faster as the game progresses
+            timeEvent = Random.Range(Mathf.Min(minEventTime - difficultyIncrease/2 , maxEventTime - difficultyIncrease) , Mathf.Max(minEventTime - difficultyIncrease / 2, maxEventTime - difficultyIncrease));
             TriggerRandomEvent();
         }
     }
@@ -65,7 +74,7 @@ public class SceneController : MonoBehaviour {
         }
         else if (rand <= 50)
         {
-            EnemyApproach enemyApproach = new EnemyApproach();
+            EnemyApproach enemyApproach = new EnemyApproach(airplane.enemyLamp);
             return;
         }
         else if(rand <= 70)
