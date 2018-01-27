@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222860513330367270}
   - component: {fileID: 114383410690400292}
   m_Layer: 5
-  m_Name: TimerText
+  m_Name: CountdownText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

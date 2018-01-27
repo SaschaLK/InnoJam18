@@ -30,6 +30,8 @@ GameObject:
   - component: {fileID: 114939605734566928}
   - component: {fileID: 114817796155545588}
   - component: {fileID: 114763650755280570}
+  - component: {fileID: 114353994027606660}
+  - component: {fileID: 114637563801866354}
   m_Layer: 8
   m_Name: ItemHammer
   m_TagString: Untagged
@@ -129,6 +131,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5debc7ca3d48264e80385829cb0f182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114353994027606660
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1785392067417850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 77
+    i1: 50
+    i2: 149
+    i3: 106
+    i4: 203
+    i5: 229
+    i6: 85
+    i7: 196
+    i8: 90
+    i9: 74
+    i10: 237
+    i11: 16
+    i12: 4
+    i13: 106
+    i14: 66
+    i15: 185
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114419432611656650
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,6 +212,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114637563801866354
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1785392067417850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc9552b3dd026a48bdb1785a46734f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114763650755280570
 MonoBehaviour:
   m_ObjectHideFlags: 1

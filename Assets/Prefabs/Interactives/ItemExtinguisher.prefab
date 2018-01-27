@@ -31,6 +31,8 @@ GameObject:
   - component: {fileID: 114819515248120418}
   - component: {fileID: 114856251115304340}
   - component: {fileID: 114320809690258070}
+  - component: {fileID: 114734741677388364}
+  - component: {fileID: 114536551320911520}
   m_Layer: 8
   m_Name: ItemExtinguisher
   m_TagString: Untagged
@@ -169,6 +171,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8a1a9a9bba2c8498b1e23975ba694f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114536551320911520
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977650529564500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bf49ef49418966468dddfbfe2a94fdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114541024168765898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,6 +237,38 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114734741677388364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977650529564500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 58
+    i1: 254
+    i2: 23
+    i3: 70
+    i4: 82
+    i5: 90
+    i6: 13
+    i7: 20
+    i8: 120
+    i9: 1
+    i10: 201
+    i11: 220
+    i12: 254
+    i13: 151
+    i14: 142
+    i15: 162
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114819515248120418
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -258,4 +303,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e55e555ec8712744b505f276fa60988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: Fire
+  State: Fire

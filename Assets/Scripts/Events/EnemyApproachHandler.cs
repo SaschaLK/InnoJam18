@@ -28,14 +28,14 @@ public class EnemyApproachHandler : NetworkBehaviour {
         if (isServer) {
             success = false;
             invokeIterations = 3;
-            Invoke("AttackShip", timeToFail / 4);
+            Invoke("CmdAttackShip", timeToFail / 4);
         }
 
         airplane.StartEnemyLamps();
     }
 
     [Command]
-    private void AttackShip() {
+    private void CmdAttackShip() {
         if (success) return; // dont do damage after the players were successful
         List<InteractiveComponent> stations = airplane.stations;
 
@@ -45,7 +45,7 @@ public class EnemyApproachHandler : NetworkBehaviour {
 
         invokeIterations--;
         if(invokeIterations > 0)
-            Invoke("AttackShip", timeToFail / 4);
+            Invoke("CmdAttackShip", timeToFail / 4);
     }
     
 	public void EnemyEventFailed()

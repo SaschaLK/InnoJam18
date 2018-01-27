@@ -56,6 +56,8 @@ public class PlayerUIController : MonoBehaviour {
 
     public void ShowText(string text) {
         TooltipText.enabled = true;
+        if (TooltipText.text != text)
+            Group.alpha = 0f;
         TooltipText.text = text;
 
         Panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, TooltipText.preferredWidth + Padding);
@@ -65,6 +67,8 @@ public class PlayerUIController : MonoBehaviour {
     }
 
     public void ShowMinigame() {
+        Group.alpha = 0f;
+
         TooltipText.text = "";
         TooltipText.enabled = false;
 

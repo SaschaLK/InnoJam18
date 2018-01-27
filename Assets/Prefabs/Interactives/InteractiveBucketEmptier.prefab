@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114720212069591220}
   - component: {fileID: 114279153864380458}
   - component: {fileID: 114658877826705140}
+  - component: {fileID: 114385934584775894}
   m_Layer: 0
   m_Name: InteractiveBucketEmptier
   m_TagString: Untagged
@@ -147,6 +148,38 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: BucketEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114385934584775894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1572880988581426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 88
+    i1: 113
+    i2: 241
+    i3: 91
+    i4: 119
+    i5: 196
+    i6: 14
+    i7: 196
+    i8: 169
+    i9: 72
+    i10: 75
+    i11: 253
+    i12: 27
+    i13: 113
+    i14: 9
+    i15: 170
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114658877826705140
 MonoBehaviour:
   m_ObjectHideFlags: 1

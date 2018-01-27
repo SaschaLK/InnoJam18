@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class ItemHammer : ItemBase {
 
+    protected ItemStateRemover remover;
+
     protected override void Awake() {
         base.Awake();
+
+        remover = GetComponent<ItemStateRemover>();
     }
 
     public override void OnUseWith(InteractiveComponent with) {
@@ -18,6 +22,13 @@ public class ItemHammer : ItemBase {
 
     public override bool CanUseWith(PlayerController player, InteractiveComponent with) {
         return true;
+    }
+
+    public override bool CanMinigame(PlayerController player, InteractiveComponent with) {
+        if (with == null)
+            return false;
+
+        return remover.CanUseWith(player, with);
     }
 
 }

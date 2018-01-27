@@ -111,8 +111,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832927265944770}
-  m_LocalRotation: {x: -0, y: 0.9695387, z: -0, w: 0.24493824}
-  m_LocalPosition: {x: 3.86, y: -0.199, z: 9.71}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -12.16, y: 0.449, z: 12.409}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4788893410923132}
@@ -120,7 +120,7 @@ Transform:
   - {fileID: 4897097373256290}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 151.64401, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4788893410923132
 Transform:
   m_ObjectHideFlags: 1
@@ -175,7 +175,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 2f28cf2651743cf47a990d60e27648f0, type: 3}
+  - {fileID: 2100000, guid: bd12604878304914096005c0bcc9603f, type: 2}
   - {fileID: 2100002, guid: 2f28cf2651743cf47a990d60e27648f0, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -301,6 +301,22 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: LampActivationEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDeactivation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: StopAlarm
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: LampDeactivationEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
 --- !u!114 &114539256501918336
 MonoBehaviour:

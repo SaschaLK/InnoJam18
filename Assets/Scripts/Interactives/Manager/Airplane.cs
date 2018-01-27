@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class Airplane : NetworkBehaviour {
 
     [SyncVar]
-    private float hitPoints = 10;
+    public float hitPoints = 10;
 
     public List<InteractiveComponent> stations;
 

@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 23535481849713440}
   - component: {fileID: 114402341397394264}
   - component: {fileID: 114173635895746774}
+  - component: {fileID: 114016346192816780}
   m_Layer: 0
   m_Name: InteractiveChargerExtinguisher
   m_TagString: Untagged
@@ -126,6 +127,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114016346192816780
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1480834310357356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 98
+    i1: 202
+    i2: 211
+    i3: 230
+    i4: 112
+    i5: 55
+    i6: 148
+    i7: 84
+    i8: 202
+    i9: 71
+    i10: 32
+    i11: 19
+    i12: 105
+    i13: 225
+    i14: 16
+    i15: 171
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114173635895746774
 MonoBehaviour:
   m_ObjectHideFlags: 1

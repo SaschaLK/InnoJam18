@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 23460604153939634}
   - component: {fileID: 114682879583300096}
   - component: {fileID: 114948384812483378}
+  - component: {fileID: 114282470163006988}
   m_Layer: 0
   m_Name: InteractiveTest
   m_TagString: Untagged
@@ -97,6 +98,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114282470163006988
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008558143539894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 74
+    i1: 109
+    i2: 51
+    i3: 115
+    i4: 116
+    i5: 2
+    i6: 40
+    i7: 244
+    i8: 26
+    i9: 95
+    i10: 121
+    i11: 198
+    i12: 153
+    i13: 143
+    i14: 185
+    i15: 205
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114682879583300096
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,6 +142,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: Test Interactive
+  health: 100
+  Highlight: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls:
@@ -123,8 +158,17 @@ MonoBehaviour:
           m_StringArgument: Test
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InternalDamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114948384812483378
 MonoBehaviour:
   m_ObjectHideFlags: 1

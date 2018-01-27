@@ -19,7 +19,7 @@ public class AirplaneDamageHandler : NetworkBehaviour {
         if (isServer) { 
             airplane.hitPoints -= damage;
             if (airplane.hitPoints <= 0)
-                GameManager.instance.EndGame();
+                GameManager.instance.EndGame(); 
         }
     }
 }
