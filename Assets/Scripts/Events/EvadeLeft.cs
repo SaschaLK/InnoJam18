@@ -6,6 +6,8 @@ public class EvadeLeft : GameEvent {
 
     public EvadeLeft(ControlLamp lamp , float timeToHit)
     {
+        Debug.Log("evade left or we will crash");
+
         lamp.OnActivation.Invoke();
 
         SceneController.instance.StartHitCountdown(timeToHit);
