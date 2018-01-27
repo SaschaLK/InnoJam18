@@ -11,9 +11,10 @@ public class PlayerController : MonoBehaviour {
 
     float closestDist;
     InteractiveComponent closest;
+    public InteractiveComponent Closest { get { return closest; } }
 
-    Collider collider;
-    Rigidbody rigidbody;
+    new Collider collider;
+    new Rigidbody rigidbody;
 
     bool mouseTurning;
     Vector3 mousePosPrev = new Vector3(0f, 0f, 0f);
@@ -81,7 +82,7 @@ public class PlayerController : MonoBehaviour {
             InteractiveComponent interactive = interactives[i];
 
             float dist = (pos - interactive.transform.position).sqrMagnitude;
-            bool canUse = true; // TODO: Dependencies
+            bool canUse = interactive.CanUse != null ? interactive.CanUse(this) : true;
 
             if (Item != null && interactive.transform == Item.transform)
                 continue;
@@ -185,7 +186,8 @@ public class PlayerController : MonoBehaviour {
         if (item == null)
             return;
 
-        item.OnUse.Invoke();
+        if (item.CanUse != null ? item.CanUse(this) : true)
+            item.OnUse.Invoke();
     }
 
     /// <summary>
@@ -202,7 +204,9 @@ public class PlayerController : MonoBehaviour {
         if (with == null)
             return;
 
-        item.OnUseWith.Invoke(with);
+        if (item.CanUseWith != null ? item.CanUseWith(this, with) :
+            item.CanUse != null ? item.CanUse(this) : true)
+            item.OnUseWith.Invoke(with);
     }
 
     private void OnDrawGizmos() {

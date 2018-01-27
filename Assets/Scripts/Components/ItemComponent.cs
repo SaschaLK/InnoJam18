@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(InteractiveComponent))]
-public class ItemComponent : MonoBehaviour {
+public sealed class ItemComponent : MonoBehaviour {
 
     public PlayerController Holder;
 
@@ -28,5 +28,13 @@ public class ItemComponent : MonoBehaviour {
     /// Invoked by PlayerController.UseItemWith
     /// </summary>
     public ItemUseWithEvent OnUseWith = new ItemUseWithEvent();
+
+    public Func<PlayerController, bool> CanUse;
+    public Func<PlayerController, InteractiveComponent, bool> CanUseWith;
+
+    public InteractiveComponent interactive { get; private set; }
+    private void Awake() {
+        interactive = GetComponent<InteractiveComponent>();
+    }
 
 }
