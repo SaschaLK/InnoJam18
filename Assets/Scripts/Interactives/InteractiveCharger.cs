@@ -11,7 +11,9 @@ public class InteractiveCharger : InteractiveBase {
 
     public ItemChargeable Charging;
 
-	protected override void Awake() {
+    public float UsageRadius = 3f;
+
+    protected override void Awake() {
         base.Awake();
 
         if (Container == null)
@@ -19,6 +21,29 @@ public class InteractiveCharger : InteractiveBase {
 	}
 
     public void Update() {
+        if (Charging == null) {
+            Vector3 pos = transform.position;
+
+            ItemChargeable[] chargeables = FindObjectsOfType<ItemChargeable>();
+            float closestDist = UsageRadius * UsageRadius;
+            ItemChargeable closest = null;
+            for (int i = 0; i < chargeables.Length; i++) {
+                ItemChargeable chargeable = chargeables[i];
+                if (chargeable == null || !ChargingName.Contains(chargeable.name) || chargeable.item.Holder != null)
+                    continue;
+
+                float dist = (pos - chargeable.transform.position).sqrMagnitude;
+                if (dist > closestDist) {
+                    continue;
+                }
+
+                closestDist = dist;
+                closest = chargeable;
+            }
+
+            PickupItem(closest);
+        }
+
         if (Charging == null)
             return;
         if (Charging.item.Holder != null) {
