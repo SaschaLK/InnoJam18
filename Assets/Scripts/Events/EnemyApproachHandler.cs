@@ -24,11 +24,13 @@ public class EnemyApproachHandler : NetworkBehaviour {
         if (airplane == null) return;
         Debug.Log("enemy is approaching");
 
+
         if (isServer) {
             success = false;
             invokeIterations = 3;
             Invoke("AttackShip", timeToFail / 4);
         }
+
         airplane.StartEnemyLamps();
     }
 

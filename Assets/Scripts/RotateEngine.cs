@@ -8,12 +8,6 @@ public class RotateEngine : MonoBehaviour {
 
     private void Update()
     {
-        transform.RotateAround(transform.position, transform.up, Time.deltaTime * speed * 10f);
-        /*Debug.Log(transform.localEulerAngles);
-        Vector3 rotation = transform.eulerAngles + new Vector3(speed * Time.deltaTime, 0, 0) ;
-        //transform.Rotate(rotation);
-
-
-        transform.localEulerAngles = rotation;*/
+		transform.RotateAround(transform.position, transform.up, Time.deltaTime * speed * 10f);
     }
 }

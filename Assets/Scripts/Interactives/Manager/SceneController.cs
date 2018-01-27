@@ -41,8 +41,6 @@ public class SceneController : NetworkBehaviour {
         if (!isServer) return;
 
         timeEvent = Random.Range(minEventTime, maxEventTime);
-        EnemyApproach ae = new EnemyApproach(this.GetComponent<EnemyApproachHandler>());
-        ae.OnEventStart.Invoke();
     }
 
     private void Update()
@@ -86,6 +84,7 @@ public class SceneController : NetworkBehaviour {
                 CmdTriggerEvadeRight();
             } else {
                 CmdTriggerEvadeLeft();
+
             }
         }
     }
