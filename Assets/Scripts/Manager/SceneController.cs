@@ -34,7 +34,7 @@ public class SceneController : MonoBehaviour {
 
     void Start(){
         timeEvent = Random.Range(5f, 20f);
-        //EnemyAttack ea = new EnemyAttack(airplane, gameCamera);
+        EnemyApproach ea = new EnemyApproach(airplane.enemyLamp);
     }
 
     private void Update()
@@ -65,7 +65,7 @@ public class SceneController : MonoBehaviour {
         }
         else if (rand <= 50)
         {
-            EnemyApproach enemyApproach = new EnemyApproach();
+            EnemyApproach enemyApproach = new EnemyApproach(airplane.enemyLamp);
             return;
         }
         else if(rand <= 70)
