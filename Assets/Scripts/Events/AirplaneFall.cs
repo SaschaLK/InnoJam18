@@ -6,6 +6,7 @@ public class AirplaneFall : GameEvent {
 
 	public AirplaneFall(ControlLamp lamp)
     {
+        if (lamp == null) return;
         lamp.OnActivation.Invoke();
     }
 }
