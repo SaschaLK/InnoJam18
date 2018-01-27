@@ -19,7 +19,7 @@ public class MinigameHold : MinigameBase {
     };
 
     // UI
-    protected Text TimerText;
+    protected Text CountdownText;
     protected Image ButtonImage;
 
     // Variablen
@@ -38,7 +38,7 @@ public class MinigameHold : MinigameBase {
         // Setze alles zurück, bereite UI vor, ...
 
         // Finde alles aus dem UI-Baum.
-        TimerText = UITree.Find("TimerText").GetComponent<Text>();
+        CountdownText = UITree.Find("CountdownText").GetComponent<Text>();
         ButtonImage = UITree.Find("ButtonImage").GetComponent<Image>();
 
         // Wir generieren hier z.B. die Zeit, wie lange der Spieler A gedrückt halten muss.
@@ -83,7 +83,7 @@ public class MinigameHold : MinigameBase {
         // Wir vermeiden < 0 bugs.
         if (TimeHeldDown < 0f)
             TimeHeldDown = 0f;
-        TimerText.text = TimeHeldDown.ToString("N2").Replace(',', '.');
+        CountdownText.text = TimeHeldDown.ToString("N2").Replace(',', '.');
 
         if (TimeHeldDown <= 0f) {
             // Wir haben die Zielzeit erreicht - Beende das Minigame.

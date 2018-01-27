@@ -63,7 +63,7 @@ public abstract class MinigameBase : MonoBehaviour {
 
         _EndMinigame();
         Win = false;
-        Active = false;
+        StartCoroutine(DelayedDeactivate());
 
         PlayerUIController.ShowMinigame();
         Destroy(UITree.gameObject);
