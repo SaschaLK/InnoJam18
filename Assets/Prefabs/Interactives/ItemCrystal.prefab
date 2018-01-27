@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e55e555ec8712744b505f276fa60988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: NeedsRestart
+  State: NeedsRestart
 --- !u!114 &114661992086932194
 MonoBehaviour:
   m_ObjectHideFlags: 1

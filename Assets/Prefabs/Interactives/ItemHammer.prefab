@@ -234,8 +234,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea69756862249094aa8871a1c6632576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RequiredType: Broken
-  Path: NeedsRestart
+  RequiredState: Broken
+  AddedState: NeedsRestart
 --- !u!114 &114939605734566928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,4 +247,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e55e555ec8712744b505f276fa60988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: Broken
+  State: Broken
