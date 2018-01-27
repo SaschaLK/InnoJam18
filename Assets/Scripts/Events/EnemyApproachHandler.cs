@@ -21,6 +21,7 @@ public class EnemyApproachHandler : MonoBehaviour {
         if (airplane == null) return;
         Debug.Log("enemy is approaching");
 
+        SceneController.instance.currentEvents.Add(ea);
         //TODO see is only three or check stuff
         InvokeRepeating("AttackShip", timeToFail / 4, timeToFail / 4);
         airplane.StartEnemyLamps();

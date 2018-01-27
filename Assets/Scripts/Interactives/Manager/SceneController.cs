@@ -37,8 +37,6 @@ public class SceneController : MonoBehaviour {
 
     void Start(){
         timeEvent = Random.Range(minEventTime, maxEventTime);
-        EnemyApproach ae = new EnemyApproach(this.GetComponent<EnemyApproachHandler>());
-        ae.OnEventStart.Invoke();
     }
 
     private void Update()
@@ -67,7 +65,9 @@ public class SceneController : MonoBehaviour {
 
         if(rand <= 10)
         {
-            TurbulenceEvent te = new TurbulenceEvent(airplane);
+            TurbulenceEvent te = new TurbulenceEvent(this.GetComponent<TurbulenceEventHandler>());
+            te.OnEventStart.Invoke();
+            //TurbulenceEvent te = new TurbulenceEvent(airplane);
             return;
         }
         else if(rand <= 30)
@@ -83,7 +83,8 @@ public class SceneController : MonoBehaviour {
         }
         else if(rand <= 70)
         {
-            //AirplaneFall af = new AirplaneFall(sinkingLamp);
+            AirplaneFall af = new AirplaneFall(this.GetComponent<AirplaneFallHandler>());
+            af.OnEventStart.Invoke();
             return;
         }
         else
@@ -91,11 +92,15 @@ public class SceneController : MonoBehaviour {
             rand = Random.value;
             if(rand <= 0.5f)
             {
-                EvadeLeft el = new EvadeLeft(evadeLeftLamp, 10f);
+                EvadeLeft el = new EvadeLeft(this.GetComponent<EvadeLeftHandler>());
+                el.OnEventStart.Invoke();
+                //EvadeLeft el = new EvadeLeft(evadeLeftLamp, 10f);
             }
             else
             {
-                EvadeRight er = new EvadeRight(evadeRightLamp, 10f);
+                EvadeRight er = new EvadeRight(this.GetComponent<EvadeRightHandler>());
+                er.OnEventStart.Invoke();
+                //EvadeRight er = new EvadeRight(evadeRightLamp, 10f);
             }
         }
     }
