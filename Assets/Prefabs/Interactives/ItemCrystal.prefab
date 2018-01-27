@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114661992086932194}
   - component: {fileID: 114454323695733962}
   - component: {fileID: 114798617985349088}
+  - component: {fileID: 114234533128219192}
   m_Layer: 8
   m_Name: ItemCrystal
   m_TagString: Untagged
@@ -114,6 +115,27 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114234533128219192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441696781388178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc46dca43e67c46ab2d22c8062a07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vol: 0
+  ClipPickup: {fileID: 0}
+  ClipPickupVol: 0
+  ClipDrop: {fileID: 0}
+  ClipDropVol: 0
+  ClipUse: {fileID: 0}
+  ClipUseVol: 0
+  ClipUseWith: {fileID: 0}
+  ClipUseWithVol: 0
+  Source: {fileID: 0}
 --- !u!114 &114454323695733962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,11 +182,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: Crystal Of Doing Things
+  health: 100
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InternalDamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114798617985349088
 MonoBehaviour:
   m_ObjectHideFlags: 1

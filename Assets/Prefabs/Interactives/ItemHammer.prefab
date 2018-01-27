@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114611275665291564}
   - component: {fileID: 114798513195703802}
   - component: {fileID: 114233367045986316}
+  - component: {fileID: 114419432611656650}
   m_Layer: 8
   m_Name: ItemHammer
   m_TagString: Untagged
@@ -125,6 +126,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5debc7ca3d48264e80385829cb0f182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114419432611656650
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1785392067417850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc46dca43e67c46ab2d22c8062a07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vol: 0
+  ClipPickup: {fileID: 0}
+  ClipPickupVol: 0
+  ClipDrop: {fileID: 0}
+  ClipDropVol: 0
+  ClipUse: {fileID: 0}
+  ClipUseVol: 0
+  ClipUseWith: {fileID: 0}
+  ClipUseWithVol: 0
+  Source: {fileID: 0}
 --- !u!114 &114611275665291564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,8 +163,8 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnDamage:
     m_PersistentCalls:
       m_Calls: []

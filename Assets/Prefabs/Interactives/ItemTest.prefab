@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114427572379781322}
   - component: {fileID: 114007151134884154}
   - component: {fileID: 114586870904388054}
+  - component: {fileID: 114891207794123302}
   m_Layer: 8
   m_Name: ItemTest
   m_TagString: Untagged
@@ -160,11 +161,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: Test Item
+  health: 100
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InternalDamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &114586870904388054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -176,3 +187,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36224cd7c6c5abf4e995320b33936f15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114891207794123302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206422789709286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc46dca43e67c46ab2d22c8062a07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vol: 0
+  ClipPickup: {fileID: 0}
+  ClipPickupVol: 0
+  ClipDrop: {fileID: 0}
+  ClipDropVol: 0
+  ClipUse: {fileID: 0}
+  ClipUseVol: 0
+  ClipUseWith: {fileID: 0}
+  ClipUseWithVol: 0
+  Source: {fileID: 0}

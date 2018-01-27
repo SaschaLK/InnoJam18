@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114289672630411850}
   - component: {fileID: 114747835096109060}
   - component: {fileID: 114458879484175564}
+  - component: {fileID: 114720432111694966}
   m_Layer: 8
   m_Name: ItemStick
   m_TagString: Untagged
@@ -130,8 +131,8 @@ MonoBehaviour:
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   OnDamage:
     m_PersistentCalls:
       m_Calls: []
@@ -152,6 +153,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3b20d9e7d14b546b8d9168e6614aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114720432111694966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1742030735151242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc46dca43e67c46ab2d22c8062a07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vol: 0
+  ClipPickup: {fileID: 0}
+  ClipPickupVol: 0
+  ClipDrop: {fileID: 0}
+  ClipDropVol: 0
+  ClipUse: {fileID: 0}
+  ClipUseVol: 0
+  ClipUseWith: {fileID: 0}
+  ClipUseWithVol: 0
+  Source: {fileID: 0}
 --- !u!114 &114747835096109060
 MonoBehaviour:
   m_ObjectHideFlags: 1
