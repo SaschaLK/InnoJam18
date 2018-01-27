@@ -9,16 +9,16 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1192179446007064}
+  m_RootGameObject: {fileID: 1480834310357356}
   m_IsPrefabParent: 1
---- !u!1 &1101702580372582
+--- !u!1 &1040395326540908
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4285107158752534}
+  - component: {fileID: 4788078096751808}
   m_Layer: 0
   m_Name: Container
   m_TagString: Untagged
@@ -26,60 +26,60 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1192179446007064
+--- !u!1 &1480834310357356
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4148526792121758}
-  - component: {fileID: 33703945097028946}
-  - component: {fileID: 65433384345069776}
-  - component: {fileID: 23554972741396314}
-  - component: {fileID: 114673075498276700}
-  - component: {fileID: 114766436066180828}
-  - component: {fileID: 114148357745701522}
+  - component: {fileID: 4303617922156896}
+  - component: {fileID: 33477962604050464}
+  - component: {fileID: 65008322418872314}
+  - component: {fileID: 23535481849713440}
+  - component: {fileID: 114402341397394264}
+  - component: {fileID: 114441178935386490}
+  - component: {fileID: 114173635895746774}
   m_Layer: 0
-  m_Name: InteractiveChargerCrystal
+  m_Name: InteractiveChargerExtinguisher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4148526792121758
+--- !u!4 &4303617922156896
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192179446007064}
+  m_GameObject: {fileID: 1480834310357356}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6}
+  m_LocalPosition: {x: -1, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4285107158752534}
+  - {fileID: 4788078096751808}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4285107158752534
+--- !u!4 &4788078096751808
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1101702580372582}
+  m_GameObject: {fileID: 1040395326540908}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 4148526792121758}
+  m_Father: {fileID: 4303617922156896}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23554972741396314
+--- !u!23 &23535481849713440
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192179446007064}
+  m_GameObject: {fileID: 1480834310357356}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -108,57 +108,57 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33703945097028946
+--- !u!33 &33477962604050464
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192179446007064}
+  m_GameObject: {fileID: 1480834310357356}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &65433384345069776
+--- !u!65 &65008322418872314
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192179446007064}
+  m_GameObject: {fileID: 1480834310357356}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114148357745701522
+--- !u!114 &114173635895746774
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192179446007064}
+  m_GameObject: {fileID: 1480834310357356}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e4b176c00a7d23149a4501571d1f6d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChargingName: ItemCrystal
+  ChargingName: ItemExtinguisher
   ChargePerSecond: 3
   Container: {fileID: 0}
   Charging: {fileID: 0}
---- !u!114 &114673075498276700
+--- !u!114 &114402341397394264
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192179446007064}
+  m_GameObject: {fileID: 1480834310357356}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3adb26b638c50214d95dd43305538c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: Crystal Charging Station
+  DisplayName: Extinguisher Charging Station
   health: 100
   OnInteract:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114766436066180828}
+      - m_Target: {fileID: 114441178935386490}
         m_MethodName: Use
         m_Mode: 5
         m_Arguments:
@@ -180,12 +180,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &114766436066180828
+--- !u!114 &114441178935386490
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192179446007064}
+  m_GameObject: {fileID: 1480834310357356}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edbe1bcc41ed06c489a74776e4954ea3, type: 3}
