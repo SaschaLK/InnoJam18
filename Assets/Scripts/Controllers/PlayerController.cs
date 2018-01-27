@@ -36,7 +36,8 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	void Update() {
-        Vector2 pos = transform.position.XZ();
+        Vector3 pos3 = transform.position;
+        Vector2 pos = pos3.XZ();
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -68,10 +69,12 @@ public class PlayerController : MonoBehaviour {
             lookPrev = look;
 
         if (mouseTurning) {
-            Vector3 posScreen = Camera.main.WorldToScreenPoint(pos);
+            Camera cam = Camera.main;
+            mousePos.z = Mathf.Abs((cam.transform.position - pos3).magnitude);
+            Vector3 mousePosWorld = cam.ScreenToWorldPoint(mousePos);
             transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(
-                posScreen.y - mousePos.y,
-                mousePos.x - posScreen.x
+                pos3.z - mousePosWorld.z,
+                mousePosWorld.x - pos.x
             ) * Mathf.Rad2Deg, 0f);
         } else {
             transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(
