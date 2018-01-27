@@ -13,7 +13,7 @@ public class ItemProjectile : ItemBase_Or {
         InteractiveCannon cannon = with.GetComponent<InteractiveCannon>();
         if (cannon == null)
             return;
-        cannon.PickupItem(item);
+        cannon.Container.PickupItem(item);
     }
 
     public override bool CanUseWith(PlayerController player, InteractiveComponent with) {
