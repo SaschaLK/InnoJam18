@@ -77,6 +77,7 @@ public abstract class MinigameBase : MonoBehaviour {
         Active = false;
 
         if (Win) {
+            ScreenShakeController.Instance.Trigger(Camera.main.transform, 0.1f, 0.2f);
             if (Callback != null)
                 Callback();
             else

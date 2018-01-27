@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class LampHandler : MonoBehaviour {
 
-    public Material matOn;
-    public Material matOff;
+    private Light lamp;
+
+    private void Awake()
+    {
+        lamp = GetComponentInChildren<Light>();
+        lamp.enabled = false;
+    }
 
     public void ActivateLamp()
     {
@@ -14,18 +19,8 @@ public class LampHandler : MonoBehaviour {
 
     private IEnumerator LampLight()
     {
-        Debug.Log("start lamp");
-        int count = 3;
-        this.GetComponent<AudioSource>().Play();
-
-        for (int i=0; i< count; i++)
-        {
-            this.GetComponent<Renderer>().material = matOn;
-            yield return new WaitForSeconds(0.5f);
-            this.GetComponent<Renderer>().material = matOff;
-            yield return new WaitForSeconds(0.5f);
-        }
-        this.GetComponent<AudioSource>().Stop();
-        Debug.Log("stop lamp");
+        lamp.enabled = true;
+        yield return new WaitForSeconds(2f);
+        lamp.enabled = false;
     }
 }
