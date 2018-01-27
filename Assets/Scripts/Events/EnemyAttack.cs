@@ -17,4 +17,9 @@ public class EnemyAttack : GameEvent {
 
         stations[rand].InflictDamage(stations[rand].health);
     }
+
+    public override void triggerStart()
+    {
+
+    }
 }

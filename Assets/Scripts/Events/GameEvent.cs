@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class GameEvent {
+public abstract class GameEvent {
 
     public UnityEvent OnEventStart = new UnityEvent();
 
     public UnityEvent OnFailed = new UnityEvent();
 
     public UnityEvent OnSuccess = new UnityEvent();
+
+    public abstract void triggerStart();
 }

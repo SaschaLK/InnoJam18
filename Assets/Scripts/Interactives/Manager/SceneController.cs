@@ -1,8 +1,9 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class SceneController : MonoBehaviour {
+public class SceneController : NetworkBehaviour {
 
     public static SceneController instance;
 
@@ -30,11 +31,14 @@ public class SceneController : MonoBehaviour {
 
     private void Awake()
     {
+        if (!isServer) return;
         instance = this;
         this.gameCamera = GetComponent<Camera>();
     }
 
     void Start(){
+        if (!isServer) return;
+
         timeEvent = Random.Range(minEventTime, maxEventTime);
         EnemyApproach ae = new EnemyApproach(this.GetComponent<EnemyApproachHandler>());
         ae.OnEventStart.Invoke();
@@ -42,6 +46,8 @@ public class SceneController : MonoBehaviour {
 
     private void Update()
     {
+        if (!isServer) return;
+
         timer += Time.deltaTime;
 
         float difficultyIncrease = 0;
@@ -60,29 +66,29 @@ public class SceneController : MonoBehaviour {
         }
     }
 
-    private void TriggerRandomEvent()
-    {
+    private void TriggerRandomEvent()   {
+        if (!isServer) return;
         float rand = Random.Range(0, 100);
 
         if(rand <= 10)
         {
-            TurbulenceEvent te = new TurbulenceEvent(airplane);
+            CmdTriggerGameEvent(new TurbulenceEvent(airplane));
             return;
         }
         else if(rand <= 30)
         {
-            EnemyAttack ea = new EnemyAttack(airplane, gameCamera);
+            CmdTriggerGameEvent(new EnemyAttack(airplane, gameCamera));
             return;
         }
         else if (rand <= 50)
         {
-            EnemyApproach ae = new EnemyApproach(this.GetComponent<EnemyApproachHandler>());
+            CmdTriggerGameEvent(new EnemyApproach(this.GetComponent<EnemyApproachHandler>()));
             ae.OnEventStart.Invoke();
             return;
         }
         else if(rand <= 70)
         {
-            AirplaneFall af = new AirplaneFall(sinkingLamp);
+            CmdTriggerGameEvent(new AirplaneFall(sinkingLamp));
             return;
         }
         else
@@ -90,13 +96,25 @@ public class SceneController : MonoBehaviour {
             rand = Random.value;
             if(rand <= 0.5f)
             {
-                EvadeLeft el = new EvadeLeft(evadeLeftLamp, 10f);
+                CmdTriggerGameEvent(new EvadeLeft(evadeLeftLamp, 10f));
             }
             else
             {
-                EvadeRight er = new EvadeRight(evadeRightLamp, 10f);
+                CmdTriggerGameEvent(new EvadeRight(evadeRightLamp, 10f));
             }
         }
+    }
+
+    [Command]
+    public void CmdTriggerGameEvent(GameEvent evt)
+    {
+        RpcTriggerGameEvent(evt);
+    }
+
+    [ClientRpc]
+    public void RpcTriggerGameEvent(GameEvent evt)
+    {
+        evt.triggerStart();
     }
 
     #region EvadeFunctions

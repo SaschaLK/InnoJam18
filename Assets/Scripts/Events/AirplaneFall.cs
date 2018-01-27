@@ -11,4 +11,10 @@ public class AirplaneFall : GameEvent {
 
         lamp.OnActivation.Invoke();
     }
+
+    public override void triggerStart()
+    {
+
+    }
+
 }

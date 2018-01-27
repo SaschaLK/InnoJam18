@@ -11,4 +11,9 @@ public class EnemyApproach : GameEvent {
         this.OnFailed.AddListener(handler.EnemyEventFailed);
         this.OnSuccess.AddListener(handler.EnemyEventSuccess);
 	}
+
+    public override void triggerStart()
+    {
+
+    }
 }

@@ -13,4 +13,9 @@ public class EvadeRight : GameEvent {
 
         SceneController.instance.StartHitCountdown(timeToHit);
     }
+
+    public override void triggerStart()
+    {
+
+    }
 }
