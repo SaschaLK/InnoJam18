@@ -11,24 +11,24 @@ public class Airplane : MonoBehaviour {
 
 	private void Start()
 	{
-		StartCoroutine(RiseFall());
+		InvokeRepeating ("RiseFall", 0f, 1f);
 	}
 
 	private void Update()
 	{
+		if (riseFall <= 5) {
+
+		}
+
 		if (totalHeight <= 0)
 		{
 			CrashAirplane();
 		}
 	}
 
-	private IEnumerator RiseFall()
+	private void RiseFall()
 	{
-		while (true)
-		{
-			totalHeight += riseFall;
-			yield return new WaitForSeconds(1f);
-		}
+		totalHeight += riseFall;
 	}
 
 	private void CrashAirplane()
