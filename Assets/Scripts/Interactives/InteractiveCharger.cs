@@ -29,7 +29,7 @@ public class InteractiveCharger : InteractiveBase {
             ItemChargeable closest = null;
             for (int i = 0; i < chargeables.Length; i++) {
                 ItemChargeable chargeable = chargeables[i];
-                if (chargeable == null || !ChargingName.Contains(chargeable.name) || chargeable.item.Holder != null)
+                if (chargeable == null || !ChargingName.Contains(chargeable.name) || chargeable.transform.parent != null)
                     continue;
 
                 float dist = (pos - chargeable.transform.position).sqrMagnitude;

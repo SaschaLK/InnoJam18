@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 65433384345069776}
   - component: {fileID: 23554972741396314}
   - component: {fileID: 114673075498276700}
-  - component: {fileID: 114766436066180828}
   - component: {fileID: 114148357745701522}
   m_Layer: 0
   m_Name: InteractiveChargerCrystal
@@ -54,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192179446007064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6}
+  m_LocalPosition: {x: 1, y: 0, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4285107158752534}
@@ -142,6 +141,7 @@ MonoBehaviour:
   ChargePerSecond: 3
   Container: {fileID: 0}
   Charging: {fileID: 0}
+  UsageRadius: 3
 --- !u!114 &114673075498276700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,20 +155,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Crystal Charging Station
   health: 100
+  Highlight: 0
   OnInteract:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 114766436066180828}
-        m_MethodName: Use
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Test Bottom
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   OnDamage:
@@ -180,14 +170,3 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &114766436066180828
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1192179446007064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edbe1bcc41ed06c489a74776e4954ea3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

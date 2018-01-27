@@ -33,7 +33,7 @@ public class PlayerTooltipController : MonoBehaviour {
         transform.position = parent.position + offset;
 
         if (!textVisible)
-            Group.alpha -= Time.deltaTime / 0.1f;
+            Group.alpha = Mathf.Clamp01(Group.alpha - Time.deltaTime / 0.1f);
         textVisible = false;
     }
 
@@ -43,7 +43,7 @@ public class PlayerTooltipController : MonoBehaviour {
         Panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, TooltipText.preferredWidth + Padding);
         Panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, TooltipText.preferredHeight + Padding);
 
-        Group.alpha = 1f;
+        Group.alpha = Mathf.Clamp01(Group.alpha + Time.deltaTime / 0.1f);
         textVisible = true;
     }
 

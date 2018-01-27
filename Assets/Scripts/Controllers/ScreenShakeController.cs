@@ -20,6 +20,13 @@ public class ScreenShakeController : MonoBehaviour {
     IEnumerator Shake(Transform target, float duration , float intensity) {
         float time = Time.timeScale;
 
+        Collider[] colliders = target.GetComponentsInChildren<Collider>();
+        bool[] enabledMap = new bool[colliders.Length];
+        for (int i = 0; i < colliders.Length; i++) {
+            enabledMap[i] = colliders[i].enabled;
+            colliders[i].enabled = false;
+        }
+
         Vector3 camShakePrev = Vector3.zero;
         for (float start = Time.time, end = start + duration, t = 0; t < 1; t = (Time.time - start) / duration) {
             float st = t;
@@ -35,6 +42,10 @@ public class ScreenShakeController : MonoBehaviour {
             ));
 
             yield return null;
+        }
+
+        for (int i = 0; i < colliders.Length; i++) {
+            colliders[i].enabled = enabledMap[i];
         }
 
     }

@@ -9,51 +9,50 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1742030735151242}
+  m_RootGameObject: {fileID: 1938144013504398}
   m_IsPrefabParent: 1
---- !u!1 &1742030735151242
+--- !u!1 &1938144013504398
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4896445998526462}
-  - component: {fileID: 33067236768286480}
-  - component: {fileID: 65183745314226418}
-  - component: {fileID: 23450936559336624}
-  - component: {fileID: 54420207249620956}
-  - component: {fileID: 114289672630411850}
-  - component: {fileID: 114747835096109060}
-  - component: {fileID: 114458879484175564}
-  - component: {fileID: 114720432111694966}
-  - component: {fileID: 114804898829900516}
+  - component: {fileID: 4308835036506024}
+  - component: {fileID: 33642561564585356}
+  - component: {fileID: 65436968848648634}
+  - component: {fileID: 23143699085350930}
+  - component: {fileID: 54135073506147330}
+  - component: {fileID: 114853521743892482}
+  - component: {fileID: 114978747301181878}
+  - component: {fileID: 114794449067614964}
+  - component: {fileID: 114650361192185470}
   m_Layer: 8
-  m_Name: ItemStick
+  m_Name: ItemRocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4896445998526462
+--- !u!4 &4308835036506024
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1938144013504398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 4}
+  m_LocalPosition: {x: -11, y: 0, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23450936559336624
+--- !u!23 &23143699085350930
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1938144013504398}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -82,19 +81,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33067236768286480
+--- !u!33 &33642561564585356
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1938144013504398}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54420207249620956
+--- !u!54 &54135073506147330
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1938144013504398}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -104,30 +103,62 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65183745314226418
+--- !u!65 &65436968848648634
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1938144013504398}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114289672630411850
+--- !u!114 &114650361192185470
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1938144013504398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b2c454178ac39419d4c6af012ff9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114794449067614964
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938144013504398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55fc46dca43e67c46ab2d22c8062a07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Vol: 1
+  ClipPickup: {fileID: 0}
+  ClipPickupVol: 0.5
+  ClipDrop: {fileID: 0}
+  ClipDropVol: 0.5
+  ClipUse: {fileID: 0}
+  ClipUseVol: 0.5
+  ClipUseWith: {fileID: 0}
+  ClipUseWithVol: 0.5
+  Source: {fileID: 0}
+--- !u!114 &114853521743892482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938144013504398}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3adb26b638c50214d95dd43305538c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: Stick Of Handling
+  DisplayName: Rocket
   health: 100
   Highlight: 0
   OnInteract:
@@ -144,44 +175,12 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &114458879484175564
+--- !u!114 &114978747301181878
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3b20d9e7d14b546b8d9168e6614aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114720432111694966
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55fc46dca43e67c46ab2d22c8062a07a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Vol: 1
-  ClipPickup: {fileID: 0}
-  ClipPickupVol: 0.5
-  ClipDrop: {fileID: 0}
-  ClipDropVol: 0.5
-  ClipUse: {fileID: 0}
-  ClipUseVol: 0.5
-  ClipUseWith: {fileID: 0}
-  ClipUseWithVol: 0.5
-  Source: {fileID: 0}
---- !u!114 &114747835096109060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1938144013504398}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4cee83d62539464ba04d78c1ae1266a, type: 3}
@@ -210,14 +209,3 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114804898829900516
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b2c454178ac39419d4c6af012ff9ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

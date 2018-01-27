@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JammedState : StationState
+public class JammedState : LockedUpStateBase
 {
     private float jammedTime = 3f; //Set this value to change jammed time
 
-    InteractiveComponent interactive;
-
-    private void Awake()
+    protected override void Awake()
     {
-        interactive = GetComponentInParent<InteractiveComponent>();
-
-        _CanUse = interactive.CanInteract; // Speichere vorherige Bedingung zwischen.
-        interactive.CanInteract = CanUse; // Neue Interactive CanUse Bedingung.
+        base.Awake();
     }
 
     private void OnEnable()
@@ -31,16 +26,15 @@ public class JammedState : StationState
         Destroy(this.gameObject);
     }
 
-    System.Func<PlayerController, bool> _CanUse; // vorherige Bedingung
-    bool CanUse(PlayerController player)
+    protected override bool CanUse(PlayerController player)
     {
         // if (!fireState && vorherigeBedingung)
 
         if (this != null) // Während die Maschine jammed ist...
             return false; // ... können wir das derzeitige Interactive nicht verwenden.
 
-        if (_CanUse != null)
-            return _CanUse(player); // Rufe vorherige Bedingung ab.
+        if (__CanUse != null)
+            return __CanUse(player); // Rufe vorherige Bedingung ab.
         return true; // Standardwert: Wir können es verwenden.
     }
 
