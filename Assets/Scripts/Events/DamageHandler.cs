@@ -16,7 +16,7 @@ public class DamageHandler : MonoBehaviour {
     {
         interactive.health -= damage;
 
-        ScreenShakeController.Instance.Trigger(interactive.transform, 1f, damage/10);
+        ScreenShakeController.Instance.Trigger(interactive.transform, 1f, damage/200);
 
         if (interactive.health <= 0)
         {

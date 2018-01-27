@@ -33,6 +33,7 @@ public class EnemyApproachHandler : MonoBehaviour {
 
         int rand = Random.Range(0, stations.Count);
 
+        
         stations[rand].InflictDamage(stations[rand].health);
     }
 
