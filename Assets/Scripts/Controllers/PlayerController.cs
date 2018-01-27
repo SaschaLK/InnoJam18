@@ -107,7 +107,8 @@ public class PlayerController : NetworkBehaviour {
             InteractiveComponent interactive = interactives[i].GetComponent<InteractiveComponent>();
             if (interactive == null)
                 continue;
-            Vector2 interactivePos = interactive.transform.position.XZ();
+            Vector3 interactivePos3 = interactive.transform.position;
+            Vector2 interactivePos = interactivePos3.XZ();
 
             float distToCenter = (pos - interactivePos).sqrMagnitude;
 
@@ -134,6 +135,10 @@ public class PlayerController : NetworkBehaviour {
             if (!canUse || dist > closestDist) {
                 continue;
             }
+
+            RaycastHit hit;
+            if (Physics.Raycast(pos3, (pos3 - interactivePos3).normalized, out hit) && hit.collider != interactives[i])
+                continue;
 
             closestDist = dist;
             closest = interactive;
