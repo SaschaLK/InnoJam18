@@ -6,9 +6,7 @@ public class SceneController : MonoBehaviour {
 
     public static SceneController instance;
 
-
-    [SerializeField]
-    Camera gameCamera;
+    private Camera gameCamera;
 
     [SerializeField]
 	Airplane airplane;
@@ -31,6 +29,7 @@ public class SceneController : MonoBehaviour {
     private void Awake()
     {
         instance = this;
+        this.gameCamera = GetComponent<Camera>();
     }
 
     void Start(){
