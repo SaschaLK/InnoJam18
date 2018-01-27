@@ -1085,6 +1085,7 @@ MonoBehaviour:
   stations:
   - {fileID: 631550509}
   - {fileID: 1940798101}
+  enemyLamp: {fileID: 0}
 --- !u!1 &1124299515
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,16 +1352,6 @@ Prefab:
     - target: {fileID: 4148526792121758, guid: 21b7852b5e906ab4cac320b4a6242a7f, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673075498276700, guid: 21b7852b5e906ab4cac320b4a6242a7f,
-        type: 2}
-      propertyPath: Highlight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114673075498276700, guid: 21b7852b5e906ab4cac320b4a6242a7f,
-        type: 2}
-      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 21b7852b5e906ab4cac320b4a6242a7f, type: 2}

@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 23554972741396314}
   - component: {fileID: 114673075498276700}
   - component: {fileID: 114148357745701522}
+  - component: {fileID: 114734038983329776}
   m_Layer: 0
   m_Name: InteractiveChargerCrystal
   m_TagString: Untagged
@@ -53,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1192179446007064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: -6}
+  m_LocalPosition: {x: 0.92, y: -0.38, z: 11.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4285107158752534}
@@ -170,3 +171,35 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114734038983329776
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1192179446007064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 33
+    i1: 183
+    i2: 133
+    i3: 43
+    i4: 94
+    i5: 144
+    i6: 106
+    i7: 180
+    i8: 202
+    i9: 195
+    i10: 32
+    i11: 180
+    i12: 166
+    i13: 36
+    i14: 42
+    i15: 127
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
