@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 
     bool mouseTurning;
     Vector3 mousePosPrev = new Vector3(0f, 0f, 0f);
+    Vector2 lookPrev = new Vector3(0f, 0f);
 
     public ItemComponent Item { get; protected set; }
 
@@ -64,18 +65,23 @@ public class PlayerController : MonoBehaviour {
         bool stickTurning = look.sqrMagnitude > 0.01;
         mouseTurning &= !stickTurning;
 
+        if (stickTurning)
+            lookPrev = look;
+
         if (mouseTurning) {
             Vector3 posScreen = Camera.main.WorldToScreenPoint(pos);
             transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(
                 posScreen.y - mousePos.y,
                 mousePos.x - posScreen.x
             ) * Mathf.Rad2Deg, 0f);
-        } else if (stickTurning) {
+        } else {
             transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(
-                look.y,
-                look.x
+                lookPrev.y,
+                lookPrev.x
             ) * Mathf.Rad2Deg, 0f);
         }
+
+        rigidbody.angularVelocity = Vector3.zero;
 
         InteractiveComponent[] interactives = FindObjectsOfType<InteractiveComponent>();
         closestDist = UsageRadius * UsageRadius;
