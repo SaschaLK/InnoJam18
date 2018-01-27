@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 81363464549341482}
   - component: {fileID: 114506375682549034}
   - component: {fileID: 114862384881720856}
+  - component: {fileID: 114970009923076348}
   - component: {fileID: 114442096989538972}
   - component: {fileID: 114255819199752866}
   m_Layer: 0
@@ -226,6 +227,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06480d86ff6c4ce47a2fb06d05fbe442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114970009923076348
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1042536604940730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27df1a09c2f5650418d293b9bbb7d0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Canvas: {fileID: 0}
+  ShiftSpeed: 1
+  FinalFocusDistance: 25
+  StartFocusDistance: 0.3
 --- !u!124 &124917185838861776
 Behaviour:
   m_ObjectHideFlags: 1
