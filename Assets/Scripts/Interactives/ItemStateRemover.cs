@@ -13,7 +13,7 @@ public class ItemStateRemover : ItemBase {
     }
 
     public override void OnUseWith(InteractiveComponent with) {
-        Destroy(with.GetComponentInChildren(_Type));
+        Destroy(with.GetComponentInChildren(_Type).gameObject);
     }
 
     public override bool CanUse(PlayerController player) {
