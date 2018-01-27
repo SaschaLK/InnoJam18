@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCrystal : ItemBase {
+public class ItemHammer : ItemBase {
 
     protected override void Awake() {
         base.Awake();

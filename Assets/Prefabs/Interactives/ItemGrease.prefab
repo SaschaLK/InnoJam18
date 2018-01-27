@@ -9,49 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1742030735151242}
+  m_RootGameObject: {fileID: 1710921840594824}
   m_IsPrefabParent: 1
---- !u!1 &1742030735151242
+--- !u!1 &1710921840594824
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4896445998526462}
-  - component: {fileID: 33067236768286480}
-  - component: {fileID: 65183745314226418}
-  - component: {fileID: 23450936559336624}
-  - component: {fileID: 54420207249620956}
-  - component: {fileID: 114289672630411850}
-  - component: {fileID: 114747835096109060}
-  - component: {fileID: 114458879484175564}
+  - component: {fileID: 4762181129286376}
+  - component: {fileID: 33610744014900890}
+  - component: {fileID: 65983634352318348}
+  - component: {fileID: 23421874105143042}
+  - component: {fileID: 54408952123629902}
+  - component: {fileID: 114922217985619916}
+  - component: {fileID: 114375564203251040}
+  - component: {fileID: 114208281670913392}
   m_Layer: 8
-  m_Name: ItemStick
+  m_Name: ItemGrease
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4896445998526462
+--- !u!4 &4762181129286376
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1710921840594824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 4}
+  m_LocalPosition: {x: -11, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23450936559336624
+--- !u!23 &23421874105143042
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1710921840594824}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -80,19 +80,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33067236768286480
+--- !u!33 &33610744014900890
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1710921840594824}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54420207249620956
+--- !u!54 &54408952123629902
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1710921840594824}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -102,62 +102,35 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65183745314226418
+--- !u!65 &65983634352318348
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1710921840594824}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114289672630411850
+--- !u!114 &114208281670913392
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1710921840594824}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3adb26b638c50214d95dd43305538c5d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8fceefb2b2a3fcf47a1a7c06e41f03b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: Stick Of Handling
-  health: 100
-  OnInteract:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  OnDamage:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: InternalDamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  OnDestroy:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
---- !u!114 &114458879484175564
+--- !u!114 &114375564203251040
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3b20d9e7d14b546b8d9168e6614aa0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114747835096109060
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1710921840594824}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d4cee83d62539464ba04d78c1ae1266a, type: 3}
@@ -186,3 +159,30 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114922217985619916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1710921840594824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3adb26b638c50214d95dd43305538c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: Grease Of Eww...
+  health: 100
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InternalDamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null

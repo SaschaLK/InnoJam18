@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCrystal : ItemBase {
+public class ItemGrease : ItemBase {
 
     protected override void Awake() {
         base.Awake();
+
     }
 
     public override void UseWith(InteractiveComponent with) {
