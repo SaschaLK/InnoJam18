@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AirplaneFall : GameEvent {
 
-	public AirplaneFall()
+	public AirplaneFall(ControlLamp lamp)
     {
-
+        lamp.OnActivation.Invoke();
     }
 }

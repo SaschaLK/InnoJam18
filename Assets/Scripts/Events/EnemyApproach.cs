@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class EnemyApproach : GameEvent {
 
-	// Use this for initialization
-	public EnemyApproach (GameObject lamp) {
+	public EnemyApproach () {
 		//TODO: make warning light blink red and start alarm
-		lamp.GetComponent<AudioSource>().Play();
 	}
 }
