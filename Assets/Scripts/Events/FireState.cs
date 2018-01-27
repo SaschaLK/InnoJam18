@@ -6,21 +6,19 @@ public class FireState : StationState{
 
 	private void OnEnable()
 	{
-		StartCoroutine(FireDamage());
+		InvokeRepeating ("FireDamage", 1f, 1f);
+		//Spawn fire 
 	}
 
 	private void OnDisable()
 	{
-		StopCoroutine(FireDamage());
+
+		//delete fire
 	}
 
-	private IEnumerator FireDamage()
+	private void FireDamage()
 	{
-		while (true)
-		{
-			int damage = Random.Range(5, 10);
-			GetComponentInParent<InteractiveComponent>().InflictDamage(damage);
-			yield return new WaitForSeconds(1);
-		}
+		int damage = Random.Range(5, 10);
+		GetComponentInParent<InteractiveComponent>().InflictDamage(damage);
 	}
 }
