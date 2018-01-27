@@ -11,18 +11,30 @@ public class PlayerController : MonoBehaviour {
 
     float closestDist;
     InteractiveComponent closest;
+    public InteractiveComponent Closest { get { return closest; } }
 
-    Collider collider;
-    Rigidbody rigidbody;
+    new Collider collider;
+    new Rigidbody rigidbody;
+
+    bool mouseTurning;
+    Vector3 mousePosPrev = new Vector3(0f, 0f, 0f);
 
     public ItemComponent Item { get; protected set; }
+
+    public Transform HoldingPoint;
 
 	void Awake() {
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
-	}
+
+        if (HoldingPoint == null)
+            HoldingPoint = transform.Find("HoldingPoint");
+
+    }
 	
 	void Update() {
+
+        Vector3 pos = transform.position;
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -33,15 +45,47 @@ public class PlayerController : MonoBehaviour {
             y * MovementSpeed
         );
 
+        Vector3 mousePos = Input.mousePosition;
+        if (new Vector2(
+            mousePos.x - mousePosPrev.x,
+            mousePos.y - mousePosPrev.y
+        ).sqrMagnitude >= 1f) {
+            mouseTurning = true;
+            mousePosPrev = mousePos;
+        }
+
+        Vector2 look = new Vector2(
+            Input.GetAxis("Horizontal Look"),
+            Input.GetAxis("Vertical Look")
+        );
+
+        bool stickTurning = look.sqrMagnitude > 0.01;
+        mouseTurning &= !stickTurning;
+
+        if (mouseTurning) {
+            Vector3 posScreen = Camera.main.WorldToScreenPoint(pos);
+            transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(
+                posScreen.y - mousePos.y,
+                mousePos.x - posScreen.x
+            ) * Mathf.Rad2Deg, 0f);
+        } else if (stickTurning) {
+            transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(
+                look.y,
+                look.x
+            ) * Mathf.Rad2Deg, 0f);
+        }
+
         InteractiveComponent[] interactives = FindObjectsOfType<InteractiveComponent>();
-        Vector3 pos = transform.position;
         closestDist = UsageRadius * UsageRadius;
         closest = null;
         for (int i = 0; i < interactives.Length; i++) {
             InteractiveComponent interactive = interactives[i];
 
             float dist = (pos - interactive.transform.position).sqrMagnitude;
-            bool canUse = true; // TODO: Dependencies
+            bool canUse = interactive.CanUse != null ? interactive.CanUse(this) : true;
+
+            if (Item != null && interactive.transform == Item.transform)
+                continue;
 
             if (!canUse || dist > closestDist) {
                 continue;
@@ -52,17 +96,22 @@ public class PlayerController : MonoBehaviour {
         }
 
         bool use = Input.GetButtonDown("Fire1");
+        bool drop = Input.GetButtonDown("Fire2");
         if (closest != null) {
             closestDist = Mathf.Pow(closestDist, 0.5f);
-            if (use) {
+            if (use && !drop) {
                 if (Item != null) {
                     UseItemWith();
                 } else {
                     Interact();
                 }
             }
-        } else if (use) {
+        } else if (use && !drop) {
             UseItem();
+        }
+
+        if (drop) {
+            DropItem();
         }
 
     }
@@ -89,9 +138,43 @@ public class PlayerController : MonoBehaviour {
         if (item == null)
             return;
 
-        DropItem();
+        DropItem(); // Drop any previous items.
+
         Item = item;
+
+        Item.Holder = this;
+        Item.transform.parent = HoldingPoint;
+        Item.transform.localPosition = Item.HoldOffset;
+        Item.transform.localRotation = Item.HoldRotation;
+
+        Rigidbody body = Item.GetComponent<Rigidbody>();
+        if (body != null)
+            Destroy(body);
+        Collider collider = Item.GetComponent<Collider>();
+        if (collider != null)
+            collider.enabled = false;
+
         item.OnPickup.Invoke();
+    }
+
+    /// <summary>
+    /// Drop currently held item.
+    /// </summary>
+    public void DropItem() {
+        if (Item == null)
+            return;
+
+        Item.OnDrop.Invoke();
+
+        Item.Holder = null;
+        Item.transform.parent = null;
+
+        Item.gameObject.AddComponent<Rigidbody>();
+        Collider collider = Item.GetComponent<Collider>();
+        if (collider != null)
+            collider.enabled = true;
+
+        Item = null;
     }
 
     /// <summary>
@@ -103,7 +186,8 @@ public class PlayerController : MonoBehaviour {
         if (item == null)
             return;
 
-        item.OnUse.Invoke();
+        if (item.CanUse != null ? item.CanUse(this) : true)
+            item.OnUse.Invoke();
     }
 
     /// <summary>
@@ -120,18 +204,9 @@ public class PlayerController : MonoBehaviour {
         if (with == null)
             return;
 
-        item.OnUseWith.Invoke(with);
-    }
-
-    /// <summary>
-    /// Drop currently held item.
-    /// </summary>
-    public void DropItem() {
-        if (Item == null)
-            return;
-
-        Item.OnDrop.Invoke();
-        Item = null;
+        if (item.CanUseWith != null ? item.CanUseWith(this, with) :
+            item.CanUse != null ? item.CanUse(this) : true)
+            item.OnUseWith.Invoke(with);
     }
 
     private void OnDrawGizmos() {
