@@ -16,8 +16,7 @@ public class PlayerController : MonoBehaviour {
     Rigidbody rigidbody;
 
     bool mouseTurning;
-    Vector3 mousePosPrev = new Vector3(float.NaN, float.NaN, float.NaN);
-    Vector2 stickTurn = new Vector2(0f, 0f);
+    Vector3 mousePosPrev = new Vector3(0f, 0f, 0f);
 
     public ItemComponent Item { get; protected set; }
 
@@ -46,8 +45,33 @@ public class PlayerController : MonoBehaviour {
         );
 
         Vector3 mousePos = Input.mousePosition;
-        if (mousePos != mousePosPrev) {
+        if (new Vector2(
+            mousePos.x - mousePosPrev.x,
+            mousePos.y - mousePosPrev.y
+        ).sqrMagnitude >= 1f) {
             mouseTurning = true;
+            mousePosPrev = mousePos;
+        }
+
+        Vector2 look = new Vector2(
+            Input.GetAxis("Horizontal Look"),
+            Input.GetAxis("Vertical Look")
+        );
+
+        bool stickTurning = look.sqrMagnitude > 0.01;
+        mouseTurning &= !stickTurning;
+
+        if (mouseTurning) {
+            Vector3 posScreen = Camera.main.WorldToScreenPoint(pos);
+            transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(
+                posScreen.y - mousePos.y,
+                mousePos.x - posScreen.x
+            ) * Mathf.Rad2Deg, 0f);
+        } else if (stickTurning) {
+            transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(
+                look.y,
+                look.x
+            ) * Mathf.Rad2Deg, 0f);
         }
 
         InteractiveComponent[] interactives = FindObjectsOfType<InteractiveComponent>();
@@ -125,6 +149,9 @@ public class PlayerController : MonoBehaviour {
         Rigidbody body = Item.GetComponent<Rigidbody>();
         if (body != null)
             Destroy(body);
+        Collider collider = Item.GetComponent<Collider>();
+        if (collider != null)
+            collider.enabled = false;
 
         item.OnPickup.Invoke();
     }
@@ -142,6 +169,9 @@ public class PlayerController : MonoBehaviour {
         Item.transform.parent = null;
 
         Item.gameObject.AddComponent<Rigidbody>();
+        Collider collider = Item.GetComponent<Collider>();
+        if (collider != null)
+            collider.enabled = true;
 
         Item = null;
     }
