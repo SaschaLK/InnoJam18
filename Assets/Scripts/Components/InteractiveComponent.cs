@@ -10,6 +10,7 @@ public sealed class InteractiveComponent : NetworkBehaviour {
 
     public string DisplayName;
 
+    [SyncVar]
     public float health = 100;
 
     public bool Highlight = false;

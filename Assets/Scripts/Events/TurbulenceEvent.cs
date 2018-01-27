@@ -6,6 +6,7 @@ public class TurbulenceEvent : GameEvent {
 
 	public TurbulenceEvent(Airplane airplane)
     {
+        return;
         Debug.Log("turbulences incoming");
         //TODO: Camera shake
         ScreenShakeController.Instance.Trigger(Camera.main.transform, 4f, 0.2f);

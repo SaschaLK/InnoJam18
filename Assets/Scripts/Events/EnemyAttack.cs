@@ -6,6 +6,7 @@ public class EnemyAttack : GameEvent {
 
 	public EnemyAttack(Airplane airplane , Camera camera)
 	{
+        return;
         Debug.Log("enemy is shooting at us");
 
         ScreenShakeController.Instance.Trigger(Camera.main.transform, 0.5f, 1f);
