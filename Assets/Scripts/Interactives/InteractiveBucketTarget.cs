@@ -32,7 +32,7 @@ public class InteractiveBucketTarget : InteractiveBase {
             ItemBucket closest = null;
             for (int i = 0; i < buckets.Length; i++) {
                 ItemBucket bucket = buckets[i].GetComponent<ItemBucket>();
-                if (bucket == null || (StateInput != BucketState.Any && bucket.State != StateInput) || bucket.transform.parent != null)
+                if (bucket == null || (bucket.State != StateInput && StateInput != BucketState.NotEmpty) || (StateInput == BucketState.NotEmpty && bucket.State == BucketState.Empty) || bucket.transform.parent != null)
                     continue;
 
                 float dist = (pos - bucket.transform.position).sqrMagnitude;
@@ -56,7 +56,7 @@ public class InteractiveBucketTarget : InteractiveBase {
     }
 
     public void HandleBucket(ItemBucket bucket) {
-        if (StateInput != BucketState.Any && bucket.State != StateInput)
+        if ((bucket.State != StateInput && StateInput != BucketState.NotEmpty) || (StateInput == BucketState.NotEmpty && bucket.State == BucketState.Empty))
             return;
         bucket.State = StateOutput;
         OnBucket.Invoke(bucket);
@@ -75,7 +75,7 @@ public class InteractiveBucketTarget : InteractiveBase {
         if (player.Item == null)
             return false;
         ItemBucket bucket = player.Item.GetComponent<ItemBucket>();
-        if (bucket == null || (StateInput != BucketState.Any && bucket.State != StateInput))
+        if (bucket == null || (bucket.State != StateInput && StateInput != BucketState.NotEmpty) || (StateInput == BucketState.NotEmpty && bucket.State == BucketState.Empty))
             return false;
         return true;
     }

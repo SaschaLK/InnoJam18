@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 23912594567380140}
   - component: {fileID: 114707140614420452}
   - component: {fileID: 114135911169710790}
+  - component: {fileID: 114498628082256276}
   m_Layer: 0
   m_Name: InteractiveBucketFillerFuel
   m_TagString: Untagged
@@ -146,6 +147,17 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: BucketEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114498628082256276
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1959952008867050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3043213d10484d2458fa876077857233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114707140614420452
 MonoBehaviour:
   m_ObjectHideFlags: 1

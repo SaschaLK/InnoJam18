@@ -3,21 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MinigameTest : MinigameBase {
+public class MinigameHold : MinigameBase {
 
     protected override string UIPath {
         get {
-            return "Test"; // Assets/Resources/Minigames/<PrefabNameHier>
+            return "Hold"; // Assets/Resources/Minigames/<PrefabName>
         }
     }
 
+    protected readonly static string[] Keys = {
+        "Fire1",
+        "Fire2",
+        "Fire3",
+        "Fire4"
+    };
+
     // UI
     protected Text TimerText;
+    protected Image ButtonImage;
 
     // Variablen
+    protected string Key;
     protected float TimeHeldDown;
     protected bool Holding;
-    protected float PressedUpTime;
+    protected float Timeout;
 
     protected override void Awake() {
         base.Awake(); // Wichtig!
@@ -30,48 +39,51 @@ public class MinigameTest : MinigameBase {
 
         // Finde alles aus dem UI-Baum.
         TimerText = UITree.Find("TimerText").GetComponent<Text>();
+        ButtonImage = UITree.Find("ButtonImage").GetComponent<Image>();
 
         // Wir generieren hier z.B. die Zeit, wie lange der Spieler A gedrückt halten muss.
-        TimeHeldDown = Random.Range(3f, 5f);
+        Key = Keys[Random.Range(0, Keys.Length)];
+        TimeHeldDown = Random.Range(1f, 3f);
         // Wir wollen nicht, dass der Spieler sofort failt -
         // stattdessen wollen wir warten, bis er anfängt, A zu drücken.
         Holding = false;
 
         // Irgendeine Zeit in der Zukunft, damit diese Fail-Condition nicht aus Versehen ausgelöst wird.
-        PressedUpTime = Time.time + TimeHeldDown + 1000f;
+        Timeout = Time.time + 2f;
+
+        ButtonImage.sprite = Resources.Load<Sprite>("UIKeys/" + Key);
     }
 
     private void Update() {
         if (!Active)
             return;
 
-        Holding |= Input.GetButtonDown("Fire1"); // Der Spieler hat angefangen, A zu halten.
-        if (!Holding && Input.GetButtonUp("Fire1")) {
+        Holding |= Input.GetButtonDown(Key); // Der Spieler hat angefangen, A zu halten.
+        if (!Holding && Input.GetButtonUp(Key)) {
             // Der Spieler hat Fire1 sofort losgelassen.
             // Fail nach einer kurzen Auszeit.
-            PressedUpTime = Time.time;
+            Timeout = Time.time + 0.3f;
         }
 
-        if (!Holding && Time.time >= PressedUpTime + 0.3f) {
+        if (!Holding && Time.time >= Timeout) {
             // Wenn der Player 0.3 Sekunden nach dem sofortigen Loslassen nicht drückt,
             // failen wir sofort.
-            EndMinigame();
+            CancelMinigame();
             return;
         }
 
-        if (Input.GetButton("Fire1")) {
+        if (Input.GetButton(Key)) {
             TimeHeldDown -= Time.deltaTime;
         } else if (Holding) {
             // Der Spieler hält A nicht mehr gedrückt, hat es aber mal gehalten. Fail!
-            EndMinigame();
+            CancelMinigame();
             return;
         }
 
         // Wir vermeiden < 0 bugs.
-        if (TimeHeldDown <= 0f) {
+        if (TimeHeldDown < 0f)
             TimeHeldDown = 0f;
-        }
-        TimerText.text = TimeHeldDown.ToString("N1").Replace(',', '.');
+        TimerText.text = TimeHeldDown.ToString("N2").Replace(',', '.');
 
         if (TimeHeldDown <= 0f) {
             // Wir haben die Zielzeit erreicht - Beende das Minigame.

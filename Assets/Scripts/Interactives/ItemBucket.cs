@@ -46,7 +46,7 @@ public class ItemBucket : ItemBase {
         InteractiveBucketTarget target = with.GetComponent<InteractiveBucketTarget>();
         if (target == null)
             return false;
-        return target.StateInput == BucketState.Any || State == target.StateInput;
+        return target.StateInput == BucketState.NotEmpty || State == target.StateInput;
     }
 
 }
