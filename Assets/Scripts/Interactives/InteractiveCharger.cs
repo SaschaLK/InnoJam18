@@ -81,12 +81,20 @@ public class InteractiveCharger : InteractiveBase {
         if (charging == null || !ChargingName.Contains(charging.name))
             return;
 
+        ItemChargeable prevItem = Charging;
         DropItem(); // Drop any previous items.
+        if (prevItem != null)
+            // Put the prev item at the replacing item's pos.
+            prevItem.transform.position = charging.transform.position;
 
         Charging = charging;
 
-        if (charging.item.Holder != null)
-            charging.item.Holder.DropItem();
+        if (charging.item.Holder != null) {
+            if (prevItem != null)
+                charging.item.Holder.PickupItem(prevItem.item);
+            else
+                charging.item.Holder.DropItem();
+        }
 
         charging.transform.parent = Container;
         charging.transform.localPosition = charging.item.HoldOffset;

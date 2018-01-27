@@ -180,10 +180,9 @@ public class PlayerController : MonoBehaviour {
 
         ItemComponent prevItem = Item;
         DropItem(); // Drop any previous items.
-        if (prevItem != null) {
+        if (prevItem != null)
             // Put the prev item at the replacing item's pos.
             prevItem.transform.position = item.transform.position;
-        }
 
         Item = item;
 

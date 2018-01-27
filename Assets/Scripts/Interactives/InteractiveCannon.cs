@@ -83,15 +83,6 @@ public class InteractiveCannon : InteractiveBase {
             player.PickupItem(Crystal.item);
     }
 
-    public override bool CanInteract(PlayerController player) {
-        if (Projectile != null)
-            return player.Item != null && player.Item.GetComponent<ItemCrystal>() != null;
-
-        if (player.Item == null)
-            return false;
-        return true;
-    }
-
     public void PickupItem(ItemComponent item) {
         ItemCrystal crystal = item.GetComponent<ItemCrystal>();
         if (crystal != null)
@@ -104,12 +95,20 @@ public class InteractiveCannon : InteractiveBase {
         if (crystal == null)
             return;
 
+        ItemCrystal prevItem = Crystal;
         DropCrystal(); // Drop any previous items.
+        if (prevItem != null)
+            // Put the prev item at the replacing item's pos.
+            prevItem.transform.position = crystal.transform.position;
 
         Crystal = crystal;
 
-        if (crystal.item.Holder != null)
-            crystal.item.Holder.DropItem();
+        if (crystal.item.Holder != null) {
+            if (prevItem != null)
+                crystal.item.Holder.PickupItem(prevItem.item);
+            else
+                crystal.item.Holder.DropItem();
+        }
 
         crystal.transform.parent = ContainerCrystal;
         crystal.transform.localPosition = crystal.item.HoldOffset;
@@ -141,12 +140,20 @@ public class InteractiveCannon : InteractiveBase {
         if (projectile == null)
             return;
 
+        ItemComponent prevItem = Projectile;
         DropProjectile(); // Drop any previous items.
+        if (prevItem != null)
+            // Put the prev item at the replacing item's pos.
+            prevItem.transform.position = projectile.transform.position;
 
         Projectile = projectile;
 
-        if (projectile.Holder != null)
-            projectile.Holder.DropItem();
+        if (projectile.Holder != null) {
+            if (prevItem != null)
+                projectile.Holder.PickupItem(prevItem);
+            else
+                projectile.Holder.DropItem();
+        }
 
         projectile.transform.parent = ContainerProjectile;
         projectile.transform.localPosition = projectile.HoldOffset;

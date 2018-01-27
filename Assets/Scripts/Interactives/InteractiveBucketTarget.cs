@@ -84,12 +84,20 @@ public class InteractiveBucketTarget : InteractiveBase {
         if (bucket == null)
             return;
 
+        ItemBucket prevItem = Bucket;
         DropItem(); // Drop any previous items.
+        if (prevItem != null)
+            // Put the prev item at the replacing item's pos.
+            prevItem.transform.position = bucket.transform.position;
 
         Bucket = bucket;
 
-        if (bucket.item.Holder != null)
-            bucket.item.Holder.DropItem();
+        if (bucket.item.Holder != null) {
+            if (prevItem != null)
+                bucket.item.Holder.PickupItem(prevItem.item);
+            else
+                bucket.item.Holder.DropItem();
+        }
 
         bucket.transform.parent = Container;
         bucket.transform.localPosition = bucket.item.HoldOffset;
