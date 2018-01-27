@@ -9,10 +9,11 @@ public class EnemyAttack : GameEvent {
 	{
 		//TODO: Camerashake
 
-		int count = Random.Range(1, 3);
 		List<InteractiveComponent> stations = airplane.stations;
 
-		while (count < 0)
+		int count = Random.Range(1, stations.Count);
+
+		while (count > 0)
 		{
 			int rand = Random.Range(0, stations.Count);
 			stations[rand].InflictDamage(10);
