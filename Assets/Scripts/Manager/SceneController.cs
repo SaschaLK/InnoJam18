@@ -10,8 +10,43 @@ public class SceneController : MonoBehaviour {
 	[SerializeField]
 	GameObject enemyAttackLamp;
 
+    private float timer;
+    private float timeEvent;
+
 	void Start(){
-		//EnemyApproach enemyApproach = new EnemyApproach (enemyAttackLamp);
-		EnemyAttack ea = new EnemyAttack (airplane);
-	}
+        timeEvent = Random.Range(5f, 20f);
+    }
+
+    private void Update()
+    {
+        timer += Time.deltaTime;
+
+        if (timer >= timeEvent)
+        {
+            timer = 0;
+            timeEvent = Random.Range(5f, 20f);
+            TriggerRandomEvent();
+        }
+    }
+
+    private void TriggerRandomEvent()
+    {
+        int rand = Random.Range(0, 100);
+
+        if(rand <= 10)
+        {
+            TurbulenceEvent te = new TurbulenceEvent(airplane);
+            return;
+        }
+        else if(rand <= 30)
+        {
+            EnemyAttack ea = new EnemyAttack(airplane);
+            return;
+        }
+        else if (rand <= 50)
+        {
+            EnemyApproach enemyApproach = new EnemyApproach(enemyAttackLamp);
+            return;
+        }
+    } 
 }

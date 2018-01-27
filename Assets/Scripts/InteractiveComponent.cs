@@ -20,7 +20,7 @@ public class InteractiveComponent : MonoBehaviour {
     /// Inflicts Damage caused by fire etc
     /// </summary>
     /// <param name="damage"></param>
-    public void InflictDamage(int damage)
+    public void InflictDamage(float damage)
 	{
         Debug.Log(this.name + " is damaged by " + damage);
         health -= damage;
