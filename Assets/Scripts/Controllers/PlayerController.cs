@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
-public class PlayerController : MonoBehaviour {
+public class PlayerController : NetworkBehaviour {
 
     public float MovementSpeed = 10f;
     public float UsageRadius = 5f;
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 
     public bool Locked;
 
-	void Awake() {
+    void Awake() {
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
         Tooltip = GetComponentInChildren<PlayerUIController>();
@@ -40,7 +41,7 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	void Update() {
-        if (Locked)
+        if (Locked || !isLocalPlayer)
             return;
 
         Vector3 pos3 = transform.position;
@@ -146,7 +147,7 @@ public class PlayerController : MonoBehaviour {
             closestDist = Mathf.Pow(closestDist, 0.5f);
             if (use && !drop) {
                 if (Item != null && closest.GetComponent<ItemComponent>() == null) {
-                    UseItemWith();
+                    UseItemWith(Item, closest);
                 } else {
                     Interact();
                 }
@@ -156,6 +157,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (drop) {
+            Debug.Log("DROP PRESSED");
             DropItem();
         }
 
@@ -170,6 +172,21 @@ public class PlayerController : MonoBehaviour {
         if (interactive == null)
             return;
 
+        CmdPlayerInteract(this.gameObject, interactive.gameObject);
+    }
+
+    [Command]
+    public void CmdPlayerInteract(GameObject player, GameObject interac)
+    {
+        player.GetComponent<PlayerController>().RpcInteract(interac);
+    }
+
+    [ClientRpc]
+    public void RpcInteract(GameObject other)
+    {
+        InteractiveComponent interactive = other.GetComponent<InteractiveComponent>();
+       
+        interactive.OnInteract.Invoke(this);
         ItemComponent item = interactive.GetComponent<ItemComponent>();
         if (item != null) {
             // Don't run minigames when picking up an item.
@@ -194,11 +211,26 @@ public class PlayerController : MonoBehaviour {
         if (item == null)
             return;
 
+        CmdPlayerPickUp(this.gameObject, item.gameObject);
+    }
+
+    [Command]
+    public void CmdPlayerPickUp(GameObject player, GameObject item)
+    {
+        player.GetComponent<PlayerController>().RpcPickupItem(item);
+    }
+
+    [ClientRpc]
+    public void RpcPickupItem(GameObject other)
+    {
+        ItemComponent item = other.GetComponent<ItemComponent>();
         ItemComponent prevItem = Item;
-        DropItem(); // Drop any previous items.
-        if (prevItem != null)
+
+        if (prevItem != null) {
+            LocalDropItem(); // Drop any previous items.
             // Put the prev item at the replacing item's pos.
             prevItem.transform.position = item.transform.position;
+        }
 
         Item = item;
 
@@ -221,6 +253,22 @@ public class PlayerController : MonoBehaviour {
     /// Drop currently held item.
     /// </summary>
     public void DropItem() {
+        Debug.Log("DROPPING");
+        CmdDropItem(this.gameObject);
+    }
+
+    [Command]
+    public void CmdDropItem(GameObject player)
+    {
+        player.GetComponent<PlayerController>().RpcDropItem();
+    }
+
+    [ClientRpc]
+    public void RpcDropItem() {
+        LocalDropItem();
+    }
+
+    public void LocalDropItem() { 
         if (Item == null)
             return;
 
@@ -247,8 +295,7 @@ public class PlayerController : MonoBehaviour {
             return;
 
         UnityAction callback = () => {
-            if (item.CanUse != null ? item.CanUse(this) : true)
-                item.OnUse.Invoke();
+            CmdUseItem(this.gameObject, item.gameObject);
         };
 
         MinigameBase minigame = item.GetComponent<MinigameBase>();
@@ -258,6 +305,20 @@ public class PlayerController : MonoBehaviour {
             minigame.Callback = callback;
             minigame.StartMinigame(this);
         }
+    }
+
+    [Command]
+    public void CmdUseItem(GameObject player, GameObject item)
+    {
+        player.GetComponent<PlayerController>().RpcUseItem(item);
+    }
+
+    [ClientRpc]
+    public void RpcUseItem(GameObject other)
+    {
+        ItemComponent item = other.GetComponent<ItemComponent>();
+        if (item.CanUse != null ? item.CanUse(this) : true)
+            item.OnUse.Invoke();
     }
 
     /// <summary>
@@ -275,8 +336,7 @@ public class PlayerController : MonoBehaviour {
             return;
 
         UnityAction callback = () => {
-            if (item.CanUseWith != null ? item.CanUseWith(this, with) : true)
-                item.OnUseWith.Invoke(with);
+            CmdUseItemWith(this.gameObject, item.gameObject, with.gameObject);
         };
 
         MinigameBase minigame = item.GetComponent<MinigameBase>();
@@ -289,6 +349,21 @@ public class PlayerController : MonoBehaviour {
             minigame.Callback = callback;
             minigame.StartMinigame(this);
         }
+    }
+
+    [Command]
+    public void CmdUseItemWith(GameObject player, GameObject item, GameObject with)
+    {
+        player.GetComponent<PlayerController>().RpcUseItemWith(item, with);
+    }
+
+    [ClientRpc]
+    public void RpcUseItemWith(GameObject itemObj, GameObject withObj) {
+        ItemComponent item = itemObj.GetComponent<ItemComponent>();
+        InteractiveComponent with = withObj.GetComponent<InteractiveComponent>();
+
+        if (item.CanUseWith != null ? item.CanUseWith(this, with) : true)
+            item.OnUseWith.Invoke(with);
     }
 
     private void OnDrawGizmos() {
