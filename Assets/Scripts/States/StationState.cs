@@ -2,6 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StationState : MonoBehaviour{
+public abstract class StationState : MonoBehaviour{
 
 }

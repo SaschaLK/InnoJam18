@@ -55,9 +55,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4851144054891002}
-  - component: {fileID: 114267240099524354}
+  - component: {fileID: 114188158940935124}
   m_Layer: 0
-  m_Name: Active
+  m_Name: NeedsRestart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +405,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1870550738569734}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114267240099524354
+--- !u!114 &114188158940935124
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1570119356454178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f16499aa02540147b80c390c65ef45b, type: 3}
+  m_Script: {fileID: 11500000, guid: 55d36f5379109684aa97a21f16683e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!135 &135048369169959602
