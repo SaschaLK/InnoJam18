@@ -24,11 +24,12 @@ public class InteractiveCharger : InteractiveBase {
         if (Charging == null) {
             Vector3 pos = transform.position;
 
-            ItemChargeable[] chargeables = FindObjectsOfType<ItemChargeable>();
+            // ItemChargeable[] chargeables = FindObjectsOfType<ItemChargeable>();
+            Collider[] chargeables = Physics.OverlapSphere(pos, UsageRadius);
             float closestDist = UsageRadius * UsageRadius;
             ItemChargeable closest = null;
             for (int i = 0; i < chargeables.Length; i++) {
-                ItemChargeable chargeable = chargeables[i];
+                ItemChargeable chargeable = chargeables[i].GetComponent<ItemChargeable>();
                 if (chargeable == null || !ChargingName.Contains(chargeable.name) || chargeable.transform.parent != null)
                     continue;
 
@@ -80,12 +81,20 @@ public class InteractiveCharger : InteractiveBase {
         if (charging == null || !ChargingName.Contains(charging.name))
             return;
 
+        ItemChargeable prevItem = Charging;
         DropItem(); // Drop any previous items.
+        if (prevItem != null)
+            // Put the prev item at the replacing item's pos.
+            prevItem.transform.position = charging.transform.position;
 
         Charging = charging;
 
-        if (charging.item.Holder != null)
-            charging.item.Holder.DropItem();
+        if (charging.item.Holder != null) {
+            if (prevItem != null)
+                charging.item.Holder.PickupItem(prevItem.item);
+            else
+                charging.item.Holder.DropItem();
+        }
 
         charging.transform.parent = Container;
         charging.transform.localPosition = charging.item.HoldOffset;

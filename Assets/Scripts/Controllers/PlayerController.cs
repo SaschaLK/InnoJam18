@@ -91,11 +91,14 @@ public class PlayerController : MonoBehaviour {
 
         rigidbody.angularVelocity = Vector3.zero;
 
-        InteractiveComponent[] interactives = FindObjectsOfType<InteractiveComponent>();
+        // InteractiveComponent[] interactives = FindObjectsOfType<InteractiveComponent>();
+        Collider[] interactives = Physics.OverlapSphere(pos3, UsageRadius);
         closestDist = UsageRadius * UsageRadius;
         closest = null;
         for (int i = 0; i < interactives.Length; i++) {
-            InteractiveComponent interactive = interactives[i];
+            InteractiveComponent interactive = interactives[i].GetComponent<InteractiveComponent>();
+            if (interactive == null)
+                continue;
             Vector2 interactivePos = interactive.transform.position.XZ();
 
             float distToCenter = (pos - interactivePos).sqrMagnitude;
@@ -177,10 +180,9 @@ public class PlayerController : MonoBehaviour {
 
         ItemComponent prevItem = Item;
         DropItem(); // Drop any previous items.
-        if (prevItem != null) {
+        if (prevItem != null)
             // Put the prev item at the replacing item's pos.
             prevItem.transform.position = item.transform.position;
-        }
 
         Item = item;
 
