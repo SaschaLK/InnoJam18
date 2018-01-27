@@ -37,14 +37,8 @@ public sealed class InteractiveComponent : MonoBehaviour {
     /// <param name="damage"></param>
     public void InflictDamage(float damage) {
         Debug.Log(this.name + " is damaged by " + damage);
-        health -= damage;
-
+        
         OnDamage.Invoke(damage);
-
-        if (health <= 0) {
-            health = 0f;
-            OnDestroy.Invoke();
-        }
     }
 
     private void Awake() {

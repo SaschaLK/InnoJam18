@@ -34,7 +34,7 @@ public class SceneController : MonoBehaviour {
 
     void Start(){
         timeEvent = Random.Range(5f, 20f);
-        ScreenShakeController.Instance.Trigger(5f, 0.2f);
+        //EnemyAttack ea = new EnemyAttack(airplane, gameCamera);
     }
 
     private void Update()
@@ -44,7 +44,7 @@ public class SceneController : MonoBehaviour {
         if (timer >= timeEvent)
         {
             timer = 0;
-            timeEvent = Random.Range(5f, 20f);
+            timeEvent = Random.Range(5f, 20f); //TODO: make this faster as the game progresses
             TriggerRandomEvent();
         }
     }

@@ -16,7 +16,7 @@ public class BurningDamageHandler : MonoBehaviour {
     {
         int rand = Random.Range(0, 100);
 
-        if (rand <= 99 && fire == null)
+        if (rand <= 20 && fire == null)
         {
             Debug.Log("FIRE!!!");
             fire = Instantiate(Resources.Load<GameObject>("Fire"), this.transform.position, Quaternion.identity, this.transform);

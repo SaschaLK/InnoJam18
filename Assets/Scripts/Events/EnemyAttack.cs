@@ -6,19 +6,14 @@ public class EnemyAttack : GameEvent {
 
 	public EnemyAttack(Airplane airplane , Camera camera)
 	{
-        //TODO: Camerashake
-        ScreenShakeController.Instance.Trigger(0.5f, 1f);
+        Debug.Log("enemy is shooting at us");
+
+        ScreenShakeController.Instance.Trigger(Camera.main.transform, 0.5f, 1f);
 
 		List<InteractiveComponent> stations = airplane.stations;
 
-		int count = Random.Range(1, stations.Count);
+        int rand = Random.Range(0, stations.Count);
 
-		while (count > 0)
-		{
-			int rand = Random.Range(0, stations.Count);
-			stations[rand].InflictDamage(10);
-			stations.Remove(stations[rand]);
-			count--;
-		}
-	}
+        stations[rand].InflictDamage(stations[rand].health);
+    }
 }

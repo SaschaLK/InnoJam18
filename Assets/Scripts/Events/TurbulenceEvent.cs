@@ -8,12 +8,22 @@ public class TurbulenceEvent : GameEvent {
     {
         Debug.Log("turbulences incoming");
         //TODO: Camera shake
-        ScreenShakeController.Instance.Trigger(4f, 0.2f);
+        ScreenShakeController.Instance.Trigger(Camera.main.transform, 4f, 0.2f);
 
         List<InteractiveComponent> stations = airplane.stations;
 
-        int rand = Random.Range(0, stations.Count);
+        int count = Random.Range(1, stations.Count);
 
-        stations[rand].InflictDamage(stations[rand].health);
+        while (count > 0)
+        {
+            int rand = Random.Range(0, stations.Count);
+            stations[rand].InflictDamage(10);
+
+            ScreenShakeController.Instance.Trigger(stations[rand].transform, 1f, 1f);
+
+            stations.Remove(stations[rand]);
+
+            count--;
+        }
     }
 }
