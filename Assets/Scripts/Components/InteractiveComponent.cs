@@ -29,7 +29,7 @@ public sealed class InteractiveComponent : MonoBehaviour {
     /// </summary>
     public DestroyEvent OnDestroy = new DestroyEvent();
 
-    public Func<PlayerController, bool> CanUse;
+    public Func<PlayerController, bool> CanInteract;
 
     /// <summary>
     /// Inflicts Damage caused by fire etc

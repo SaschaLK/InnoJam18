@@ -9,8 +9,8 @@ public class FireState : StationState{
     private void Awake() {
         interactive = GetComponentInParent<InteractiveComponent>();
 
-        _CanUse = interactive.CanUse; // Speichere vorherige Bedingung zwischen.
-        interactive.CanUse = CanUse; // Neue Interactive CanUse Bedingung.
+        _CanUse = interactive.CanInteract; // Speichere vorherige Bedingung zwischen.
+        interactive.CanInteract = CanUse; // Neue Interactive CanUse Bedingung.
     }
 
     private void OnEnable()

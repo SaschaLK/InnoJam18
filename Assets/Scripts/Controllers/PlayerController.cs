@@ -105,12 +105,13 @@ public class PlayerController : MonoBehaviour {
             angle -= lookRayAngle;
             if (angle > 180f)
                 angle = -180f + angle;
-            if (Mathf.Abs(angle) >= 90f)
+            angle = Mathf.Abs(angle);
+            if (angle >= 90f)
                 continue;
 
-            float dist = 0.5f * distToCenter + 0.6f * UsageRadius * UsageRadius * Mathf.Abs(angle) / 90f;
+            float dist = 0.5f * distToCenter + 0.6f * UsageRadius * UsageRadius * angle / 45f;
 
-            bool canUse = interactive.CanUse != null ? interactive.CanUse(this) : true;
+            bool canUse = interactive.CanInteract != null ? interactive.CanInteract(this) : true;
 
             if (Item != null && interactive.transform == Item.transform)
                 continue;

@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemExtinguisher : ItemBase {
+public class ItemStateRemover : ItemBase {
+
+    public string Type;
+    private System.Type _Type;
 
     protected override void Awake() {
         base.Awake();
+        _Type = System.Type.GetType(Type);
     }
 
     public override void OnUseWith(InteractiveComponent with) {
-
+        Destroy(with.GetComponent(_Type));
     }
 
     public override bool CanUse(PlayerController player) {
@@ -17,7 +21,7 @@ public class ItemExtinguisher : ItemBase {
     }
 
     public override bool CanUseWith(PlayerController player, InteractiveComponent with) {
-        return true;
+        return with.GetComponent(_Type) != null;
     }
 
 }

@@ -27,6 +27,9 @@ GameObject:
   - component: {fileID: 114602906977390326}
   - component: {fileID: 114486834995324982}
   - component: {fileID: 114541024168765898}
+  - component: {fileID: 114831621299148146}
+  - component: {fileID: 114819515248120418}
+  - component: {fileID: 114856251115304340}
   m_Layer: 8
   m_Name: ItemExtinguisher
   m_TagString: Untagged
@@ -128,6 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: The Extinguisher Of AAHHH FLAMES!1!!
   health: 100
+  Highlight: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -208,3 +212,38 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114819515248120418
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977650529564500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca037aa5f0a210446bcbf188693f1bb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DepletePerUsage: 25
+--- !u!114 &114831621299148146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977650529564500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6110d98e2f4256548b2ab3d1de93ff48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114856251115304340
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977650529564500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e55e555ec8712744b505f276fa60988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: FireState

@@ -64,7 +64,7 @@ public class InteractiveCharger : InteractiveBase {
             player.PickupItem(Charging.item);
     }
 
-    public override bool CanUse(PlayerController player) {
+    public override bool CanInteract(PlayerController player) {
         if (Charging != null)
             return true;
 
