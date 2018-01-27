@@ -103,8 +103,9 @@ public class PlayerController : MonoBehaviour {
                 delta.x
             ) * Mathf.Rad2Deg;
             angle -= lookRayAngle;
-            if (angle > 180f)
-                angle = -180f + angle;
+            Debug.Log(interactive.name + " " + angle);
+            if (angle >= 180f)
+                continue; // Behind us.
             angle = Mathf.Abs(angle);
             if (angle >= 90f)
                 continue;
