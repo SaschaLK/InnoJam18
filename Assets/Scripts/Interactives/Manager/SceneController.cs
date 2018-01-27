@@ -8,8 +8,7 @@ public class SceneController : MonoBehaviour {
 
     private Camera gameCamera;
 
-    [SerializeField]
-	Airplane airplane;
+    public Airplane airplane;
 
     [SerializeField]
     ControlLamp sinkingLamp;
@@ -28,6 +27,8 @@ public class SceneController : MonoBehaviour {
 
     public bool evade = true;
 
+    public List<GameEvent> currentEvents;
+
     private void Awake()
     {
         instance = this;
@@ -36,7 +37,8 @@ public class SceneController : MonoBehaviour {
 
     void Start(){
         timeEvent = Random.Range(minEventTime, maxEventTime);
-        EnemyApproach ae = new EnemyApproach(airplane);
+        EnemyApproach ae = new EnemyApproach(this.GetComponent<EnemyApproachHandler>());
+        ae.OnEventStart.Invoke();
     }
 
     private void Update()
@@ -70,17 +72,18 @@ public class SceneController : MonoBehaviour {
         }
         else if(rand <= 30)
         {
-            EnemyAttack ea = new EnemyAttack(airplane, gameCamera);
+            //DO NOTHING FOR NOW
             return;
         }
         else if (rand <= 50)
         {
-            EnemyApproach enemyApproach = new EnemyApproach(airplane);
+            EnemyApproach ae = new EnemyApproach(this.GetComponent<EnemyApproachHandler>());
+            ae.OnEventStart.Invoke();
             return;
         }
         else if(rand <= 70)
         {
-            AirplaneFall af = new AirplaneFall(sinkingLamp);
+            //AirplaneFall af = new AirplaneFall(sinkingLamp);
             return;
         }
         else

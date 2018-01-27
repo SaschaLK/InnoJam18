@@ -16,7 +16,7 @@ public class DamageHandler : MonoBehaviour {
     {
         interactive.health -= damage;
 
-        ScreenShakeController.Instance.Trigger(interactive.transform, 1f, damage/10);
+        ScreenShakeController.Instance.Trigger(interactive.transform, 1f, damage/200);
 
         if (interactive.health <= 0)
         {
@@ -30,6 +30,8 @@ public class DamageHandler : MonoBehaviour {
         if (broken == null)
         {
             Debug.Log("BOOOM!!!");
+            SceneController.instance.airplane.OnDamage.Invoke(1f);
+            
             broken = Instantiate(Resources.Load<GameObject>("Broken"), this.transform.position, Quaternion.identity, this.transform);
         }
     }
