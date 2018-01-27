@@ -32,7 +32,10 @@ public class ItemBucket : ItemBase {
     }
 
     public override void OnUseWith(InteractiveComponent with) {
-        with.GetComponent<InteractiveBucketTarget>().HandleBucket(this);
+        InteractiveBucketTarget target = with.GetComponent<InteractiveBucketTarget>();
+        if (target == null)
+            return;
+        target.HandleBucket(this);
     }
 
     public override bool CanUse(PlayerController player) {

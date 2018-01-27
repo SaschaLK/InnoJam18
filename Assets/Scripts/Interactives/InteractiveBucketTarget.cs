@@ -48,7 +48,7 @@ public class InteractiveBucketTarget : InteractiveBase {
 
         if (Bucket == null)
             return;
-        if (Bucket.transform.parent != null) {
+        if (Bucket.item.Holder != null) {
             Bucket = null;
             return;
         }
@@ -62,7 +62,7 @@ public class InteractiveBucketTarget : InteractiveBase {
     }
 
     public override void OnInteract(PlayerController player) {
-        // Tell player to pick up charging object instead.
+        // Tell player to pick up contained object instead.
         if (Bucket != null)
             player.PickupItem(Bucket.item);
     }

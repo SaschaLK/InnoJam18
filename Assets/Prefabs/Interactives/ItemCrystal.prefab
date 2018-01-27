@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114454323695733962}
   - component: {fileID: 114798617985349088}
   - component: {fileID: 114234533128219192}
+  - component: {fileID: 114157902031452960}
   m_Layer: 8
   m_Name: ItemCrystal
   m_TagString: Untagged
@@ -115,6 +116,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114157902031452960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441696781388178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b2c454178ac39419d4c6af012ff9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114234533128219192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -183,6 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Crystal Of Doing Things
   health: 100
+  Highlight: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls: []

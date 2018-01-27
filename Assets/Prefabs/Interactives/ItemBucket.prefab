@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114605079258724402}
   - component: {fileID: 114964345716809006}
   - component: {fileID: 114204334530587498}
+  - component: {fileID: 114138595405686528}
   m_Layer: 8
   m_Name: ItemBucket
   m_TagString: Untagged
@@ -115,6 +116,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114138595405686528
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702311862153708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b2c454178ac39419d4c6af012ff9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114204334530587498
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Sir Bucket Of Bucketry
   health: 100
+  Highlight: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -208,3 +221,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4d3318af53db5e449a24b9bb5e8f152, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _State: 0

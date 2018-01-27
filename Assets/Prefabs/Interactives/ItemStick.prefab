@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114747835096109060}
   - component: {fileID: 114458879484175564}
   - component: {fileID: 114720432111694966}
+  - component: {fileID: 114804898829900516}
   m_Layer: 8
   m_Name: ItemStick
   m_TagString: Untagged
@@ -128,6 +129,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Stick Of Handling
   health: 100
+  Highlight: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -208,3 +210,14 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114804898829900516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1742030735151242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b2c454178ac39419d4c6af012ff9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
