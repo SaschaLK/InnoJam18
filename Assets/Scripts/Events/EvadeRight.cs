@@ -14,13 +14,5 @@ public class EvadeRight : GameEvent {
         this.OnSuccess.AddListener(handler.EvadeRightEventSuccess);
     }
 
-    /* public EvadeRight(ControlLamp lamp, float timeToHit)
-     {
-         if (lamp == null) return;
-         Debug.Log("evade right or we will crash");
 
-         lamp.OnActivation.Invoke();
-
-         SceneController.instance.StartHitCountdown(timeToHit);
-     }*/
 }

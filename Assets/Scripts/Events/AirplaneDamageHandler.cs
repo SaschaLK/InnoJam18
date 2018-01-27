@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class AirplaneDamageHandler : MonoBehaviour {
+public class AirplaneDamageHandler : NetworkBehaviour {
 
     Airplane airplane;
 
@@ -13,13 +14,12 @@ public class AirplaneDamageHandler : MonoBehaviour {
 
     public void DoDamage(float damage)
     {
-        airplane.hitPoints -= damage;
-
         ScreenShakeController.Instance.Trigger(Camera.main.transform, 0.5f, damage);
 
-        if (airplane.hitPoints <= 0)
-        {
-            GameManager.instance.EndGame();
+        if (isServer) { 
+            airplane.hitPoints -= damage;
+            if (airplane.hitPoints <= 0)
+                GameManager.instance.EndGame();
         }
     }
 }

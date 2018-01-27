@@ -1,10 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class Airplane : MonoBehaviour {
+public class Airplane : NetworkBehaviour {
 
-    public float hitPoints = 10;
+    [SyncVar]
+    private float hitPoints = 10;
 
     public List<InteractiveComponent> stations;
 

@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class GameManager : MonoBehaviour {
+public class GameManager : NetworkBehaviour {
 
 	public static GameManager instance;
 
@@ -13,7 +14,18 @@ public class GameManager : MonoBehaviour {
 
 	public void EndGame()
 	{
-		Debug.Log("GAME OVER");
-	}
+        if (isServer) CmdEndGame();
+    }
 
+    [Command]
+    public void CmdEndGame()
+    {
+        RpcEndGame();
+    }
+
+    [ClientRpc]
+    public void RpcEndGame()
+    {
+        Debug.Log("GAME OVER");
+    }
 }

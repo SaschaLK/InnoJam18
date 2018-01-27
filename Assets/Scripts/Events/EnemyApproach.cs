@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class EnemyApproach : GameEvent {
 
+   
     public EnemyApproach (EnemyApproachHandler handler) {
 
         handler.BindEvent(this);
@@ -13,4 +14,5 @@ public class EnemyApproach : GameEvent {
         this.OnFailed.AddListener(handler.EnemyEventFailed);
         this.OnSuccess.AddListener(handler.EnemyEventSuccess);
 	}
+
 }

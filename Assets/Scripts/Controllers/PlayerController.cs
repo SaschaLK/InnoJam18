@@ -251,6 +251,12 @@ public class PlayerController : NetworkBehaviour {
         if (collider != null)
             collider.enabled = false;
 
+        NetworkTransform ntrans = Item.GetComponent<NetworkTransform>();
+        if (ntrans != null)
+        {
+            ntrans.enabled = false;
+        }
+
         item.OnPickup.Invoke();
     }
 
@@ -281,6 +287,12 @@ public class PlayerController : NetworkBehaviour {
 
         Item.Holder = null;
         Item.transform.parent = null;
+
+        NetworkTransform ntrans = Item.GetComponent<NetworkTransform>();
+        if(ntrans != null)
+        {
+            ntrans.enabled = true;
+        }
 
         Item.gameObject.AddComponent<Rigidbody>();
         Collider collider = Item.GetComponent<Collider>();

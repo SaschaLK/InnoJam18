@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class InteractiveCharger : InteractiveBase {
+public class InteractiveCharger : InteractiveBase
+{
 
     public string ChargingName;
     public float ChargePerSecond = 3f;
@@ -21,6 +23,10 @@ public class InteractiveCharger : InteractiveBase {
 	}
 
     public void Update() {
+        // only run this update on the server, with authority.
+        // health is synchronized via a SyncVar
+        if (!isServer) return;
+
         if (Charging == null) {
             Vector3 pos = transform.position;
 
@@ -63,7 +69,13 @@ public class InteractiveCharger : InteractiveBase {
     public override void OnInteract(PlayerController player) {
         // Tell player to pick up charging object instead.
         if (Charging != null)
-            player.PickupItem(Charging.item);
+            CmdPlayerInteract(player.gameObject, Charging.item.gameObject);
+    }
+
+    [Command]
+    public void CmdPlayerInteract(GameObject player, GameObject interac)
+    {
+        player.GetComponent<PlayerController>().RpcPickupItem(interac);
     }
 
     public override bool CanInteract(PlayerController player) {
@@ -89,7 +101,19 @@ public class InteractiveCharger : InteractiveBase {
     public void PickupItem(ItemChargeable charging) {
         if (charging == null || !ChargingName.Contains(charging.name))
             return;
+        CmdPickupItem(this.gameObject, charging.gameObject);
+    }
 
+    [Command]
+    public void CmdPickupItem(GameObject station, GameObject interac)
+    {
+        station.GetComponent<InteractiveCharger>().RpcPickupItem(interac);
+    }
+
+    [ClientRpc]
+    public void RpcPickupItem(GameObject other)
+    {
+        ItemChargeable charging = other.GetComponent<ItemChargeable>();
         ItemChargeable prevItem = Charging;
         DropItem(); // Drop any previous items.
         if (prevItem != null)
@@ -121,6 +145,22 @@ public class InteractiveCharger : InteractiveBase {
         if (Charging == null)
             return;
 
+        CmdDropItem(this.gameObject);
+    }
+
+    [Command]
+    public void CmdDropItem(GameObject station)
+    {
+        station.GetComponent<InteractiveCharger>().RpcDropItem();
+    }
+
+    [ClientRpc]
+    public void RpcDropItem()
+    {
+        LocalDropItem();
+    }
+
+    public void LocalDropItem() { 
         Charging.transform.parent = null;
 
         Charging.gameObject.AddComponent<Rigidbody>();

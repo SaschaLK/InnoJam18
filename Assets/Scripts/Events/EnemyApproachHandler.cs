@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class EnemyApproachHandler : MonoBehaviour {
-
-    private float timeToFail = 20f; //change this value to control event difficulty
+public class EnemyApproachHandler : NetworkBehaviour {
 
     Airplane airplane;
+    public float timeToFail = 20f;
+
+    private int invokeIterations = 0;
+    private bool success = false;
 
     public EnemyApproach ea;
 
@@ -15,29 +18,36 @@ public class EnemyApproachHandler : MonoBehaviour {
         this.ea = ea;
         airplane = SceneController.instance.airplane;
     }
-
+    
     public void OnEventStart()
     {
         if (airplane == null) return;
         Debug.Log("enemy is approaching");
 
-        SceneController.instance.currentEvents.Add(ea);
-        //TODO see is only three or check stuff
-        InvokeRepeating("AttackShip", timeToFail / 4, timeToFail / 4);
-        airplane.StartEnemyLamps();
 
+        if (isServer) {
+            success = false;
+            invokeIterations = 3;
+            Invoke("AttackShip", timeToFail / 4);
+        }
+
+        airplane.StartEnemyLamps();
     }
 
-    private void AttackShip()
-    {
+    [Command]
+    private void AttackShip() {
+        if (success) return; // dont do damage after the players were successful
         List<InteractiveComponent> stations = airplane.stations;
 
         int rand = Random.Range(0, stations.Count);
 
-        
         stations[rand].InflictDamage(stations[rand].health);
-    }
 
+        invokeIterations--;
+        if(invokeIterations > 0)
+            Invoke("AttackShip", timeToFail / 4);
+    }
+    
 	public void EnemyEventFailed()
     {
         SceneController.instance.currentEvents.Remove(ea);
@@ -47,6 +57,7 @@ public class EnemyApproachHandler : MonoBehaviour {
     public void EnemyEventSuccess()
     {
         airplane.StopEnemyLamps();
+        success = true;
         SceneController.instance.currentEvents.Remove(ea);
     }
 }

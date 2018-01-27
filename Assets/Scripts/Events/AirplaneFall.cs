@@ -14,11 +14,4 @@ public class AirplaneFall : GameEvent {
         this.OnSuccess.AddListener(handler.FallEventSuccess);
     }
 
-    /*public AirplaneFall(ControlLamp lamp)
-    {
-        if (lamp == null) return;
-        Debug.Log("airplane is falling");
-
-        lamp.OnActivation.Invoke();
-    }*/
 }
