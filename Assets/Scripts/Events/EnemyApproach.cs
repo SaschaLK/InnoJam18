@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyApproach : GameEvent {
 
-	public EnemyApproach (SirenLamp lamp) {
+	public EnemyApproach (Airplane airplane) {
         Debug.Log("enemy is approaching");
-        lamp.StartAlarm();
+        airplane.StartEnemyLamps();
 	}
 }

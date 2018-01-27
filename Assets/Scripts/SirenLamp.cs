@@ -19,7 +19,7 @@ public class SirenLamp : MonoBehaviour {
 
     bool increase = true;
 
-    bool alarm = true;
+    bool alarm = false;
 
     private AudioSource audioSource;
 
