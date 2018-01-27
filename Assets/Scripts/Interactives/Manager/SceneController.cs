@@ -9,8 +9,7 @@ public class SceneController : NetworkBehaviour {
 
     private Camera gameCamera;
 
-    [SerializeField]
-	Airplane airplane;
+    public Airplane airplane;
 
     [SerializeField]
     ControlLamp sinkingLamp;
@@ -28,6 +27,8 @@ public class SceneController : NetworkBehaviour {
     private float timeEvent;
 
     public bool evade = true;
+
+    public List<GameEvent> currentEvents;
 
     private void Awake()
     {
@@ -53,13 +54,11 @@ public class SceneController : NetworkBehaviour {
         float difficultyIncrease = 0;
 
         // increase difficulty every 10 seconds
-        if(Mathf.FloorToInt(Time.timeSinceLevelLoad) % 10 == 0)
-        {
+        if(Mathf.FloorToInt(Time.timeSinceLevelLoad) % 10 == 0) {
             difficultyIncrease++;
         }
 
-        if (timer >= timeEvent)
-        {
+        if (timer >= timeEvent) {
             timer = 0;
             timeEvent = Random.Range(Mathf.Min(minEventTime - difficultyIncrease/2 , maxEventTime - difficultyIncrease) , Mathf.Max(minEventTime - difficultyIncrease / 2, maxEventTime - difficultyIncrease));
             TriggerRandomEvent();
@@ -68,53 +67,97 @@ public class SceneController : NetworkBehaviour {
 
     private void TriggerRandomEvent()   {
         if (!isServer) return;
-        float rand = Random.Range(0, 100);
 
-        if(rand <= 10)
-        {
-            CmdTriggerGameEvent(new TurbulenceEvent(airplane));
-            return;
-        }
-        else if(rand <= 30)
-        {
-            CmdTriggerGameEvent(new EnemyAttack(airplane, gameCamera));
-            return;
-        }
-        else if (rand <= 50)
-        {
-            CmdTriggerGameEvent(new EnemyApproach(this.GetComponent<EnemyApproachHandler>()));
-            ae.OnEventStart.Invoke();
-            return;
-        }
-        else if(rand <= 70)
-        {
-            CmdTriggerGameEvent(new AirplaneFall(sinkingLamp));
-            return;
-        }
-        else
-        {
-            rand = Random.value;
-            if(rand <= 0.5f)
-            {
-                CmdTriggerGameEvent(new EvadeLeft(evadeLeftLamp, 10f));
-            }
-            else
-            {
-                CmdTriggerGameEvent(new EvadeRight(evadeRightLamp, 10f));
+        float rand = Random.Range(0, 100);
+        if(rand <= 10) {
+            CmdTriggerTurbulenceEvent();
+
+        } else if(rand <= 30) {
+            //DO NOTHING FOR NOW
+
+        } else if (rand <= 50) {
+            CmdTriggerEnemyApproach();
+
+        } else if(rand <= 70) {
+            CmdTriggerAirplaneFall();
+
+        } else {
+            if(Random.value <= 0.5f) {
+                CmdTriggerEvadeRight();
+            } else {
+                CmdTriggerEvadeLeft();
             }
         }
     }
 
     [Command]
-    public void CmdTriggerGameEvent(GameEvent evt)
+    public void CmdTriggerTurbulenceEvent()
     {
-        RpcTriggerGameEvent(evt);
+        RpcTriggerTurbulenceEvent();
     }
 
     [ClientRpc]
-    public void RpcTriggerGameEvent(GameEvent evt)
+    public void RpcTriggerTurbulenceEvent()
     {
-        evt.triggerStart();
+        GameEvent evt = new TurbulenceEvent(this.GetComponent<TurbulenceEventHandler>());
+        if (isServer) currentEvents.Add(evt);
+        evt.OnEventStart.Invoke();
+    }
+
+    [Command]
+    public void CmdTriggerAirplaneFall()
+    {
+        RpcTriggerAirplaneFall();
+    }
+
+    [ClientRpc]
+    public void RpcTriggerAirplaneFall()
+    {
+        GameEvent evt = new AirplaneFall(this.GetComponent<AirplaneFallHandler>());
+        if (isServer) currentEvents.Add(evt);
+        evt.OnEventStart.Invoke();
+    }
+
+    [Command]
+    public void CmdTriggerEvadeLeft()
+    {
+        RpcTriggerEvadeLeft();
+    }
+
+    [ClientRpc]
+    public void RpcTriggerEvadeLeft()
+    {
+        GameEvent evt = new EvadeLeft(this.GetComponent<EvadeLeftHandler>());
+        if (isServer) currentEvents.Add(evt);
+        evt.OnEventStart.Invoke();
+    }
+
+    [Command]
+    public void CmdTriggerEvadeRight()
+    {
+        RpcTriggerEvadeRight();
+    }
+
+    [ClientRpc]
+    public void RpcTriggerEvadeRight()
+    {
+        GameEvent evt = new EvadeRight(this.GetComponent<EvadeRightHandler>());
+        if (isServer) currentEvents.Add(evt);
+        evt.OnEventStart.Invoke();
+    }
+
+    [Command]
+    public void CmdTriggerEnemyApproach()
+    {
+        RpcTriggerEnemyApproach();
+    }
+
+    [ClientRpc]
+    public void RpcTriggerEnemyApproach()
+    {
+        GameEvent evt = new EnemyApproach(this.GetComponent<EnemyApproachHandler>());
+        if(isServer) currentEvents.Add(evt);
+        evt.OnEventStart.Invoke();
     }
 
     #region EvadeFunctions

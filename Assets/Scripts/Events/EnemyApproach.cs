@@ -5,15 +5,14 @@ using UnityEngine.Events;
 
 public class EnemyApproach : GameEvent {
 
+   
     public EnemyApproach (EnemyApproachHandler handler) {
+
+        handler.BindEvent(this);
 
         this.OnEventStart.AddListener(handler.OnEventStart);
         this.OnFailed.AddListener(handler.EnemyEventFailed);
         this.OnSuccess.AddListener(handler.EnemyEventSuccess);
 	}
 
-    public override void triggerStart()
-    {
-
-    }
 }
