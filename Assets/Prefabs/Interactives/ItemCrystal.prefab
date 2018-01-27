@@ -28,6 +28,8 @@ GameObject:
   - component: {fileID: 114798617985349088}
   - component: {fileID: 114234533128219192}
   - component: {fileID: 114157902031452960}
+  - component: {fileID: 114064500537518222}
+  - component: {fileID: 114563761320563834}
   m_Layer: 8
   m_Name: ItemCrystal
   m_TagString: Untagged
@@ -116,6 +118,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114064500537518222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441696781388178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6110d98e2f4256548b2ab3d1de93ff48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114157902031452960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -182,6 +195,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114563761320563834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441696781388178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e55e555ec8712744b505f276fa60988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: NeedsRestart
 --- !u!114 &114661992086932194
 MonoBehaviour:
   m_ObjectHideFlags: 1

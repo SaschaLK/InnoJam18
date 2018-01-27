@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class ItemStateAdder : ItemBase_Or {
 
-    public string RequiredType;
+    public string RequiredState;
     private System.Type _Type;
-    public string Path;
+    public string AddedState;
 
     protected override void Awake() {
         base.Awake();
-        _Type = System.Type.GetType(RequiredType);
+        _Type = System.Type.GetType(RequiredState + "State");
     }
 
     public override void OnUseWith(InteractiveComponent with) {
         Component target = with.GetComponentInChildren(_Type);
         if (target == null)
             return;
-        Instantiate(Resources.Load<GameObject>(Path), with.transform.position, Quaternion.identity, with.transform);
+        Instantiate(Resources.Load<GameObject>(AddedState), with.transform.position, Quaternion.identity, with.transform);
     }
 
     public override bool CanUse(PlayerController player) {

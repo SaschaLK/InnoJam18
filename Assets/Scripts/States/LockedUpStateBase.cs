@@ -33,7 +33,7 @@ public abstract class LockedUpStateBase : StationState
             ItemStateRemover remover = player.Item.GetComponent<ItemStateRemover>();
             if (remover != null) {
                 // ... und es ein ItemStateRemover ist...
-                if (remover.Type == type) {
+                if (remover.State == type) {
                     // ... und der Remover das State entfernt...
                     return true; // ... erlauben wir Interaktion.
                 }

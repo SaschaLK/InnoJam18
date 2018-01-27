@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ItemStateRemover : ItemBase_Or {
 
-    public string Type;
+    public string State;
     private System.Type _Type;
 
     protected override void Awake() {
         base.Awake();
-        _Type = System.Type.GetType(Type);
+        _Type = System.Type.GetType(State + "State");
     }
 
     public override void OnUseWith(InteractiveComponent with) {
