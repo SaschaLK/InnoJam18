@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114978747301181878}
   - component: {fileID: 114794449067614964}
   - component: {fileID: 114650361192185470}
+  - component: {fileID: 114710833023595740}
   m_Layer: 8
   m_Name: ItemRocket
   m_TagString: Untagged
@@ -126,6 +127,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b2c454178ac39419d4c6af012ff9ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114710833023595740
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1938144013504398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 37
+    i1: 120
+    i2: 44
+    i3: 22
+    i4: 92
+    i5: 60
+    i6: 66
+    i7: 20
+    i8: 106
+    i9: 50
+    i10: 88
+    i11: 102
+    i12: 152
+    i13: 79
+    i14: 216
+    i15: 52
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114794449067614964
 MonoBehaviour:
   m_ObjectHideFlags: 1

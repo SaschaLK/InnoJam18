@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114586870904388054}
   - component: {fileID: 114891207794123302}
   - component: {fileID: 114609043588800284}
+  - component: {fileID: 114316358239370936}
   m_Layer: 8
   m_Name: ItemTest
   m_TagString: Untagged
@@ -150,6 +151,38 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114316358239370936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1206422789709286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 61
+    i1: 137
+    i2: 107
+    i3: 56
+    i4: 153
+    i5: 10
+    i6: 48
+    i7: 100
+    i8: 88
+    i9: 14
+    i10: 245
+    i11: 59
+    i12: 31
+    i13: 75
+    i14: 139
+    i15: 130
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114427572379781322
 MonoBehaviour:
   m_ObjectHideFlags: 1

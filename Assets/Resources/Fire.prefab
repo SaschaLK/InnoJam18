@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4539655026026936}
   - component: {fileID: 114190544693816176}
+  - component: {fileID: 114317666689819238}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -416,6 +417,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e422eb4ca5ce32648a0333859b908377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114317666689819238
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1073691502371958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 183
+    i1: 37
+    i2: 97
+    i3: 30
+    i4: 106
+    i5: 80
+    i6: 115
+    i7: 132
+    i8: 137
+    i9: 177
+    i10: 25
+    i11: 207
+    i12: 119
+    i13: 11
+    i14: 35
+    i15: 126
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!135 &135043370392506294
 SphereCollider:
   m_ObjectHideFlags: 1

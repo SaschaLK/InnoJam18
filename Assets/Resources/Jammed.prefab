@@ -74,6 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4632885248577510}
   - component: {fileID: 114138846193302184}
+  - component: {fileID: 114023229687974582}
   m_Layer: 0
   m_Name: Jammed
   m_TagString: Untagged
@@ -405,6 +406,38 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926087456606542}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114023229687974582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1406146034755898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 66
+    i1: 181
+    i2: 135
+    i3: 117
+    i4: 186
+    i5: 209
+    i6: 119
+    i7: 100
+    i8: 200
+    i9: 18
+    i10: 213
+    i11: 58
+    i12: 63
+    i13: 205
+    i14: 101
+    i15: 127
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114138846193302184
 MonoBehaviour:
   m_ObjectHideFlags: 1

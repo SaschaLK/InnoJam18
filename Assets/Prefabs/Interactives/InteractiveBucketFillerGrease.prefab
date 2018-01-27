@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114586555924527576}
   - component: {fileID: 114269380656948826}
   - component: {fileID: 114216630983421056}
+  - component: {fileID: 114895641310623782}
   m_Layer: 0
   m_Name: InteractiveBucketFillerGrease
   m_TagString: Untagged
@@ -186,3 +187,35 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114895641310623782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1779763092415664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 161
+    i1: 136
+    i2: 213
+    i3: 5
+    i4: 240
+    i5: 132
+    i6: 44
+    i7: 84
+    i8: 40
+    i9: 131
+    i10: 74
+    i11: 255
+    i12: 222
+    i13: 229
+    i14: 244
+    i15: 115
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

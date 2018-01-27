@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 23756910900236168}
   - component: {fileID: 114858679218195262}
   - component: {fileID: 114635341536715324}
+  - component: {fileID: 114975394363298752}
   m_Layer: 0
   m_Name: InteractiveCannon
   m_TagString: Untagged
@@ -199,3 +200,35 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114975394363298752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1908242279085022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 13
+    i1: 188
+    i2: 110
+    i3: 132
+    i4: 182
+    i5: 168
+    i6: 76
+    i7: 164
+    i8: 234
+    i9: 4
+    i10: 245
+    i11: 82
+    i12: 162
+    i13: 148
+    i14: 161
+    i15: 183
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

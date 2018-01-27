@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114964345716809006}
   - component: {fileID: 114204334530587498}
   - component: {fileID: 114138595405686528}
+  - component: {fileID: 114564867239911692}
   m_Layer: 8
   m_Name: ItemBucket
   m_TagString: Untagged
@@ -176,6 +177,38 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114564867239911692
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1702311862153708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 141
+    i1: 251
+    i2: 200
+    i3: 104
+    i4: 22
+    i5: 93
+    i6: 34
+    i7: 228
+    i8: 106
+    i9: 223
+    i10: 163
+    i11: 42
+    i12: 186
+    i13: 6
+    i14: 192
+    i15: 184
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114605079258724402
 MonoBehaviour:
   m_ObjectHideFlags: 1
