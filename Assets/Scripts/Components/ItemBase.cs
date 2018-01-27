@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ItemComponent))]
-public class ItemBase : ItemHandlerBase {
+public class ItemBase : ItemHandler {
 
     protected override void Awake() {
         base.Awake();

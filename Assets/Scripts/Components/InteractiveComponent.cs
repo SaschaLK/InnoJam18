@@ -13,7 +13,7 @@ public sealed class InteractiveComponent : MonoBehaviour {
     /// <summary>
     /// Invoked by PlayerController.Interact
     /// </summary>
-    public UnityEvent OnInteract = new UnityEvent();
+    public InteractEvent OnInteract = new InteractEvent();
 
     /// <summary>
     /// Invoked by InflictDamage
@@ -35,7 +35,7 @@ public sealed class InteractiveComponent : MonoBehaviour {
         Debug.Log(this.name + " is damaged by " + damage);
         health -= damage;
 
-        OnDamage.Invoke();
+        OnDamage.Invoke(damage);
 
         if (health <= 0) {
             OnDestroy.Invoke();

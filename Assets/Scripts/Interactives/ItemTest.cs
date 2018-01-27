@@ -9,19 +9,19 @@ public class ItemTest : ItemBase {
 
     }
 
-    public override void Pickup() {
+    public override void OnPickup() {
         Debug.Log("Pickup " + name);
     }
 
-    public override void Drop() {
+    public override void OnDrop() {
         Debug.Log("Drop " + name);
     }
 
-    public override void Use() {
+    public override void OnUse() {
         Debug.Log("Use " + name);
     }
 
-    public override void UseWith(InteractiveComponent with) {
+    public override void OnUseWith(InteractiveComponent with) {
         Debug.Log("Use " + name + " with " + with.name);
     }
 

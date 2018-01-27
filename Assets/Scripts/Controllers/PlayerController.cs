@@ -125,8 +125,10 @@ public class PlayerController : MonoBehaviour {
         if (interactive == null)
             return;
 
-        interactive.OnInteract.Invoke();
-        PickupItem();
+        interactive.OnInteract.Invoke(this);
+        ItemComponent item = interactive.GetComponent<ItemComponent>();
+        if (item != null)
+            PickupItem(item);
     }
 
     /// <summary>
@@ -215,6 +217,7 @@ public class PlayerController : MonoBehaviour {
         if (closest != null) {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, closestDist);
+            Gizmos.DrawWireCube(closest.transform.position, closest.transform.lossyScale);
         }
     }
 

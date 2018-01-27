@@ -9,7 +9,7 @@ public class ItemStick : ItemBase {
 
     }
 
-    public override void UseWith(InteractiveComponent with) {
+    public override void OnUseWith(InteractiveComponent with) {
 
     }
 

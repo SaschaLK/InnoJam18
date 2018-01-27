@@ -8,7 +8,7 @@ public class ItemCrystal : ItemBase {
         base.Awake();
     }
 
-    public override void UseWith(InteractiveComponent with) {
+    public override void OnUseWith(InteractiveComponent with) {
 
     }
 
