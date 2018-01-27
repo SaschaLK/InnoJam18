@@ -1,13 +1,14 @@
 ﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnemyApproach : GameEvent {
 
-	public EnemyApproach (Airplane airplane) {
+    public EnemyApproach (EnemyApproachHandler handler) {
 
-        if (airplane == null) return;
-        Debug.Log("enemy is approaching");
-        airplane.StartEnemyLamps();
+        this.OnEventStart.AddListener(handler.OnEventStart);
+        this.OnFailed.AddListener(handler.EnemyEventFailed);
+        this.OnSuccess.AddListener(handler.EnemyEventSuccess);
 	}
 }

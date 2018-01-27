@@ -36,7 +36,8 @@ public class SceneController : MonoBehaviour {
 
     void Start(){
         timeEvent = Random.Range(minEventTime, maxEventTime);
-        EnemyApproach ae = new EnemyApproach(airplane);
+        EnemyApproach ae = new EnemyApproach(this.GetComponent<EnemyApproachHandler>());
+        ae.OnEventStart.Invoke();
     }
 
     private void Update()
@@ -75,7 +76,8 @@ public class SceneController : MonoBehaviour {
         }
         else if (rand <= 50)
         {
-            EnemyApproach enemyApproach = new EnemyApproach(airplane);
+            EnemyApproach ae = new EnemyApproach(this.GetComponent<EnemyApproachHandler>());
+            ae.OnEventStart.Invoke();
             return;
         }
         else if(rand <= 70)

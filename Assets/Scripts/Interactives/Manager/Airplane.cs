@@ -6,7 +6,14 @@ public class Airplane : MonoBehaviour {
 
 	public List<InteractiveComponent> stations;
 
-    public List<ControlLamp> enemyLamps;
+    public ControlLamp[] enemyLamps;
+
+    public Transform enemyLampContainer;
+
+    private void Start()
+    {
+        enemyLamps = enemyLampContainer.GetComponentsInChildren<ControlLamp>();
+    }
 
     public void StartEnemyLamps()
     {
