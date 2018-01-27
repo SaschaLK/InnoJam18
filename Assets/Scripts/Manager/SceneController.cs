@@ -34,7 +34,7 @@ public class SceneController : MonoBehaviour {
 
     void Start(){
         timeEvent = Random.Range(5f, 20f);
-        EnemyApproach ea = new EnemyApproach(airplane.enemyLamp);
+        AirplaneFall af = new AirplaneFall(sinkingLamp, 15);
     }
 
     private void Update()
@@ -70,7 +70,7 @@ public class SceneController : MonoBehaviour {
         }
         else if(rand <= 70)
         {
-            AirplaneFall af = new AirplaneFall(sinkingLamp);
+            AirplaneFall af = new AirplaneFall(sinkingLamp, 15);
             return;
         }
         else
