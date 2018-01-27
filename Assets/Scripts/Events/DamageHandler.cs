@@ -30,6 +30,8 @@ public class DamageHandler : MonoBehaviour {
         if (broken == null)
         {
             Debug.Log("BOOOM!!!");
+            SceneController.instance.airplane.OnDamage.Invoke(1f);
+            
             broken = Instantiate(Resources.Load<GameObject>("Broken"), this.transform.position, Quaternion.identity, this.transform);
         }
     }

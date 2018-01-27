@@ -8,4 +8,6 @@ public class ControlLamp : MonoBehaviour {
     /// Invoked by GameButton.PressButton
     /// </summary>
     public LampActivationEvent OnActivation = new LampActivationEvent();
+
+    public LampDeactivationEvent OnDeactivation = new LampDeactivationEvent();
 }

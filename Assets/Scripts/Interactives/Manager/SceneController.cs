@@ -8,8 +8,7 @@ public class SceneController : MonoBehaviour {
 
     private Camera gameCamera;
 
-    [SerializeField]
-	Airplane airplane;
+    public Airplane airplane;
 
     [SerializeField]
     ControlLamp sinkingLamp;
@@ -27,6 +26,8 @@ public class SceneController : MonoBehaviour {
     private float timeEvent;
 
     public bool evade = true;
+
+    public List<GameEvent> currentEvents;
 
     private void Awake()
     {
@@ -71,7 +72,7 @@ public class SceneController : MonoBehaviour {
         }
         else if(rand <= 30)
         {
-            EnemyAttack ea = new EnemyAttack(airplane, gameCamera);
+            //DO NOTHING FOR NOW
             return;
         }
         else if (rand <= 50)
