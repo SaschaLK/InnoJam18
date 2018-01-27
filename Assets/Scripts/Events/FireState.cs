@@ -39,7 +39,7 @@ public class FireState : StationState{
             return false; // ... können wir das derzeitige Interactive nicht verwenden.
 
         if (_CanUse != null)
-            return _CanUse(player);
+            return _CanUse(player); // Rufe vorherige Bedingung ab.
         return true; // Standardwert: Wir können es verwenden.
     }
 

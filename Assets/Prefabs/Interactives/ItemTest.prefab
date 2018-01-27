@@ -162,6 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Test Item
   health: 100
+  Highlight: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls: []

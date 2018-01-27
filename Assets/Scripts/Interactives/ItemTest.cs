@@ -23,6 +23,7 @@ public class ItemTest : ItemBase {
 
     public override void OnUseWith(InteractiveComponent with) {
         Debug.Log("Use " + name + " with " + with.name);
+        ScreenShakeController.Instance.Trigger();
     }
 
     public override bool CanPickup(PlayerController player) {

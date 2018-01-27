@@ -6,7 +6,8 @@ public class EnemyAttack : GameEvent {
 
 	public EnemyAttack(Airplane airplane , Camera camera)
 	{
-		//TODO: Camerashake
+        //TODO: Camerashake
+        ScreenShakeController.Instance.Trigger();
 
 		List<InteractiveComponent> stations = airplane.stations;
 
