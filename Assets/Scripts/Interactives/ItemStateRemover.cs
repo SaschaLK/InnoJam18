@@ -13,7 +13,7 @@ public class ItemStateRemover : ItemBase {
     }
 
     public override void OnUseWith(InteractiveComponent with) {
-        Destroy(with.GetComponent(_Type));
+        Destroy(with.GetComponentInChildren(_Type));
     }
 
     public override bool CanUse(PlayerController player) {
@@ -21,7 +21,7 @@ public class ItemStateRemover : ItemBase {
     }
 
     public override bool CanUseWith(PlayerController player, InteractiveComponent with) {
-        return with.GetComponent(_Type) != null;
+        return with.GetComponentInChildren(_Type) != null;
     }
 
 }

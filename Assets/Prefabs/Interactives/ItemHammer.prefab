@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114798513195703802}
   - component: {fileID: 114233367045986316}
   - component: {fileID: 114419432611656650}
+  - component: {fileID: 114939605734566928}
   m_Layer: 8
   m_Name: ItemHammer
   m_TagString: Untagged
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1785392067417850}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17, y: 0, z: 4}
+  m_LocalPosition: {x: -14, y: 0, z: 4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -160,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: The Ol' Rusty
   health: 100
+  Highlight: 0
   OnInteract:
     m_PersistentCalls:
       m_Calls: []
@@ -208,3 +210,15 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &114939605734566928
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1785392067417850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e55e555ec8712744b505f276fa60988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Type: BrokenState
