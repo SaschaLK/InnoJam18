@@ -83,7 +83,7 @@ public class InteractiveCannon : InteractiveBase {
 
     public override bool CanInteract(PlayerController player) {
         if (Projectile != null)
-            return true;
+            return player.Item != null && player.Item.GetComponent<ItemCrystal>() != null;
 
         if (player.Item == null)
             return false;
