@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractiveCharger : InteractiveHandler {
+public class InteractiveCharger : InteractiveBase {
 
     public string ChargingName;
     public float ChargePerSecond = 3f;
@@ -39,8 +39,20 @@ public class InteractiveCharger : InteractiveHandler {
             player.PickupItem(Charging.item);
     }
 
+    public override bool CanUse(PlayerController player) {
+        if (Charging != null)
+            return true;
+
+        if (player.Item == null)
+            return false;
+        ItemChargeable charging = player.Item.GetComponent<ItemChargeable>();
+        if (charging == null || !ChargingName.Contains(charging.name))
+            return false;
+        return true;
+    }
+
     public void PickupItem(ItemChargeable charging) {
-        if (charging == null)
+        if (charging == null || !ChargingName.Contains(charging.name))
             return;
 
         DropItem(); // Drop any previous items.

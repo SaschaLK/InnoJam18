@@ -14,7 +14,7 @@ public class ItemChargeable : ItemHandler {
 
     public override void OnUseWith(InteractiveComponent with) {
         InteractiveCharger charger = with.GetComponent<InteractiveCharger>();
-        if (charger == null || !name.Contains(charger.ChargingName))
+        if (charger == null)
             return;
         
         charger.PickupItem(this);

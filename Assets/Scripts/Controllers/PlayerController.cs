@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour {
 
     new Collider collider;
     new Rigidbody rigidbody;
+    public PlayerTooltipController Tooltip { get; protected set; }
 
     bool mouseTurning;
     Vector3 mousePosPrev = new Vector3(0f, 0f, 0f);
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour {
 	void Awake() {
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
+        Tooltip = GetComponentInChildren<PlayerTooltipController>();
 
         if (HoldingPoint == null)
             HoldingPoint = transform.Find("HoldingPoint");
@@ -98,6 +100,7 @@ public class PlayerController : MonoBehaviour {
         bool use = Input.GetButtonDown("Fire1");
         bool drop = Input.GetButtonDown("Fire2");
         if (closest != null) {
+            Tooltip.ShowText(closest.DisplayName);
             closestDist = Mathf.Pow(closestDist, 0.5f);
             if (use && !drop) {
                 if (Item != null) {
