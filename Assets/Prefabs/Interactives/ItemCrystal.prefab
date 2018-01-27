@@ -27,9 +27,8 @@ GameObject:
   - component: {fileID: 114454323695733962}
   - component: {fileID: 114798617985349088}
   - component: {fileID: 114234533128219192}
-  - component: {fileID: 114157902031452960}
-  - component: {fileID: 114064500537518222}
-  - component: {fileID: 114563761320563834}
+  - component: {fileID: 114229643557713448}
+  - component: {fileID: 114371587023191994}
   m_Layer: 8
   m_Name: ItemCrystal
   m_TagString: Untagged
@@ -44,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441696781388178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8, y: 0, z: 4}
+  m_LocalPosition: {x: -4.1040893, y: -0.38, z: 11.210424}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -118,7 +117,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114064500537518222
+--- !u!114 &114229643557713448
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -126,20 +125,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 1441696781388178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6110d98e2f4256548b2ab3d1de93ff48, type: 3}
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114157902031452960
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441696781388178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b2c454178ac39419d4c6af012ff9ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 104
+    i1: 251
+    i2: 32
+    i3: 16
+    i4: 189
+    i5: 208
+    i6: 76
+    i7: 244
+    i8: 90
+    i9: 118
+    i10: 213
+    i11: 146
+    i12: 104
+    i13: 165
+    i14: 78
+    i15: 228
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114234533128219192
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -161,6 +170,17 @@ MonoBehaviour:
   ClipUseWith: {fileID: 0}
   ClipUseWithVol: 0.5
   Source: {fileID: 0}
+--- !u!114 &114371587023191994
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441696781388178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6110d98e2f4256548b2ab3d1de93ff48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114454323695733962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,18 +215,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: ItemUseWithEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &114563761320563834
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1441696781388178}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e55e555ec8712744b505f276fa60988, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  State: NeedsRestart
 --- !u!114 &114661992086932194
 MonoBehaviour:
   m_ObjectHideFlags: 1

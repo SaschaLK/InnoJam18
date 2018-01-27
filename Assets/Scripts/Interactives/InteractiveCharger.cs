@@ -28,6 +28,7 @@ public class InteractiveCharger : InteractiveBase {
             Collider[] chargeables = Physics.OverlapSphere(pos, UsageRadius);
             float closestDist = UsageRadius * UsageRadius;
             ItemChargeable closest = null;
+            // check all chargeables if they are valid and in reach
             for (int i = 0; i < chargeables.Length; i++) {
                 ItemChargeable chargeable = chargeables[i].GetComponent<ItemChargeable>();
                 if (chargeable == null || !ChargingName.Contains(chargeable.name) || chargeable.transform.parent != null)
@@ -71,9 +72,17 @@ public class InteractiveCharger : InteractiveBase {
 
         if (player.Item == null)
             return false;
+
         ItemChargeable charging = player.Item.GetComponent<ItemChargeable>();
         if (charging == null || !ChargingName.Contains(charging.name))
             return false;
+        return true;
+    }
+
+    public override bool CanMinigame(PlayerController player) {
+        if (Charging != null)
+            return false;
+
         return true;
     }
 
