@@ -7,11 +7,7 @@ public class InteractiveBucketTarget : InteractiveBase {
     public BucketState StateInput;
     public BucketState StateOutput;
 
-    public Transform Container;
-
-    public ItemBucket Bucket;
-
-    public float UsageRadius = 3f;
+    public InteractiveItemContainer Container;
 
     public BucketEvent OnBucket;
 
@@ -19,112 +15,33 @@ public class InteractiveBucketTarget : InteractiveBase {
         base.Awake();
 
         if (Container == null)
-            Container = transform.Find("Container");
-	}
+            Container = GetComponent<InteractiveItemContainer>();
+        if (Container == null)
+            Container = gameObject.AddComponent<InteractiveItemContainer>();
+
+        Container.IsValid = (ci, item) => IsValid(item.GetComponent<ItemBucket>());
+
+    }
+
+    public bool IsValid(ItemBucket bucket) {
+        return bucket != null && (bucket.State == StateInput || (StateInput == BucketState.NotEmpty && bucket.State != BucketState.Empty));
+    }
 
     public void Update() {
-        if (Bucket == null) {
-            Vector3 pos = transform.position;
-
-            // ItemBucket[] buckets = FindObjectsOfType<ItemBucket>();
-            Collider[] buckets = Physics.OverlapSphere(pos, UsageRadius);
-            float closestDist = UsageRadius * UsageRadius;
-            ItemBucket closest = null;
-            for (int i = 0; i < buckets.Length; i++) {
-                ItemBucket bucket = buckets[i].GetComponent<ItemBucket>();
-                if (bucket == null || (bucket.State != StateInput && StateInput != BucketState.NotEmpty) || (StateInput == BucketState.NotEmpty && bucket.State == BucketState.Empty) || bucket.transform.parent != null)
-                    continue;
-
-                float dist = (pos - bucket.transform.position).sqrMagnitude;
-                if (dist > closestDist) {
-                    continue;
-                }
-
-                closestDist = dist;
-                closest = bucket;
-            }
-
-            PickupItem(closest);
-        }
-
-        if (Bucket == null)
-            return;
-        if (Bucket.item.Holder != null) {
-            Bucket = null;
-            return;
-        }
     }
 
-    public void HandleBucket(ItemBucket bucket) {
-        if ((bucket.State != StateInput && StateInput != BucketState.NotEmpty) || (StateInput == BucketState.NotEmpty && bucket.State == BucketState.Empty))
-            return;
-        bucket.State = StateOutput;
-        OnBucket.Invoke(bucket);
-    }
-
-    public override void OnInteract(PlayerController player) {
-        // Tell player to pick up contained object instead.
-        if (Bucket != null)
-            player.PickupItem(Bucket.item);
-    }
-
-    public override bool CanInteract(PlayerController player) {
-        if (Bucket != null)
-            return true;
-
-        if (player.Item == null)
+    public override bool CanMinigame(PlayerController player, InteractiveComponent with) {
+        if (Container.Count != 0)
             return false;
-        ItemBucket bucket = player.Item.GetComponent<ItemBucket>();
-        if (bucket == null || (bucket.State != StateInput && StateInput != BucketState.NotEmpty) || (StateInput == BucketState.NotEmpty && bucket.State == BucketState.Empty))
-            return false;
+
         return true;
     }
 
-    public void PickupItem(ItemBucket bucket) {
-        if (bucket == null)
+    public void HandleBucket(ItemBucket bucket) {
+        if (!IsValid(bucket))
             return;
-
-        ItemBucket prevItem = Bucket;
-        DropItem(); // Drop any previous items.
-        if (prevItem != null)
-            // Put the prev item at the replacing item's pos.
-            prevItem.transform.position = bucket.transform.position;
-
-        Bucket = bucket;
-
-        if (bucket.item.Holder != null) {
-            if (prevItem != null)
-                bucket.item.Holder.PickupItem(prevItem.item);
-            else
-                bucket.item.Holder.DropItem();
-        }
-
-        bucket.transform.parent = Container;
-        bucket.transform.localPosition = bucket.item.HoldOffset;
-        bucket.transform.localRotation = bucket.item.HoldRotation;
-
-        Rigidbody body = bucket.GetComponent<Rigidbody>();
-        if (body != null)
-            Destroy(body);
-        Collider collider = bucket.GetComponent<Collider>();
-        if (collider != null)
-            collider.enabled = false;
-
-        HandleBucket(bucket);
-    }
-
-    public void DropItem() {
-        if (Bucket == null)
-            return;
-
-        Bucket.transform.parent = null;
-
-        Bucket.gameObject.AddComponent<Rigidbody>();
-        Collider collider = Bucket.GetComponent<Collider>();
-        if (collider != null)
-            collider.enabled = true;
-
-        Bucket = null;
+        bucket.State = StateOutput;
+        OnBucket.Invoke(bucket);
     }
 
 }

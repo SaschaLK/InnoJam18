@@ -22,7 +22,7 @@ public class ItemChargeable : ItemHandler {
         if (charger == null)
             return;
         
-        charger.PickupItem(this);
+        charger.Container.PickupItem(item);
     }
 
     private Func<PlayerController, InteractiveComponent, bool> _CanUseWith;
