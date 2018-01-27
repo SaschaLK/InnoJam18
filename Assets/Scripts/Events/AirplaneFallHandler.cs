@@ -8,44 +8,42 @@ public class AirplaneFallHandler : MonoBehaviour {
 
     Airplane airplane;
 
-    public AirplaneFall ea;
+    public AirplaneFall af;
 
-    public void BindEvent(AirplaneFall ea)
+    public ControlLamp fallLamb;
+
+    public void BindEvent(AirplaneFall af)
     {
-        this.ea = ea;
+        this.af = af;
         airplane = SceneController.instance.airplane;
     }
 
     public void OnEventStart()
     {
         if (airplane == null) return;
-        Debug.Log("enemy is approaching");
+        SceneController.instance.currentEvents.Add(af);
+        Debug.Log("airplane is falling");
 
-        //TODO see is only three or check stuff
-        InvokeRepeating("AttackShip", timeToFail / 4, timeToFail / 4);
-        airplane.StartEnemyLamps();
+        fallLamb.OnActivation.Invoke();
 
+        Invoke("FallDown", timeToFail);
     }
 
-    private void AttackShip()
+    private void FallDown()
     {
-        List<InteractiveComponent> stations = airplane.stations;
-
-        int rand = Random.Range(0, stations.Count);
-
-        
-        stations[rand].InflictDamage(stations[rand].health);
+        af.OnFailed.Invoke();
     }
 
-	public void EnemyEventFailed()
+	public void FallEventFailed()
     {
-        SceneController.instance.currentEvents.Remove(ea);
-        airplane.StopEnemyLamps();
+        SceneController.instance.currentEvents.Remove(af);
+        GameManager.instance.EndGame();
+        fallLamb.OnDeactivation.Invoke();
     }
 
-    public void EnemyEventSuccess()
+    public void FallEventSuccess()
     {
-        airplane.StopEnemyLamps();
-        SceneController.instance.currentEvents.Remove(ea);
+        fallLamb.OnDeactivation.Invoke();
+        SceneController.instance.currentEvents.Remove(af);
     }
 }

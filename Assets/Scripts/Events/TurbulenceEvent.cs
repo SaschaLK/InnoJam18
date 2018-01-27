@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class TurbulenceEvent : GameEvent {
 
-	public TurbulenceEvent(Airplane airplane)
+    public TurbulenceEvent(TurbulenceEventHandler handler)
+    {
+
+        handler.BindEvent(this);
+
+        this.OnEventStart.AddListener(handler.OnEventStart);
+        this.OnFailed.AddListener(handler.TurbulenceEventFailed);
+        this.OnSuccess.AddListener(handler.TurbulenceEventSuccess);
+    }
+
+    /*public TurbulenceEvent(Airplane airplane)
     {
         Debug.Log("turbulences incoming");
         //TODO: Camera shake
@@ -25,5 +35,5 @@ public class TurbulenceEvent : GameEvent {
 
             count--;
         }
-    }
+    }*/
 }

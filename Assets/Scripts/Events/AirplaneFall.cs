@@ -10,8 +10,8 @@ public class AirplaneFall : GameEvent {
         handler.BindEvent(this);
 
         this.OnEventStart.AddListener(handler.OnEventStart);
-        this.OnFailed.AddListener(handler.EnemyEventFailed);
-        this.OnSuccess.AddListener(handler.EnemyEventSuccess);
+        this.OnFailed.AddListener(handler.FallEventFailed);
+        this.OnSuccess.AddListener(handler.FallEventSuccess);
     }
 
     /*public AirplaneFall(ControlLamp lamp)
