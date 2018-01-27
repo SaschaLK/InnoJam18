@@ -107,8 +107,6 @@ public class PlayerController : MonoBehaviour {
             if (angle >= 180f)
                 continue; // Behind us.
             angle = Mathf.Abs(angle);
-            if (angle >= 90f)
-                continue;
 
             float dist = 0.5f * distToCenter + 0.6f * UsageRadius * UsageRadius * angle / 45f;
 
