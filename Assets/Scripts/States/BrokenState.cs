@@ -20,6 +20,18 @@ public class BrokenState : StationState
     {
         // if (!fireState && vorherigeBedingung)
 
+        if (player.Item != null) {
+            // Wenn der Player ein Item hält...
+            ItemStateRemover remover = player.Item.GetComponent<ItemStateRemover>();
+            if (remover != null) {
+                // ... und es ein ItemStateRemover ist...
+                if (remover.Type == "BrokenState") {
+                    // ... und der Remover das State entfernt...
+                    return true; // ... erlauben wir Interaktion.
+                }
+            }
+        }
+
         if (this != null) // Während die Maschine broken ist ist...
             return false; // ... können wir das derzeitige Interactive nicht verwenden.
 

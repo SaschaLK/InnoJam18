@@ -35,6 +35,18 @@ public class FireState : StationState{
     bool CanUse(PlayerController player) {
         // if (!fireState && vorherigeBedingung)
 
+        if (player.Item != null) {
+            // Wenn der Player ein Item hält...
+            ItemStateRemover remover = player.Item.GetComponent<ItemStateRemover>();
+            if (remover != null) {
+                // ... und es ein ItemStateRemover ist...
+                if (remover.Type == "FireState") {
+                    // ... und der Remover das State entfernt...
+                    return true; // ... erlauben wir Interaktion.
+                }
+            }
+        }
+
         if (this != null) // Während das Feuer am Leben ist...
             return false; // ... können wir das derzeitige Interactive nicht verwenden.
 
