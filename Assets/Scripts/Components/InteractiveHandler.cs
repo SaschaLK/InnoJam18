@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(InteractiveComponent))]
-public class InteractiveHandler : MonoBehaviour {
+public class InteractiveHandler : NetworkBehaviour {
 
     public InteractiveComponent interactive { get; private set; }
 

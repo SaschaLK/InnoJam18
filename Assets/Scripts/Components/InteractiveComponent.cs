@@ -4,8 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Networking;
 
-public sealed class InteractiveComponent : MonoBehaviour {
+public sealed class InteractiveComponent : NetworkBehaviour {
 
     public string DisplayName;
 
