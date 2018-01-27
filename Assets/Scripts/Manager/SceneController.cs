@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class SceneController : MonoBehaviour {
 
-	[SerializeField]
+    [SerializeField]
+    Camera camera;
+
+    [SerializeField]
 	Airplane airplane;
 
 	[SerializeField]
@@ -40,13 +43,17 @@ public class SceneController : MonoBehaviour {
         }
         else if(rand <= 30)
         {
-            EnemyAttack ea = new EnemyAttack(airplane);
+            EnemyAttack ea = new EnemyAttack(airplane, camera);
             return;
         }
         else if (rand <= 50)
         {
             EnemyApproach enemyApproach = new EnemyApproach(enemyAttackLamp);
             return;
+        }
+        else if(rand <= 70)
+        {
+            AirplaneFall af = new AirplaneFall();
         }
     } 
 }
