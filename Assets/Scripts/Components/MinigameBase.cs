@@ -29,6 +29,9 @@ public abstract class MinigameBase : MonoBehaviour {
     public void StartMinigame(PlayerController player, InteractiveComponent with) {
         // TODO: If network player, return.
 
+        if (Active)
+            return;
+
         PlayerUIRoot = player.transform.Find("PlayerUIRoot").GetComponent<RectTransform>();
         PlayerUIController = PlayerUIRoot.GetComponent<PlayerUIController>();
 
@@ -74,7 +77,7 @@ public abstract class MinigameBase : MonoBehaviour {
             return;
 
         _EndMinigame();
-        Active = false;
+        StartCoroutine(DelayedDeactivate());
 
         if (Win) {
             ScreenShakeController.Instance.Trigger(Camera.main.transform, 0.1f, 0.2f);
@@ -88,6 +91,11 @@ public abstract class MinigameBase : MonoBehaviour {
         PlayerUIController.HideMinigame();
         Destroy(UITree.gameObject);
         Player.Locked = false;
+    }
+
+    private IEnumerator DelayedDeactivate() {
+        yield return new WaitForEndOfFrame();
+        Active = false;
     }
 
     protected abstract void _StartMinigame();
