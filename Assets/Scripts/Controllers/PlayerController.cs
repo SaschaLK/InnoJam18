@@ -36,8 +36,7 @@ public class PlayerController : MonoBehaviour {
     }
 	
 	void Update() {
-
-        Vector3 pos = transform.position;
+        Vector2 pos = transform.position.XZ();
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -81,6 +80,12 @@ public class PlayerController : MonoBehaviour {
             ) * Mathf.Rad2Deg, 0f);
         }
 
+        Vector2 lookDir = transform.right.XZ();
+        float lookRayAngle = Mathf.Atan2(
+            lookDir.y,
+            lookDir.x
+        ) * Mathf.Rad2Deg;
+
         rigidbody.angularVelocity = Vector3.zero;
 
         InteractiveComponent[] interactives = FindObjectsOfType<InteractiveComponent>();
@@ -88,8 +93,23 @@ public class PlayerController : MonoBehaviour {
         closest = null;
         for (int i = 0; i < interactives.Length; i++) {
             InteractiveComponent interactive = interactives[i];
+            Vector2 interactivePos = interactive.transform.position.XZ();
 
-            float dist = (pos - interactive.transform.position).sqrMagnitude;
+            float distToCenter = (pos - interactivePos).sqrMagnitude;
+
+            Vector2 delta = interactivePos - pos;
+            float angle = Mathf.Atan2(
+                delta.y,
+                delta.x
+            ) * Mathf.Rad2Deg;
+            angle -= lookRayAngle;
+            if (angle > 180f)
+                angle = -180f + angle;
+            if (Mathf.Abs(angle) >= 90f)
+                continue;
+
+            float dist = 0.5f * distToCenter + 0.6f * UsageRadius * UsageRadius * Mathf.Abs(angle) / 90f;
+
             bool canUse = interactive.CanUse != null ? interactive.CanUse(this) : true;
 
             if (Item != null && interactive.transform == Item.transform)
@@ -106,6 +126,7 @@ public class PlayerController : MonoBehaviour {
         bool use = Input.GetButtonDown("Fire1");
         bool drop = Input.GetButtonDown("Fire2");
         if (closest != null) {
+            closest.Highlight = true;
             Tooltip.ShowText(closest.DisplayName);
             closestDist = Mathf.Pow(closestDist, 0.5f);
             if (use && !drop) {
@@ -223,6 +244,8 @@ public class PlayerController : MonoBehaviour {
     private void OnDrawGizmos() {
         Gizmos.color = Color.black;
         Gizmos.DrawWireSphere(transform.position, UsageRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(transform.position, transform.position + transform.right * UsageRadius);
         if (closest != null) {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, closestDist);

@@ -1,4 +1,5 @@
-﻿﻿﻿using System;
+﻿using cakeslice;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public sealed class InteractiveComponent : MonoBehaviour {
     public string DisplayName;
 
     public float health = 100;
+
+    public bool Highlight = false;
+    public Outline Outline { get; private set; }
 
     /// <summary>
     /// Invoked by PlayerController.Interact
@@ -39,6 +43,24 @@ public sealed class InteractiveComponent : MonoBehaviour {
 
         if (health <= 0) {
             OnDestroy.Invoke();
+        }
+    }
+
+    private void Awake() {
+        if (Outline == null)
+            Outline = GetComponentInChildren<Outline>();
+        if (Outline == null) {
+            Renderer renderer = GetComponentInChildren<Renderer>();
+            if (renderer != null) {
+                Outline = renderer.gameObject.AddComponent<Outline>();
+            }
+        }
+    }
+
+    private void LateUpdate() {
+        if (Outline != null) {
+            Outline.enabled = Highlight;
+            Highlight = false;
         }
     }
 
