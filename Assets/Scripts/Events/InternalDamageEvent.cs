@@ -5,4 +5,4 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
-public class InternalDamageEvent : UnityEvent<int> { }
+public class InternalDamageEvent : UnityEvent<float> { }

@@ -18,7 +18,7 @@ public class FireState : StationState{
 
 	private void FireDamage()
 	{
-		int damage = Random.Range(5, 10);
+		float damage = Random.Range(5, 10);
 		GetComponentInParent<InteractiveComponent>().InflictDamage(damage);
 	}
 }

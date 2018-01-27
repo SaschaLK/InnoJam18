@@ -18,8 +18,8 @@ public class InteractiveHandler : MonoBehaviour {
     public virtual void OnInteract(PlayerController player) {
     }
 
-    private void _OnDamage(int damage) { OnDamage(damage); }
-    public virtual void OnDamage(int damage) {
+    private void _OnDamage(float damage) { OnDamage(damage); }
+    public virtual void OnDamage(float damage) {
     }
 
     private void _OnDestroy() { OnDestroyI(); }

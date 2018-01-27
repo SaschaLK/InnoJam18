@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : GameEvent {
 
-
-	public EnemyAttack(Airplane airplane)
+	public EnemyAttack(Airplane airplane , Camera camera)
 	{
 		//TODO: Camerashake
 
