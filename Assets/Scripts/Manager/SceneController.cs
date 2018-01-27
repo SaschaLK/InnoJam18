@@ -34,6 +34,7 @@ public class SceneController : MonoBehaviour {
 
     void Start(){
         timeEvent = Random.Range(5f, 20f);
+        ScreenShakeController.Instance.Trigger(5f, 0.2f);
     }
 
     private void Update()
