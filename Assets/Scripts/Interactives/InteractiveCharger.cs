@@ -79,7 +79,7 @@ public class InteractiveCharger : InteractiveBase {
         return true;
     }
 
-    public override bool CanMinigame(PlayerController player) {
+    public override bool CanMinigame(PlayerController player, InteractiveComponent with) {
         if (Charging != null)
             return false;
 

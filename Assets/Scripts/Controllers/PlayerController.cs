@@ -199,7 +199,7 @@ public class PlayerController : NetworkBehaviour {
         if (minigame == null)
             interactive.OnInteract.Invoke(this);
         else
-            minigame.StartMinigame(this);
+            minigame.StartMinigame(this, null);
     }
 
     /// <summary>
@@ -303,7 +303,7 @@ public class PlayerController : NetworkBehaviour {
             callback();
         else {
             minigame.Callback = callback;
-            minigame.StartMinigame(this);
+            minigame.StartMinigame(this, null);
         }
     }
 
@@ -347,7 +347,7 @@ public class PlayerController : NetworkBehaviour {
             callback();
         else {
             minigame.Callback = callback;
-            minigame.StartMinigame(this);
+            minigame.StartMinigame(this, with);
         }
     }
 

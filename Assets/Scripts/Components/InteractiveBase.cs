@@ -20,9 +20,9 @@ public class InteractiveBase : InteractiveHandler {
         return true;
     }
 
-    private Func<PlayerController, bool> __CanMinigame;
-    private bool _CanMinigame(PlayerController player) { return CanMinigame(player) && (__CanMinigame != null ? __CanMinigame(player) : true); }
-    public virtual bool CanMinigame(PlayerController player) {
+    private Func<PlayerController, InteractiveComponent, bool> __CanMinigame;
+    private bool _CanMinigame(PlayerController player, InteractiveComponent with) { return CanMinigame(player, with) && (__CanMinigame != null ? __CanMinigame(player, with) : true); }
+    public virtual bool CanMinigame(PlayerController player, InteractiveComponent with) {
         return true;
     }
 

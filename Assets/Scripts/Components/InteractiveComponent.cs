@@ -31,7 +31,7 @@ public sealed class InteractiveComponent : NetworkBehaviour {
     public DestroyEvent OnDestroy = new DestroyEvent();
 
     public Func<PlayerController, bool> CanInteract;
-    public Func<PlayerController, bool> CanMinigame;
+    public Func<PlayerController, InteractiveComponent, bool> CanMinigame;
 
     /// <summary>
     /// Inflicts Damage caused by fire etc

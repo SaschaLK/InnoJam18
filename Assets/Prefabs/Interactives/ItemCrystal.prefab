@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114229643557713448}
   - component: {fileID: 114371587023191994}
   - component: {fileID: 114156185258049426}
+  - component: {fileID: 114006900227819252}
   m_Layer: 8
   m_Name: ItemCrystal
   m_TagString: Untagged
@@ -118,6 +119,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114006900227819252
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1441696781388178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b2c454178ac39419d4c6af012ff9ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114156185258049426
 MonoBehaviour:
   m_ObjectHideFlags: 1

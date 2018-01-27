@@ -26,13 +26,13 @@ public abstract class MinigameBase : MonoBehaviour {
         interactive = GetComponent<InteractiveComponent>();
     }
 
-    public void StartMinigame(PlayerController player) {
+    public void StartMinigame(PlayerController player, InteractiveComponent with) {
         // TODO: If network player, return.
 
         PlayerUIRoot = player.transform.Find("PlayerUIRoot").GetComponent<RectTransform>();
         PlayerUIController = PlayerUIRoot.GetComponent<PlayerUIController>();
 
-        if (interactive.CanMinigame != null && !interactive.CanMinigame(player)) {
+        if (interactive.CanMinigame != null && !interactive.CanMinigame(player, with)) {
             if (Callback != null)
                 Callback();
             else

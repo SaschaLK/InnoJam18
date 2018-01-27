@@ -17,6 +17,9 @@ public class ItemBase : ItemHandler {
 
         __CanUseWith = item.CanUseWith;
         item.CanUseWith = _CanUseWith;
+
+        __CanMinigame = item.interactive.CanMinigame;
+        item.interactive.CanMinigame = _CanMinigame;
     }
 
     private Func<PlayerController, bool> __CanPickup;
@@ -34,6 +37,12 @@ public class ItemBase : ItemHandler {
     private Func<PlayerController, InteractiveComponent, bool> __CanUseWith;
     private bool _CanUseWith(PlayerController player, InteractiveComponent with) { return CanUseWith(player, with) && (__CanUseWith != null ? __CanUseWith(player, with) : true); }
     public virtual bool CanUseWith(PlayerController player, InteractiveComponent with) {
+        return true;
+    }
+
+    private Func<PlayerController, InteractiveComponent, bool> __CanMinigame;
+    private bool _CanMinigame(PlayerController player, InteractiveComponent with) { return CanMinigame(player, with) && (__CanMinigame != null ? __CanMinigame(player, with) : true); }
+    public virtual bool CanMinigame(PlayerController player, InteractiveComponent with) {
         return true;
     }
 

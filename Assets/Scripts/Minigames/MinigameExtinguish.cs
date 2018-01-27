@@ -24,6 +24,11 @@ public class MinigameExtinguish : MinigameBase {
     protected RectTransform[,] Cells;
     protected Image[,] CellImages;
 
+    protected readonly static int TableWidth = 20;
+    protected readonly static int TableHeight = 10;
+    protected readonly static float CellWidth = 50f;
+    protected readonly static float CellHeight = 50f;
+
     protected override void Awake() {
         base.Awake();
 
@@ -38,16 +43,19 @@ public class MinigameExtinguish : MinigameBase {
         Cell = Table.Find("Cell").GetComponent<RectTransform>();
         Vector3 cellPos = Cell.localPosition;
 
-        Cells = new RectTransform[10, 20];
-        CellImages = new Image[10, 20];
-        for (int y = 0; y < 10; y++) {
-            for (int x = 0; x < 20; x++) {
+        Cell.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, CellWidth);
+        Cell.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, CellHeight);
+
+        Cells = new RectTransform[TableHeight, TableWidth];
+        CellImages = new Image[TableHeight, TableWidth];
+        for (int y = 0; y < TableHeight; y++) {
+            for (int x = 0; x < TableWidth; x++) {
                 RectTransform cell = Cell;
                 if (x != 0 || y != 0) {
                     cell = Instantiate(Cell, Table);
                     cell.localPosition = new Vector3(
-                        cellPos.x + x * 50f,
-                        cellPos.y - y * 50f,
+                        cellPos.x + x * CellWidth,
+                        cellPos.y - y * CellHeight,
                         cellPos.z
                     );
                 }
@@ -55,7 +63,7 @@ public class MinigameExtinguish : MinigameBase {
                 CellImages[y, x] = cell.GetComponent<Image>();
                 CellImages[y, x].color = new Color(
                     Random.Range(0.7f, 0.9f),
-                    Random.Range(0.4f, 0.6f),
+                    Random.Range(0.3f, 0.5f),
                     Random.Range(0.1f, 0.3f)
                 );
             }
@@ -85,8 +93,8 @@ public class MinigameExtinguish : MinigameBase {
         int x, y;
         RectTransform cell;
 
-        x = Mathf.Clamp(Mathf.FloorToInt(LeftSpray.x * 19f), 0, 19);
-        y = Mathf.Clamp(Mathf.FloorToInt((1f - LeftSpray.y) * 9f), 0, 9);
+        x = Mathf.Clamp(Mathf.FloorToInt(LeftSpray.x * (TableWidth - 1f)), 0, TableWidth - 1);
+        y = Mathf.Clamp(Mathf.FloorToInt((1f - LeftSpray.y) * (TableHeight - 1f)), 0, TableHeight - 1);
         cell = Cells[y, x];
         if (cell != null) {
             Destroy(cell.gameObject);
@@ -94,8 +102,8 @@ public class MinigameExtinguish : MinigameBase {
             CellImages[y, x] = null;
         }
 
-        x = Mathf.Clamp(Mathf.FloorToInt(RightSpray.x * 19f), 0, 19);
-        y = Mathf.Clamp(Mathf.FloorToInt((1f - RightSpray.y) * 9f), 0, 9);
+        x = Mathf.Clamp(Mathf.FloorToInt(RightSpray.x * (TableWidth - 1f)), 0, TableWidth - 1);
+        y = Mathf.Clamp(Mathf.FloorToInt((1f - RightSpray.y) * (TableHeight - 1f)), 0, TableHeight - 1);
         cell = Cells[y, x];
         if (cell != null) {
             Destroy(cell.gameObject);
@@ -103,15 +111,15 @@ public class MinigameExtinguish : MinigameBase {
             CellImages[y, x] = null;
         }
 
-        for (y = 0; y < 10; y++) {
-            for (x = 0; x < 20; x++) {
+        for (y = 0; y < TableHeight; y++) {
+            for (x = 0; x < TableWidth; x++) {
                 Image cellImage = CellImages[y, x];
                 if (cellImage == null)
                     continue;
                 Color c = cellImage.color;
                 cellImage.color = new Color(
                     Mathf.Lerp(c.r, Random.Range(0.7f, 0.9f), 0.1f),
-                    Mathf.Lerp(c.g, Random.Range(0.4f, 0.6f), 0.1f),
+                    Mathf.Lerp(c.g, Random.Range(0.3f, 0.5f), 0.1f),
                     Mathf.Lerp(c.b, Random.Range(0.1f, 0.3f), 0.1f)
                 );
             }
@@ -121,11 +129,6 @@ public class MinigameExtinguish : MinigameBase {
     private void Update() {
         if (!Active)
             return;
-
-        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")) {
-            EndMinigame();
-            return;
-        }
 
         LeftSpray += new Vector2(
             Input.GetAxis("Horizontal"),
@@ -146,6 +149,11 @@ public class MinigameExtinguish : MinigameBase {
         );
 
         UpdateSprites();
+
+        if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2")) {
+            EndMinigame();
+            return;
+        }
 
         TimeLeft -= Time.deltaTime;
         if (TimeLeft < 0f)
