@@ -11,8 +11,10 @@ public class ItemBase : ItemHandler {
 
         __CanPickup = item.interactive.CanInteract;
         item.interactive.CanInteract = _CanPickup;
+
         __CanUse = item.CanUse;
         item.CanUse = _CanUse;
+
         __CanUseWith = item.CanUseWith;
         item.CanUseWith = _CanUseWith;
     }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Collider))]
 [RequireComponent(typeof(Rigidbody))]
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour {
 
     new Collider collider;
     new Rigidbody rigidbody;
-    public PlayerTooltipController Tooltip { get; protected set; }
+    public PlayerUIController Tooltip { get; protected set; }
 
     bool mouseTurning;
     Vector3 mousePosPrev = new Vector3(0f, 0f, 0f);
@@ -25,17 +26,23 @@ public class PlayerController : MonoBehaviour {
 
     public Transform HoldingPoint;
 
+    public bool Locked;
+
 	void Awake() {
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
-        Tooltip = GetComponentInChildren<PlayerTooltipController>();
+        Tooltip = GetComponentInChildren<PlayerUIController>();
 
         if (HoldingPoint == null)
             HoldingPoint = transform.Find("HoldingPoint");
 
+        Locked = false;
     }
 	
 	void Update() {
+        if (Locked)
+            return;
+
         Vector3 pos3 = transform.position;
         Vector2 pos = pos3.XZ();
 
@@ -163,10 +170,19 @@ public class PlayerController : MonoBehaviour {
         if (interactive == null)
             return;
 
-        interactive.OnInteract.Invoke(this);
         ItemComponent item = interactive.GetComponent<ItemComponent>();
-        if (item != null)
+        if (item != null) {
+            // Don't run minigames when picking up an item.
+            interactive.OnInteract.Invoke(this);
             PickupItem(item);
+            return;
+        }
+
+        MinigameBase minigame = interactive.GetComponent<MinigameBase>();
+        if (minigame == null)
+            interactive.OnInteract.Invoke(this);
+        else
+            minigame.StartMinigame(this);
     }
 
     /// <summary>
@@ -230,8 +246,18 @@ public class PlayerController : MonoBehaviour {
         if (item == null)
             return;
 
-        if (item.CanUse != null ? item.CanUse(this) : true)
-            item.OnUse.Invoke();
+        UnityAction callback = () => {
+            if (item.CanUse != null ? item.CanUse(this) : true)
+                item.OnUse.Invoke();
+        };
+
+        MinigameBase minigame = item.GetComponent<MinigameBase>();
+        if (minigame == null)
+            callback();
+        else {
+            minigame.Callback = callback;
+            minigame.StartMinigame(this);
+        }
     }
 
     /// <summary>
@@ -248,9 +274,21 @@ public class PlayerController : MonoBehaviour {
         if (with == null)
             return;
 
-        if (item.CanUseWith != null ? item.CanUseWith(this, with) :
-            item.CanUse != null ? item.CanUse(this) : true)
-            item.OnUseWith.Invoke(with);
+        UnityAction callback = () => {
+            if (item.CanUseWith != null ? item.CanUseWith(this, with) : true)
+                item.OnUseWith.Invoke(with);
+        };
+
+        MinigameBase minigame = item.GetComponent<MinigameBase>();
+        if (minigame == null)
+            minigame = with.GetComponent<MinigameBase>();
+
+        if (minigame == null)
+            callback();
+        else {
+            minigame.Callback = callback;
+            minigame.StartMinigame(this);
+        }
     }
 
     private void OnDrawGizmos() {

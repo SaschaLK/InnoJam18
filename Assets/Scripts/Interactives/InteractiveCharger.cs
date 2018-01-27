@@ -77,6 +77,13 @@ public class InteractiveCharger : InteractiveBase {
         return true;
     }
 
+    public override bool CanMinigame(PlayerController player) {
+        if (Charging != null)
+            return false;
+
+        return true;
+    }
+
     public void PickupItem(ItemChargeable charging) {
         if (charging == null || !ChargingName.Contains(charging.name))
             return;
