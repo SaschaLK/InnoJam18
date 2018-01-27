@@ -83,7 +83,7 @@ public class SceneController : MonoBehaviour {
         }
         else if(rand <= 70)
         {
-            AirplaneFall af = new AirplaneFall(sinkingLamp);
+            //AirplaneFall af = new AirplaneFall(sinkingLamp);
             return;
         }
         else
