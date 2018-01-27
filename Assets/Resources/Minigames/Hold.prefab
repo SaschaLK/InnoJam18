@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224045421834678164}
   - component: {fileID: 222209691672003180}
+  - component: {fileID: 114022622679725830}
   m_Layer: 5
   m_Name: Hold
   m_TagString: Untagged
@@ -61,6 +62,38 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114022622679725830
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1998687941713162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 67
+    i1: 152
+    i2: 109
+    i3: 212
+    i4: 187
+    i5: 236
+    i6: 145
+    i7: 132
+    i8: 137
+    i9: 18
+    i10: 231
+    i11: 112
+    i12: 190
+    i13: 213
+    i14: 208
+    i15: 94
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114383410690400292
 MonoBehaviour:
   m_ObjectHideFlags: 1
