@@ -164,15 +164,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55fc46dca43e67c46ab2d22c8062a07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Vol: 0
+  Vol: 1
   ClipPickup: {fileID: 0}
-  ClipPickupVol: 0
+  ClipPickupVol: 0.5
   ClipDrop: {fileID: 0}
-  ClipDropVol: 0
+  ClipDropVol: 0.5
   ClipUse: {fileID: 0}
-  ClipUseVol: 0
+  ClipUseVol: 0.5
   ClipUseWith: {fileID: 0}
-  ClipUseWithVol: 0
+  ClipUseWithVol: 0.5
   Source: {fileID: 0}
 --- !u!114 &114602906977390326
 MonoBehaviour:

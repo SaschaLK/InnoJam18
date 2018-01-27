@@ -5,20 +5,20 @@ using UnityEngine;
 public class ItemSounds : ItemHandler {
 
     [Range(0f, 1f)]
-    public float Vol;
+    public float Vol = 1f;
 
     public AudioClip ClipPickup;
     [Range(0f, 1f)]
-    public float ClipPickupVol;
+    public float ClipPickupVol = 0.5f;
     public AudioClip ClipDrop;
     [Range(0f, 1f)]
-    public float ClipDropVol;
+    public float ClipDropVol = 0.5f;
     public AudioClip ClipUse;
     [Range(0f, 1f)]
-    public float ClipUseVol;
+    public float ClipUseVol = 0.5f;
     public AudioClip ClipUseWith;
     [Range(0f, 1f)]
-    public float ClipUseWithVol;
+    public float ClipUseWithVol = 0.5f;
 
     public AudioSource Source;
 
