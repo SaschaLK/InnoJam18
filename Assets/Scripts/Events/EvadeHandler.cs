@@ -3,29 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class EvadeRightHandler : NetworkBehaviour {
+public class EvadeHandler : NetworkBehaviour {
 
     private float timeToFail = 20f; //change this value to control event difficulty
 
     Airplane airplane;
     private bool success = false;
-    public EvadeRight er;
+    public Evade ev;
 
-    public ControlLamp evadeRightLamb;
+    public ControlLamp evadeLamp;
 
-    public void BindEvent(EvadeRight er)
+    public void BindEvent(Evade ev)
     {
-        this.er = er;
+        this.ev = ev;
         airplane = SceneController.instance.airplane;
     }
 
     public void OnEventStart()
     {
         if (airplane == null) return;
-        SceneController.instance.currentEvents.Add(er);
+        SceneController.instance.currentEvents.Add(ev);
         Debug.Log("evade right");
 
-        evadeRightLamb.OnActivation.Invoke();
+        evadeLamp.OnActivation.Invoke();
         success = false;
         if (isServer)
             Invoke("FallDown", timeToFail);
@@ -47,20 +47,20 @@ public class EvadeRightHandler : NetworkBehaviour {
     [ClientRpc]
     public void RpcInvolkeFailure()
     {
-        er.OnFailed.Invoke();
+        ev.OnFailed.Invoke();
     }
 
-    public void EvadeRightEventFailed()
+    public void EvadeEventFailed()
     {
-        SceneController.instance.currentEvents.Remove(er);
+        SceneController.instance.currentEvents.Remove(ev);
         GameManager.instance.TakeDamage(2f);
-        evadeRightLamb.OnDeactivation.Invoke();
+        evadeLamp.OnDeactivation.Invoke();
     }
 
-    public void EvadeRightEventSuccess()
+    public void EvadeEventSuccess()
     {
         success = true;
-        evadeRightLamb.OnDeactivation.Invoke();
-        SceneController.instance.currentEvents.Remove(er);
+        evadeLamp.OnDeactivation.Invoke();
+        SceneController.instance.currentEvents.Remove(ev);
     }
 }

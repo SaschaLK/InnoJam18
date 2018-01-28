@@ -81,12 +81,7 @@ public class SceneController : NetworkBehaviour {
             CmdTriggerAirplaneFall();
 
         } else {
-            if(Random.value <= 0.5f) {
-                CmdTriggerEvadeRight();
-            } else {
-                CmdTriggerEvadeLeft();
-
-            }
+            CmdTriggerEvade();
         }
     }
 
@@ -119,31 +114,17 @@ public class SceneController : NetworkBehaviour {
     }
 
     [Command]
-    public void CmdTriggerEvadeLeft()
+    public void CmdTriggerEvade()
     {
-        RpcTriggerEvadeLeft();
+        RpcTriggerEvade();
     }
 
     [ClientRpc]
-    public void RpcTriggerEvadeLeft()
+    public void RpcTriggerEvade()
     {
-        GameEvent evt = new EvadeLeft(this.GetComponent<EvadeLeftHandler>());
-        if (isServer) currentEvents.Add(evt);
-        evt.OnEventStart.Invoke();
-    }
-
-    [Command]
-    public void CmdTriggerEvadeRight()
-    {
-        RpcTriggerEvadeRight();
-    }
-
-    [ClientRpc]
-    public void RpcTriggerEvadeRight()
-    {
-        GameEvent evt = new EvadeRight(this.GetComponent<EvadeRightHandler>());
-        if (isServer) currentEvents.Add(evt);
-        evt.OnEventStart.Invoke();
+        GameEvent ev = new Evade(this.GetComponent<EvadeHandler>());
+        if (isServer) currentEvents.Add(ev);
+        ev.OnEventStart.Invoke();
     }
 
     [Command]
@@ -159,28 +140,4 @@ public class SceneController : NetworkBehaviour {
         if(isServer) currentEvents.Add(evt);
         evt.OnEventStart.Invoke();
     }
-
-    #region EvadeFunctions
-    public void EvadeFunction()
-    {
-        evade = true;
-    }
-
-    public void StartHitCountdown(float counter)
-    {
-        evade = false;
-        StartCoroutine(EvadeCheck(counter));
-    }
-
-    private IEnumerator EvadeCheck(float counter)
-    {
-        yield return new WaitForSeconds(counter);
-        if(evade == false)
-        {
-            //TODO: Hit the thing
-            Debug.Log("Evade too late... CRASH!!");
-        }
-    }
-
-    #endregion
 }
