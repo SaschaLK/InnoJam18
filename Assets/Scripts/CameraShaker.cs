@@ -13,10 +13,9 @@ namespace CaLey17.Crisis.Scripts {
 		Vector3 originalShakerPos = new Vector3(0,0,0);
 		Quaternion originalShakerRot = Quaternion.Euler (new Vector3(0,0,0));
 
-        private void Update()
+        private void Start()
         {
-            // TODO it's a DEBUG method... disablen...
-			if (Input.GetKeyDown(KeyCode.S)) Shake();
+			Shake();
         }
 
         public void Shake(float magnitude = -1f, float duration = -1f, float shakeSpeed = -1f, AnimationCurve damper = null)
