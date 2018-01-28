@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4995403920533560}
   - component: {fileID: 33241446810404908}
   - component: {fileID: 23328236351956962}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: fireEx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 114734741677388364}
   - component: {fileID: 114536551320911520}
   - component: {fileID: 136004953711045790}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: ItemExtinguisher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Holder: {fileID: 0}
   HoldOffset: {x: 0, y: 0, z: 0}
-  HoldRotation: {x: 0, y: 0, z: 0, w: 0}
+  HoldRotation: {x: 180, y: 0, z: 0}
   OnPickup:
     m_PersistentCalls:
       m_Calls: []
