@@ -18,6 +18,7 @@ public abstract class MinigameBase : MonoBehaviour {
 
     public bool Win { get; protected set; }
     public bool Active { get; protected set; }
+    private bool Activating;
 
     public UnityAction Callback;
 
@@ -29,7 +30,7 @@ public abstract class MinigameBase : MonoBehaviour {
     public void StartMinigame(PlayerController player, InteractiveComponent with) {
         // TODO: If network player, return.
 
-        if (Active)
+        if (Active || Activating)
             return;
 
         PlayerUIRoot = player.transform.Find("PlayerUIRoot").GetComponent<RectTransform>();
@@ -52,10 +53,11 @@ public abstract class MinigameBase : MonoBehaviour {
         Player = player;
 
         Win = false;
-        Active = true;
+        Activating = true;
         Player.Locked = true;
         PlayerUIController.ShowMinigame();
         _StartMinigame();
+        StartCoroutine(DelayedActivate());
     }
 
     public void CancelMinigame() {
@@ -91,6 +93,12 @@ public abstract class MinigameBase : MonoBehaviour {
         PlayerUIController.HideMinigame();
         Destroy(UITree.gameObject);
         Player.Locked = false;
+    }
+
+    private IEnumerator DelayedActivate() {
+        yield return new WaitForEndOfFrame();
+        Activating = false;
+        Active = true;
     }
 
     private IEnumerator DelayedDeactivate() {

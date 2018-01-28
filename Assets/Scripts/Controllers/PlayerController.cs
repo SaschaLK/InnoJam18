@@ -408,7 +408,7 @@ public class PlayerController : NetworkBehaviour {
     [Command]
     public void CmdUseItemWith(GameObject player, GameObject item, GameObject with)
     {
-        player.GetComponent<PlayerController>().RpcUseItemWith(item, with);
+        RpcUseItemWith(item, with);
     }
 
     [ClientRpc]
