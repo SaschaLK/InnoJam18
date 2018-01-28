@@ -23,7 +23,7 @@ public class InteractiveCrate : InteractiveBase {
 
         int count = 0;
         for (int i = 0; i < Existing.Count && count < MaxCount; i++) {
-            if (Existing != null)
+            if (Existing[i] != null)
                 count++;
         }
 
