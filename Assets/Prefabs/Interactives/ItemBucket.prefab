@@ -157,13 +157,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Vol: 1
-  ClipPickup: {fileID: 0}
+  ClipPickup: {fileID: 8300000, guid: f2d7b1d99f1270843be4419936e977c1, type: 3}
   ClipPickupVol: 0.5
-  ClipDrop: {fileID: 0}
+  ClipDrop: {fileID: 8300000, guid: 38b88375b23b3e04189f49c3103f133d, type: 3}
   ClipDropVol: 0.5
-  ClipUse: {fileID: 0}
+  ClipUse: {fileID: 8300000, guid: 8ce5409717701ed40b141eb37a6adf84, type: 3}
   ClipUseVol: 0.5
-  ClipUseWith: {fileID: 0}
+  ClipUseWith: {fileID: 8300000, guid: 8ce5409717701ed40b141eb37a6adf84, type: 3}
   ClipUseWithVol: 0.5
   Source: {fileID: 0}
 --- !u!114 &114557935774107386
@@ -193,6 +193,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  KeepLayer: 0
 --- !u!114 &114564867239911692
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Holder: {fileID: 0}
   HoldOffset: {x: 0, y: 0, z: 0}
-  HoldRotation: {x: 0, y: 0, z: 0, w: 0}
+  HoldRotation: {x: 0, y: 0, z: 0}
   OnPickup:
     m_PersistentCalls:
       m_Calls: []
