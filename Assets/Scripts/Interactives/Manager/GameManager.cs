@@ -8,13 +8,15 @@ public class GameManager : NetworkBehaviour {
 	public static GameManager instance;
 
     [SyncVar]
-    public float hitPoints = 10;
+    private float hitPoints = 10;
 
     public void TakeDamage(float dmg)
     {
         if (!isServer) return;
         hitPoints -= dmg;
         CmdTakeDamage(dmg);
+
+        Debug.Log("WE TOOK DAMAGE: " + dmg);
 
         if (hitPoints <= 0)
             GameManager.instance.EndGame();
