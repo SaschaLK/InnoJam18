@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class EnemyApproachHandler : NetworkBehaviour {
 
     Airplane airplane;
-    public float timeToFail = 20f;
+    public float timeToFail = BalancingConstant.ENEMYAPPROACH_TIME;
 
     private int invokeIterations = 0;
     private bool success = false;
@@ -25,12 +25,11 @@ public class EnemyApproachHandler : NetworkBehaviour {
     {
         if (airplane == null) return;
         Debug.Log("enemy is approaching");
-
-
+        
         if (isServer) {
             success = false;
-            invokeIterations = 3;
-            Invoke("CmdAttackShip", timeToFail / 4);
+            invokeIterations = BalancingConstant.ENEMYAPPROACH_ATTACKS - 1;
+            Invoke("CmdAttackShip", timeToFail / BalancingConstant.ENEMYAPPROACH_ATTACKS);
         }
 
         sirenAudio.volume = 1;
@@ -40,35 +39,47 @@ public class EnemyApproachHandler : NetworkBehaviour {
     [Command]
     private void CmdAttackShip() {
         if (success) return; // dont do damage after the players were successful
+
         List<InteractiveComponent> stations = airplane.stations;
 
         if (stations.Count == 0) return;
 
         int rand = Random.Range(0, stations.Count);
-        stations[rand].TakeFatalDamage();
 
+        // only kill stations that are not dead already
+        for(int i = 0; i < stations.Count; i++) {
+            if(!stations[rand].HealthLargerThan(0)) {
+                rand = (rand+1) % stations.Count;
+            } else {
+                stations[rand].TakeFatalDamage();
+                break;
+            }
+        }
+         
         invokeIterations--;
-        if (invokeIterations > 0)
-        {
-            Invoke("CmdAttackShip", timeToFail / 4);
-        }else
-        {
+        if (invokeIterations > 0) {
+            Invoke("CmdAttackShip", timeToFail / BalancingConstant.ENEMYAPPROACH_ATTACKS);
+        } else {
             ea.OnFailed.Invoke();
         }
     }
-    
-	public void EnemyEventFailed()
+
+    private void stopAttackVisuals()
     {
+        success = true;
         SceneController.instance.currentEvents.Remove(ea);
         sirenAudio.volume = 0;
         airplane.StopEnemyLamps();
+    }
+    
+	public void EnemyEventFailed() {
+        Debug.Log("Enemy Approach FAILED!");
+        stopAttackVisuals();
     }
 
     public void EnemyEventSuccess()
     {
-        sirenAudio.volume = 0;
-        airplane.StopEnemyLamps();
-        success = true;
-        SceneController.instance.currentEvents.Remove(ea);
+        Debug.Log("Enemy Approach SUCCESSFUL!");
+        stopAttackVisuals();
     }
 }

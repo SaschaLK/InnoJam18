@@ -38,6 +38,25 @@ public class SceneController : NetworkBehaviour {
         currentEvents = new List<GameEvent>();
     }
 
+    // this is ugly and dirty code and nobody will ever find it brua!
+    // working for two players pressing evade buttons within 3 secs
+    private int playersPressingNow = 0;
+    public void TriggerEvadeButtonPressOn()
+    {
+        playersPressingNow++;
+        if(playersPressingNow >= 2) {
+            // check if there is an open evade event
+            foreach(GameEvent ev in currentEvents) {
+                if (ev is Evade) {
+                    Evade evad = (Evade)ev;
+                    evad.TriggerOnComplete();
+                }
+            }
+        }
+        Invoke("TriggerEvadeButtonPressOff", BalancingConstant.EVADE_BUTTONOVERLAPTIME);
+    }
+    private void TriggerEvadeButtonPressOff() { playersPressingNow--; }
+
     void Start(){
         if (!isServer) return;
         Debug.Log("START");
@@ -66,6 +85,9 @@ public class SceneController : NetworkBehaviour {
     private void TriggerRandomEvent()   {
         if (!isServer) return;
         Debug.Log("TRIGGER RANDOM");
+        CmdTriggerEvade();
+        return;
+
         //TODO: DEBUG
         float rand = Random.Range(0, 100);
         if (rand <= 10) {

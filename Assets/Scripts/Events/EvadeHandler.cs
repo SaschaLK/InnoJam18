@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class EvadeHandler : NetworkBehaviour {
 
-    private float timeToFail = 20f; //change this value to control event difficulty
+    private float timeToFail = BalancingConstant.EVADE_TIME; //change this value to control event difficulty
 
     Airplane airplane;
     private bool success = false;
@@ -21,24 +21,20 @@ public class EvadeHandler : NetworkBehaviour {
     {
         if (airplane == null) return;
         SceneController.instance.currentEvents.Add(ev);
-        Debug.Log("evade right");
+        Debug.Log("evade ");
+
+        // TODO: HIER BLITZGRAFIK STARTEN
 
         success = false;
         if (isServer)
-            Invoke("FallDown", timeToFail);
-    }
-
-    private void FallDown()
-    {
-        if (success) return;
-        if (isServer)
-            CmdInvokeFailure();
+            Invoke("CmdInvokeFailure", timeToFail);
     }
 
     [Command]
     private void CmdInvokeFailure()
     {
-        RpcInvolkeFailure();
+        if (success) return;
+         RpcInvolkeFailure();
     }
 
     [ClientRpc]
@@ -47,15 +43,23 @@ public class EvadeHandler : NetworkBehaviour {
         ev.OnFailed.Invoke();
     }
 
+    private void StopVisuals()
+    {
+        // TODO: HIER BLITZGRAFIK BEENDEN
+        SceneController.instance.currentEvents.Remove(ev);
+        SceneController.instance.currentEvents.Remove(ev);
+    }
+
     public void EvadeEventFailed()
     {
-        SceneController.instance.currentEvents.Remove(ev);
-        GameManager.instance.TakeDamage(2f);
+        Debug.Log("evade event failed, we take damage");
+        StopVisuals();
+        GameManager.instance.TakeDamage(BalancingConstant.EVADE_DAMAGE);
     }
 
     public void EvadeEventSuccess()
     {
         success = true;
-        SceneController.instance.currentEvents.Remove(ev);
+        StopVisuals();
     }
 }
