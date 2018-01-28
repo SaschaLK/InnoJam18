@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1985856194352850}
   m_IsPrefabParent: 1
+--- !u!1 &1057088831194234
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4369579510062776}
+  m_Layer: 0
+  m_Name: ContainerCrystal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1078641092107914
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,6 +73,9 @@ GameObject:
   - component: {fileID: 33899442861749146}
   - component: {fileID: 65092874609511288}
   - component: {fileID: 23531371930040156}
+  - component: {fileID: 114470097731191068}
+  - component: {fileID: 114174060427143404}
+  - component: {fileID: 114812893804874940}
   m_Layer: 0
   m_Name: LoadRocket
   m_TagString: Untagged
@@ -79,6 +97,7 @@ GameObject:
   - component: {fileID: 114595503292683172}
   - component: {fileID: 114469434579755262}
   - component: {fileID: 65429172431598832}
+  - component: {fileID: 114400043404088282}
   m_Layer: 0
   m_Name: RocketCrate
   m_TagString: Untagged
@@ -99,6 +118,21 @@ GameObject:
   - component: {fileID: 23374918599775274}
   m_Layer: 0
   m_Name: RudderRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1301601645733620
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4987717942170478}
+  m_Layer: 0
+  m_Name: ContainerProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,8 +183,27 @@ GameObject:
   - component: {fileID: 33904231702941670}
   - component: {fileID: 65366112375345140}
   - component: {fileID: 23616897194832468}
+  - component: {fileID: 114241923276501360}
+  - component: {fileID: 114641718505458358}
+  - component: {fileID: 114264052118921770}
+  - component: {fileID: 114773080201859824}
   m_Layer: 0
   m_Name: GreaseBarrel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1528271397391552
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4210740635517826}
+  m_Layer: 0
+  m_Name: Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,6 +290,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1793881449357962
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4930327021524340}
+  m_Layer: 0
+  m_Name: Container
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1835293490607064
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +351,10 @@ GameObject:
   - component: {fileID: 33246339404346052}
   - component: {fileID: 65968382459605262}
   - component: {fileID: 23802418885176738}
+  - component: {fileID: 114814447397181462}
+  - component: {fileID: 114209684727633984}
+  - component: {fileID: 114766984041035484}
+  - component: {fileID: 114438396567872092}
   m_Layer: 0
   m_Name: FuelBarrel
   m_TagString: Untagged
@@ -332,7 +404,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -30.86, y: 0.46, z: 13.98}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4930327021524340}
   m_Father: {fileID: 4976913299569462}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -362,6 +435,19 @@ Transform:
   m_Father: {fileID: 4748010394110256}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4210740635517826
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1528271397391552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4302342445984238}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4258998243311240
 Transform:
   m_ObjectHideFlags: 1
@@ -384,7 +470,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.37, y: 0.46, z: -1.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4210740635517826}
   m_Father: {fileID: 4976913299569462}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -413,6 +500,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4519851182669448}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4369579510062776
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1057088831194234}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.5, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4659554467710600}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4455896005905464
 Transform:
@@ -478,7 +578,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -13.53, y: 0.46, z: -0.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4987717942170478}
+  - {fileID: 4369579510062776}
   m_Father: {fileID: 4976913299569462}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -549,6 +651,19 @@ Transform:
   m_Father: {fileID: 4976913299569462}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4930327021524340
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1793881449357962}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4043851458483572}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4976913299569462
 Transform:
   m_ObjectHideFlags: 1
@@ -574,6 +689,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4987717942170478
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1301601645733620}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4659554467710600}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23048430479910084
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -1304,6 +1432,132 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &114174060427143404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155937627956464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3adb26b638c50214d95dd43305538c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: Cannon Loader
+  Highlight: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InternalDamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114209684727633984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963114540140516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3adb26b638c50214d95dd43305538c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: Barrel o' Fuel
+  Highlight: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InternalDamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114241923276501360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347873406904054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 126
+    i1: 25
+    i2: 98
+    i3: 104
+    i4: 54
+    i5: 205
+    i6: 116
+    i7: 179
+    i8: 104
+    i9: 74
+    i10: 186
+    i11: 253
+    i12: 242
+    i13: 86
+    i14: 116
+    i15: 174
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114264052118921770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347873406904054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0331101aa0b8f0b47becc026b239478f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateInput: 0
+  StateOutput: 3
+  Container: {fileID: 0}
+  OnBucket:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: BucketEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114400043404088282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1257091829132764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdc9552b3dd026a48bdb1785a46734f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114438396567872092
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963114540140516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3043213d10484d2458fa876077857233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114469434579755262
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1317,6 +1571,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 114978747301181878, guid: 25782c165c3c42146a325866984fd834, type: 2}
   MaxCount: 1
+--- !u!114 &114470097731191068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155937627956464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 126
+    i1: 25
+    i2: 98
+    i3: 104
+    i4: 54
+    i5: 205
+    i6: 116
+    i7: 179
+    i8: 104
+    i9: 74
+    i10: 186
+    i11: 253
+    i12: 242
+    i13: 86
+    i14: 116
+    i15: 174
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!114 &114548666626164640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1361,7 +1647,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: Rocket Crate
-  health: 100
   Highlight: 0
   OnInteract:
     m_PersistentCalls:
@@ -1377,3 +1662,106 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114641718505458358
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347873406904054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3adb26b638c50214d95dd43305538c5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: Barrel o' Grease
+  Highlight: 0
+  OnInteract:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InteractEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: InternalDamageEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114766984041035484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963114540140516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0331101aa0b8f0b47becc026b239478f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StateInput: 0
+  StateOutput: 2
+  Container: {fileID: 0}
+  OnBucket:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: BucketEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &114773080201859824
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1347873406904054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3043213d10484d2458fa876077857233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114812893804874940
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1155937627956464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8ab885d4a112ba4583dcbea91b37096, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Container: {fileID: 0}
+  Projectile: {fileID: 0}
+  Crystal: {fileID: 0}
+  UsageRadius: 3
+--- !u!114 &114814447397181462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1963114540140516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 126
+    i1: 25
+    i2: 98
+    i3: 104
+    i4: 54
+    i5: 205
+    i6: 116
+    i7: 179
+    i8: 104
+    i9: 74
+    i10: 186
+    i11: 253
+    i12: 242
+    i13: 86
+    i14: 116
+    i15: 174
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
