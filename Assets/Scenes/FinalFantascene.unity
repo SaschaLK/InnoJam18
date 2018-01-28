@@ -343,7 +343,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &17051917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -743,7 +742,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &57467988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2071,7 +2069,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &291143072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3231,7 +3228,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &543890743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3714,7 +3710,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &560099645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4221,7 +4216,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &643922601
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4589,7 +4583,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &675888623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4847,7 +4840,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &697263668
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5146,7 +5138,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &723828737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5834,7 +5825,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &860303244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6314,7 +6304,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &904200722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6800,6 +6789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1043859374}
   - component: {fileID: 1043859373}
+  - component: {fileID: 1043859375}
   m_Layer: 0
   m_Name: Player1FOW
   m_TagString: Untagged
@@ -6855,6 +6845,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1043859375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1043859372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1 &1093459584
 GameObject:
   m_ObjectHideFlags: 0
@@ -7238,7 +7260,7 @@ Prefab:
         type: 2}
       propertyPath: m_TargetTexture
       value: 
-      objectReference: {fileID: 1593562691}
+      objectReference: {fileID: 1625248745}
     - target: {fileID: 114506375682549034, guid: 83303fc7797b1394f9e35c921e22962c,
         type: 2}
       propertyPath: outlineShaderMaterial
@@ -7681,7 +7703,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &1242937827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8759,7 +8780,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &1440534304
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9415,7 +9435,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &1535384536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9673,7 +9692,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-  KeepLayer: 0
 --- !u!114 &1558833496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9831,6 +9849,37 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3afe1746525a0d147801c9dcfe978ea2, type: 2}
   m_IsPrefabParent: 0
+--- !u!84 &1625248745
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 467
+  m_Height: 327
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 0
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &1629073267 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1769191586779122, guid: f18b2ec43038a49aba9c414e9f988b50,
@@ -10129,15 +10178,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1067533589128022, guid: cbb143c7a52aa439baf2a7b8d96b3d54, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1265319643927102, guid: cbb143c7a52aa439baf2a7b8d96b3d54, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1195215859464346, guid: cbb143c7a52aa439baf2a7b8d96b3d54, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cbb143c7a52aa439baf2a7b8d96b3d54, type: 2}
@@ -11012,6 +11061,37 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!84 &2019863004
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 467
+  m_Height: 327
+  m_AntiAliasing: 1
+  m_DepthFormat: 1
+  m_ColorFormat: 0
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 1
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &2026709526
 GameObject:
   m_ObjectHideFlags: 0
@@ -11555,6 +11635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2102235788}
   - component: {fileID: 2102235787}
+  - component: {fileID: 2102235789}
   m_Layer: 0
   m_Name: Player2FOW
   m_TagString: Untagged
@@ -11594,6 +11675,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2102235789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102235786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 0
+    i1: 0
+    i2: 0
+    i3: 0
+    i4: 0
+    i5: 0
+    i6: 0
+    i7: 0
+    i8: 0
+    i9: 0
+    i10: 0
+    i11: 0
+    i12: 0
+    i13: 0
+    i14: 0
+    i15: 0
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!1001 &2116376045
 Prefab:
   m_ObjectHideFlags: 0
