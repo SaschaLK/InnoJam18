@@ -29,7 +29,7 @@ public sealed class InteractiveComponent : NetworkBehaviour {
         TakeDamage(health);
     }
 
-        public void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         if (!isServer) return;
         health -= damage;
@@ -54,6 +54,7 @@ public sealed class InteractiveComponent : NetworkBehaviour {
     public void RpcTakeDamage(float damage)
     {
         ScreenShakeController.Instance.Trigger(transform, 1f, damage / 200);
+        OnDamage.Invoke(damage);
     }
 
     [Command]
@@ -94,9 +95,23 @@ public sealed class InteractiveComponent : NetworkBehaviour {
     /// </summary>
     /// <param name="damage"></param>
     public void InflictDamage(float damage) {
-        Debug.Log(this.name + " is damaged by " + damage);
-        
-        OnDamage.Invoke(damage);
+        if (isServer) {
+            health -= damage;
+        }
+        CmdInflictDamage(gameObject, damage);
+    }
+
+    [Command]
+    public void CmdInflictDamage(GameObject selfObj, float damage) {
+        RpcInflictDamage(selfObj, damage);
+    }
+
+    [ClientRpc]
+    public void RpcInflictDamage(GameObject selfObj, float damage) {
+        InteractiveComponent self = selfObj.GetComponent<InteractiveComponent>();
+        Debug.Log(self.name + " is damaged by " + damage);
+
+        self.OnDamage.Invoke(damage);
     }
 
     private void Awake() {
