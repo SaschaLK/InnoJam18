@@ -338,6 +338,13 @@ ModelImporter:
     4300118: turbine
     4300120: ship_outer
     4300122: propeller
+    6400000: floor
+    6400002: glass
+    6400004: meshFloor
+    6400006: propeller
+    6400008: ship_outer
+    6400010: ship_wall
+    6400012: turbine
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -375,7 +382,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 5
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
