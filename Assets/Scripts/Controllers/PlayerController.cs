@@ -136,10 +136,6 @@ public class PlayerController : NetworkBehaviour {
                 continue;
             }
 
-            RaycastHit hit;
-            if (Physics.Raycast(interactivePos3 + new Vector3(0f, -0.8f, 0f), (interactivePos3 - pos3).normalized, out hit) && hit.collider != interactives[i])
-                continue;
-
             closestDist = dist;
             closest = interactive;
         }
@@ -389,7 +385,32 @@ public class PlayerController : NetworkBehaviour {
         Gizmos.DrawWireSphere(transform.position, UsageRadius);
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + transform.right * UsageRadius);
+        Gizmos.color = Color.yellow;
+        float ground = 0.3f;
+        Gizmos.DrawLine(
+            new Vector3(
+                transform.position.x,
+                ground,
+                transform.position.z
+            ),
+            new Vector3(
+                transform.position.x,
+                ground,
+                transform.position.z
+            ) + transform.right * UsageRadius);
         if (closest != null) {
+            Vector3 posGrounded = new Vector3(
+                transform.position.x,
+                ground,
+                transform.position.z
+            );
+            Vector3 interactivePosGrounded = new Vector3(
+                closest.transform.position.x,
+                ground,
+                closest.transform.position.z
+            );
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(posGrounded, posGrounded + (interactivePosGrounded - posGrounded).normalized * 2f);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, closestDist);
             Gizmos.DrawWireCube(closest.transform.position, closest.transform.lossyScale);
