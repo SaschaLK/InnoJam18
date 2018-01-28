@@ -14,5 +14,10 @@ public class Evade : GameEvent {
         this.OnSuccess.AddListener(handler.EvadeEventSuccess);
     }
 
+    public void TriggerOnComplete()
+    {
+        this.OnSuccess.Invoke();
+    }
+
 
 }

@@ -8,6 +8,8 @@ using UnityEngine.Networking;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerController : NetworkBehaviour {
 
+    public static PlayerController LocalPlayer;
+
     public float MovementSpeed = 10f;
     public float UsageRadius = 5f;
 
@@ -43,6 +45,10 @@ public class PlayerController : NetworkBehaviour {
     }
 
     private void Start() {
+        if (isLocalPlayer) {
+            LocalPlayer = this;
+        }
+
         PlayerNumber = transform.SetLayerByRegion();
     }
 

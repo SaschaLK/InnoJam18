@@ -5,7 +5,7 @@ using UnityEngine.Networking;
 
 public class TurbulenceEventHandler : NetworkBehaviour {
 
-    private float timeToEnd = 5f;
+    private float timeToEnd = BalancingConstant.TURBULENCES_TIME;
 
     Airplane airplane;
     private bool success = false;
@@ -76,7 +76,6 @@ public class TurbulenceEventHandler : NetworkBehaviour {
                 RpcEventFailed(rand);
                 stations.Remove(stations[rand]);
                 count--;
-
             }
         }
     }
@@ -84,8 +83,9 @@ public class TurbulenceEventHandler : NetworkBehaviour {
     [ClientRpc]
     private void RpcEventFailed(int rand)
     {
-        List<InteractiveComponent> stations = airplane.stations; 
-        ScreenShakeController.Instance.Trigger(stations[rand].transform, 1f, 1f);
+        List<InteractiveComponent> stations = airplane.stations;
+        if (stations.Count > rand) 
+            ScreenShakeController.Instance.Trigger(stations[rand].transform, 1f, 1f);
     }
 
     public void TurbulenceEventSuccess()

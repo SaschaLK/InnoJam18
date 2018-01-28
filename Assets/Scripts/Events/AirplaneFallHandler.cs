@@ -5,12 +5,12 @@ using UnityEngine.Networking;
 
 public class AirplaneFallHandler : NetworkBehaviour {
 
-    private float timeToFail = 20f; //change this value to control event difficulty
+    private float timeToFail = BalancingConstant.AIRPLANEFALL_TIME; //change this value to control event difficulty
 
     Airplane airplane;
 
     public AirplaneFall af;
-
+    private bool success = false;
     public ControlLamp fallLamb;
 
     public void BindEvent(AirplaneFall af)
@@ -25,31 +25,45 @@ public class AirplaneFallHandler : NetworkBehaviour {
         SceneController.instance.currentEvents.Add(af);
         Debug.Log("airplane is falling");
 
-        AirplaneFallCameraScript camScript = Camera.main.transform.GetComponent<AirplaneFallCameraScript>();
-
-        camScript.StartTiltUp();
-
+        // trigger camera animation here please!
+        // camera isfalling = true
         fallLamb.OnActivation.Invoke();
-
-        if(isServer)
+        success = false;
+        if (isServer)
             Invoke("FallDown", timeToFail);
     }
 
     private void FallDown()
     {
+        if (success) return;
         if (isServer)
             af.OnFailed.Invoke();
+    }
+
+    [Command]
+    private void CmdFallDown()
+    {
+        RpcFallDown();
+    }
+
+    [ClientRpc]
+    private void RpcFallDown()
+    {
+        fallLamb.OnDeactivation.Invoke();
+        GameManager.instance.EndGame();
     }
 
 	public void FallEventFailed()
     {
         SceneController.instance.currentEvents.Remove(af);
-        GameManager.instance.EndGame();
-        fallLamb.OnDeactivation.Invoke();
+        CmdFallDown();
     }
 
     public void FallEventSuccess()
     {
+        // trigger camera animation here please!
+        // camera isfalling = false
+        success = true;
         fallLamb.OnDeactivation.Invoke();
         SceneController.instance.currentEvents.Remove(af);
     }
