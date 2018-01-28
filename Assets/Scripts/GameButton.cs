@@ -8,6 +8,8 @@ public class GameButton : MonoBehaviour {
     [SerializeField]
     ControlLamp lamp;
 
+    public bool isForEvade = false;
+
     AudioSource audioSource;
 
     private void Awake()
@@ -18,7 +20,14 @@ public class GameButton : MonoBehaviour {
     public void PressButton()
     {
         Debug.Log(this.name + " pressed");
-        lamp.OnActivation.Invoke();
-        audioSource.Play();
+
+        if(isForEvade)  {
+            SceneController.instance.TriggerEvadeButtonPressOn();
+        } else
+        {
+            lamp.OnActivation.Invoke();
+            audioSource.Play();
+        }
     }
+
 }

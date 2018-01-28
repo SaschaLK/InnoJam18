@@ -5,13 +5,13 @@ using UnityEngine.Networking;
 
 public class TurbulenceEventHandler : NetworkBehaviour {
 
-    private float timeToEnd = 5f;
+    private float timeToEnd = BalancingConstant.TURBULENCES_TIME;
 
     Airplane airplane;
     private bool success = false;
     public TurbulenceEvent te;
 
-    public ControlLamp turbulenceLamb;
+    //public ControlLamp turbulenceLamb;
 
     public void BindEvent(TurbulenceEvent te)
     {
@@ -25,7 +25,7 @@ public class TurbulenceEventHandler : NetworkBehaviour {
         SceneController.instance.currentEvents.Add(te);
         Debug.Log("turbulences");
 
-        turbulenceLamb.OnActivation.Invoke();
+        //turbulenceLamb.OnActivation.Invoke();
 
         success = false;
         if(isServer)
@@ -57,7 +57,7 @@ public class TurbulenceEventHandler : NetworkBehaviour {
 
         if (isServer) CmdEventFailed();
         SceneController.instance.currentEvents.Remove(te);
-        turbulenceLamb.OnDeactivation.Invoke();
+        //turbulenceLamb.OnDeactivation.Invoke();
     }
 
     [Command]
@@ -76,7 +76,6 @@ public class TurbulenceEventHandler : NetworkBehaviour {
                 RpcEventFailed(rand);
                 stations.Remove(stations[rand]);
                 count--;
-
             }
         }
     }
@@ -84,14 +83,15 @@ public class TurbulenceEventHandler : NetworkBehaviour {
     [ClientRpc]
     private void RpcEventFailed(int rand)
     {
-        List<InteractiveComponent> stations = airplane.stations; 
-        ScreenShakeController.Instance.Trigger(stations[rand].transform, 1f, 1f);
+        List<InteractiveComponent> stations = airplane.stations;
+        if (stations.Count > rand) 
+            ScreenShakeController.Instance.Trigger(stations[rand].transform, 1f, 1f);
     }
 
     public void TurbulenceEventSuccess()
     {
         success = true;
-        turbulenceLamb.OnDeactivation.Invoke();
+        //turbulenceLamb.OnDeactivation.Invoke();
         SceneController.instance.currentEvents.Remove(te);
     }
 }
