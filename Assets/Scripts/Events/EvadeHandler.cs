@@ -11,8 +11,6 @@ public class EvadeHandler : NetworkBehaviour {
     private bool success = false;
     public Evade ev;
 
-    public ControlLamp evadeLamp;
-
     public void BindEvent(Evade ev)
     {
         this.ev = ev;
@@ -25,7 +23,6 @@ public class EvadeHandler : NetworkBehaviour {
         SceneController.instance.currentEvents.Add(ev);
         Debug.Log("evade right");
 
-        evadeLamp.OnActivation.Invoke();
         success = false;
         if (isServer)
             Invoke("FallDown", timeToFail);
@@ -54,13 +51,11 @@ public class EvadeHandler : NetworkBehaviour {
     {
         SceneController.instance.currentEvents.Remove(ev);
         GameManager.instance.TakeDamage(2f);
-        evadeLamp.OnDeactivation.Invoke();
     }
 
     public void EvadeEventSuccess()
     {
         success = true;
-        evadeLamp.OnDeactivation.Invoke();
         SceneController.instance.currentEvents.Remove(ev);
     }
 }
