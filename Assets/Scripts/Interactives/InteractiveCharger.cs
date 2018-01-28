@@ -6,6 +6,8 @@ using UnityEngine.Networking;
 public class InteractiveCharger : InteractiveBase
 {
 
+    protected string _DisplayName;
+
     public string ChargingName;
     public float ChargePerSecond = 3f;
 
@@ -15,6 +17,7 @@ public class InteractiveCharger : InteractiveBase
 
     protected override void Awake() {
         base.Awake();
+        _DisplayName = interactive.DisplayName;
 
         if (Container == null)
             Container = GetComponent<InteractiveItemContainer>();
@@ -31,6 +34,12 @@ public class InteractiveCharger : InteractiveBase
     }
 
     public void Update() {
+        if (Charging != null) {
+            interactive.DisplayName = _DisplayName + "\n(" + Charging.item.interactive.Health + " %)";
+        } else {
+            interactive.DisplayName = _DisplayName;
+        }
+
         // only run this update on the server, with authority.
         // health is synchronized via a SyncVar
         if (!isServer) return;

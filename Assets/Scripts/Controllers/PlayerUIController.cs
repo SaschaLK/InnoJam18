@@ -55,6 +55,9 @@ public class PlayerUIController : MonoBehaviour {
     }
 
     public void ShowText(string text) {
+        if (visibleMinigame)
+            return;
+
         TooltipText.enabled = true;
         if (TooltipText.text != text)
             Group.alpha = 0f;

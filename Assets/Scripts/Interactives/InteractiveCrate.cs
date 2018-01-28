@@ -38,7 +38,7 @@ public class InteractiveCrate : InteractiveBase {
     public void CmdGiveItem(GameObject crate, GameObject player) {
         ItemComponent item = Instantiate(Prefab);
         NetworkServer.Spawn(item.gameObject);
-        crate.GetComponent<InteractiveCrate>().RpcGiveItem(player, item.gameObject);
+        RpcGiveItem(player, item.gameObject);
     }
 
     [ClientRpc]

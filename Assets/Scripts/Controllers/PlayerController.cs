@@ -215,7 +215,7 @@ public class PlayerController : NetworkBehaviour {
     [Command]
     public void CmdPlayerInteract(GameObject player, GameObject interac)
     {
-        player.GetComponent<PlayerController>().RpcInteract(interac);
+        RpcInteract(interac);
     }
 
     [ClientRpc]
@@ -253,7 +253,7 @@ public class PlayerController : NetworkBehaviour {
     [Command]
     public void CmdPlayerPickUp(GameObject player, GameObject item)
     {
-        player.GetComponent<PlayerController>().RpcPickupItem(item);
+        RpcPickupItem(item);
     }
 
     [ClientRpc]
@@ -307,7 +307,7 @@ public class PlayerController : NetworkBehaviour {
     [Command]
     public void CmdDropItem(GameObject player)
     {
-        player.GetComponent<PlayerController>().RpcDropItem();
+        RpcDropItem();
     }
 
     [ClientRpc]
@@ -366,7 +366,7 @@ public class PlayerController : NetworkBehaviour {
     [Command]
     public void CmdUseItem(GameObject player, GameObject item)
     {
-        player.GetComponent<PlayerController>().RpcUseItem(item);
+        RpcUseItem(item);
     }
 
     [ClientRpc]
@@ -410,7 +410,7 @@ public class PlayerController : NetworkBehaviour {
     [Command]
     public void CmdUseItemWith(GameObject player, GameObject item, GameObject with)
     {
-        player.GetComponent<PlayerController>().RpcUseItemWith(item, with);
+        RpcUseItemWith(item, with);
     }
 
     [ClientRpc]

@@ -123,7 +123,7 @@ public class InteractiveItemContainer : InteractiveBase {
     [Command]
     public void CmdPickupItem(GameObject station, int ci, GameObject interac)
     {
-        station.GetComponent<InteractiveItemContainer>().RpcPickupItem(ci, interac);
+        RpcPickupItem(ci, interac);
     }
 
     [ClientRpc]
@@ -168,7 +168,7 @@ public class InteractiveItemContainer : InteractiveBase {
     [Command]
     public void CmdDropItem(GameObject station, int ci)
     {
-        station.GetComponent<InteractiveItemContainer>().RpcDropItem(ci);
+        RpcDropItem(ci);
     }
 
     [ClientRpc]
