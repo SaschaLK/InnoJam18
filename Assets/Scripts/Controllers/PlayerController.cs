@@ -137,7 +137,7 @@ public class PlayerController : NetworkBehaviour {
             }
 
             RaycastHit hit;
-            if (Physics.Raycast(pos3, (pos3 - interactivePos3).normalized, out hit) && hit.collider != interactives[i])
+            if (Physics.Raycast(pos3 + new Vector3(0f, -0.75f, 0f), (pos3 - interactivePos3).normalized, out hit) && hit.collider != interactives[i])
                 continue;
 
             closestDist = dist;
@@ -191,7 +191,6 @@ public class PlayerController : NetworkBehaviour {
     {
         InteractiveComponent interactive = other.GetComponent<InteractiveComponent>();
        
-        interactive.OnInteract.Invoke(this);
         ItemComponent item = interactive.GetComponent<ItemComponent>();
         if (item != null) {
             // Don't run minigames when picking up an item.
@@ -228,7 +227,10 @@ public class PlayerController : NetworkBehaviour {
     [ClientRpc]
     public void RpcPickupItem(GameObject other)
     {
-        ItemComponent item = other.GetComponent<ItemComponent>();
+        LocalPickupItem(other.GetComponent<ItemComponent>());
+    }
+
+    public void LocalPickupItem(ItemComponent item) {
         ItemComponent prevItem = Item;
 
         if (prevItem != null) {
@@ -252,8 +254,7 @@ public class PlayerController : NetworkBehaviour {
             collider.enabled = false;
 
         NetworkTransform ntrans = Item.GetComponent<NetworkTransform>();
-        if (ntrans != null)
-        {
+        if (ntrans != null) {
             ntrans.enabled = false;
         }
 
