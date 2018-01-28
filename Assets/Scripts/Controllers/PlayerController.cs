@@ -106,6 +106,8 @@ public class PlayerController : NetworkBehaviour {
         for (int i = 0; i < interactives.Length; i++) {
             InteractiveComponent interactive = interactives[i].GetComponent<InteractiveComponent>();
             if (interactive == null)
+                interactive = interactives[i].GetComponentInParent<InteractiveComponent>();
+            if (interactive == null)
                 continue;
             Vector3 interactivePos3 = interactive.transform.position;
             Vector2 interactivePos = interactivePos3.XZ();
@@ -242,12 +244,13 @@ public class PlayerController : NetworkBehaviour {
         Item.transform.localPosition = Item.HoldOffset;
         Item.transform.localRotation = Item.HoldRotation;
 
-        Rigidbody body = Item.GetComponent<Rigidbody>();
-        if (body != null)
-            Destroy(body);
-        Collider collider = Item.GetComponent<Collider>();
-        if (collider != null)
+        Collider collider = Item.GetComponentInChildren<Collider>();
+        if (collider != null) {
             collider.enabled = false;
+            Rigidbody body = collider.GetComponent<Rigidbody>();
+            if (body != null)
+                Destroy(body);
+        }
 
         NetworkTransform ntrans = Item.GetComponent<NetworkTransform>();
         if (ntrans != null) {
@@ -291,10 +294,11 @@ public class PlayerController : NetworkBehaviour {
             ntrans.enabled = true;
         }
 
-        Item.gameObject.AddComponent<Rigidbody>();
-        Collider collider = Item.GetComponent<Collider>();
-        if (collider != null)
+        Collider collider = Item.GetComponentInChildren<Collider>();
+        if (collider != null) {
             collider.enabled = true;
+            collider.gameObject.AddComponent<Rigidbody>();
+        }
 
         Item = null;
     }

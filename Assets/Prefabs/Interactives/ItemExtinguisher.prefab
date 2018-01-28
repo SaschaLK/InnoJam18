@@ -11,6 +11,23 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1977650529564500}
   m_IsPrefabParent: 1
+--- !u!1 &1969098649691670
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4995403920533560}
+  - component: {fileID: 33241446810404908}
+  - component: {fileID: 23328236351956962}
+  m_Layer: 0
+  m_Name: fireEx
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1977650529564500
 GameObject:
   m_ObjectHideFlags: 0
@@ -19,9 +36,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4531563522778942}
-  - component: {fileID: 33588711417985312}
-  - component: {fileID: 65664021729458566}
-  - component: {fileID: 23967191334692656}
   - component: {fileID: 54702688124523592}
   - component: {fileID: 114134598288542002}
   - component: {fileID: 114602906977390326}
@@ -33,6 +47,7 @@ GameObject:
   - component: {fileID: 114320809690258070}
   - component: {fileID: 114734741677388364}
   - component: {fileID: 114536551320911520}
+  - component: {fileID: 136004953711045790}
   m_Layer: 8
   m_Name: ItemExtinguisher
   m_TagString: Untagged
@@ -47,18 +62,32 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977650529564500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 4}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4995403920533560}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23967191334692656
+--- !u!4 &4995403920533560
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1969098649691670}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -0, y: -0.5, z: 0}
+  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_Children: []
+  m_Father: {fileID: 4531563522778942}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23328236351956962
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1977650529564500}
+  m_GameObject: {fileID: 1969098649691670}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -67,7 +96,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: b692f859ddbd340a99241d2dfe235af6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -75,7 +104,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
@@ -87,13 +116,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33588711417985312
+--- !u!33 &33241446810404908
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1977650529564500}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_GameObject: {fileID: 1969098649691670}
+  m_Mesh: {fileID: 4300000, guid: 787d48f8e9fe041b89124cd20468517b, type: 3}
 --- !u!54 &54702688124523592
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -109,18 +138,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65664021729458566
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1977650529564500}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114134598288542002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,7 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: The Extinguisher Of AAHHH FLAMES!1!!
-  health: 100
   Highlight: 0
   OnInteract:
     m_PersistentCalls:
@@ -304,3 +320,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: Fire
+--- !u!136 &136004953711045790
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1977650529564500}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
