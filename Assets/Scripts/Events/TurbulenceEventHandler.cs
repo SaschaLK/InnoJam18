@@ -11,7 +11,7 @@ public class TurbulenceEventHandler : NetworkBehaviour {
     private bool success = false;
     public TurbulenceEvent te;
 
-    public ControlLamp turbulenceLamb;
+    public EnvironmentUIController evc;
 
     public void BindEvent(TurbulenceEvent te)
     {
@@ -25,7 +25,7 @@ public class TurbulenceEventHandler : NetworkBehaviour {
         SceneController.instance.currentEvents.Add(te);
         Debug.Log("turbulences");
 
-        if (turbulenceLamb != null) turbulenceLamb.OnActivation.Invoke();
+        evc.toggleBlitz();
 
         success = false;
         if(isServer)
@@ -83,8 +83,7 @@ public class TurbulenceEventHandler : NetworkBehaviour {
     [ClientRpc]
     private void RpcEventFailed(int rand)
     {
-        if(turbulenceLamb != null)
-            turbulenceLamb.OnDeactivation.Invoke();
+        evc.toggleBlitz();
         List<InteractiveComponent> stations = airplane.stations;
         if (stations.Count > rand) 
             ScreenShakeController.Instance.Trigger(stations[rand].transform, 1f, 1f);
@@ -93,7 +92,7 @@ public class TurbulenceEventHandler : NetworkBehaviour {
     public void TurbulenceEventSuccess()
     {
         success = true;
-        if (turbulenceLamb != null) turbulenceLamb.OnDeactivation.Invoke();
+        evc.toggleBlitz();
         SceneController.instance.currentEvents.Remove(te);
     }
 }

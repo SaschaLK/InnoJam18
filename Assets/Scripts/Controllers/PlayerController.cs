@@ -50,6 +50,8 @@ public class PlayerController : NetworkBehaviour {
             
         }
 
+        GameObject.Find("NetworkManager").GetComponent<NetworkManagerHUD>().enabled = false;
+
         GameObject model = this.transform.Find(isServer ? "Model2" : "Model").gameObject;
         model.SetActive(false);
 
