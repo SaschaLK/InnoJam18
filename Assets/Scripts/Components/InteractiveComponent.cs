@@ -53,7 +53,7 @@ public sealed class InteractiveComponent : NetworkBehaviour {
     [ClientRpc]
     public void RpcTakeDamage(float damage)
     {
-        ScreenShakeController.Instance.Trigger(transform, 1f, damage / 200);
+        ScreenShakeController.Instance.Trigger(transform, 1f, damage / 140);
     }
 
     [Command]
