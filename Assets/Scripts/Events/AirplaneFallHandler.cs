@@ -27,7 +27,7 @@ public class AirplaneFallHandler : NetworkBehaviour {
 
         // trigger camera animation here please!
         // camera isfalling = true
-        //Camera.main.GetComponent<A>
+        Camera.main.GetComponent<Animator>().SetBool("isFalling", true);
         fallLamb.OnActivation.Invoke();
         success = false;
         if (isServer)
@@ -64,6 +64,7 @@ public class AirplaneFallHandler : NetworkBehaviour {
     {
         // trigger camera animation here please!
         // camera isfalling = false
+        Camera.main.GetComponent<Animator>().SetBool("isFalling", false);
         success = true;
         fallLamb.OnDeactivation.Invoke();
         SceneController.instance.currentEvents.Remove(af);

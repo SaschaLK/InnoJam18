@@ -103,7 +103,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: CameraTiltDown
-  m_Speed: 1
+  m_Speed: 0.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101836089978230678}
@@ -129,7 +129,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: CameraTiltUp
-  m_Speed: 1
+  m_Speed: 0.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101941666092730802}
@@ -187,7 +187,7 @@ AnimatorStateMachine:
     m_Position: {x: 492, y: 72, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102143519724690596}
-    m_Position: {x: 360.33734, y: 196.23227, z: 0}
+    m_Position: {x: 360, y: 192, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102894745247089918}
     m_Position: {x: 216, y: 72, z: 0}

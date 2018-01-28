@@ -85,6 +85,8 @@ public class SceneController : NetworkBehaviour {
     private void TriggerRandomEvent()   {
         if (!isServer) return;
         Debug.Log("TRIGGER RANDOM");
+        CmdTriggerAirplaneFall();
+        return;
 
         float rand = Random.Range(0, 100);
         if (rand <= 10) {

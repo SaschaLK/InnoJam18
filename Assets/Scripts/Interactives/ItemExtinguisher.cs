@@ -17,7 +17,7 @@ public class ItemExtinguisher : ItemBase {
     }
 
     public override bool CanUse(PlayerController player) {
-        return false; // Can only be used with something else.
+        return true; // Can only be used with something else.
     }
 
     public override bool CanUseWith(PlayerController player, InteractiveComponent with) {

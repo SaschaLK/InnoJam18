@@ -165,6 +165,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: DestroyEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  KeepLayer: 0
 --- !u!114 &114320809690258070
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,13 +211,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Vol: 1
-  ClipPickup: {fileID: 0}
+  ClipPickup: {fileID: 8300000, guid: f2d7b1d99f1270843be4419936e977c1, type: 3}
   ClipPickupVol: 0.5
-  ClipDrop: {fileID: 0}
+  ClipDrop: {fileID: 8300000, guid: 38b88375b23b3e04189f49c3103f133d, type: 3}
   ClipDropVol: 0.5
-  ClipUse: {fileID: 0}
+  ClipUse: {fileID: 8300000, guid: d39c1f86f92f1e848830da17ac84c629, type: 3}
   ClipUseVol: 0.5
-  ClipUseWith: {fileID: 0}
+  ClipUseWith: {fileID: 8300000, guid: d39c1f86f92f1e848830da17ac84c629, type: 3}
   ClipUseWithVol: 0.5
   Source: {fileID: 0}
 --- !u!114 &114602906977390326
