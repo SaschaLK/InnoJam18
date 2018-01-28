@@ -49,7 +49,6 @@ public class SceneController : NetworkBehaviour {
         if (!isServer) return;
 
         timer += Time.deltaTime;
-        Debug.Log("UPDATE");
         float difficultyIncrease = 0;
 
         // increase difficulty every 10 seconds
@@ -67,19 +66,21 @@ public class SceneController : NetworkBehaviour {
     private void TriggerRandomEvent()   {
         if (!isServer) return;
         Debug.Log("TRIGGER RANDOM");
+        //TODO: DEBUG
         float rand = Random.Range(0, 100);
-        if(rand <= 10) {
+        if (rand <= 10) {
             CmdTriggerTurbulenceEvent();
+            return;
 
         } else if(rand <= 30) {
             //DO NOTHING FOR NOW
-
+            return;
         } else if (rand <= 50) {
             CmdTriggerEnemyApproach();
-
+            return;
         } else if(rand <= 70) {
             CmdTriggerAirplaneFall();
-
+            return;
         } else {
             CmdTriggerEvade();
         }

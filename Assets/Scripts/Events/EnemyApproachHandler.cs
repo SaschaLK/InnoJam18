@@ -48,8 +48,13 @@ public class EnemyApproachHandler : NetworkBehaviour {
         stations[rand].TakeFatalDamage();
 
         invokeIterations--;
-        if(invokeIterations > 0)
+        if (invokeIterations > 0)
+        {
             Invoke("CmdAttackShip", timeToFail / 4);
+        }else
+        {
+            ea.OnFailed.Invoke();
+        }
     }
     
 	public void EnemyEventFailed()
