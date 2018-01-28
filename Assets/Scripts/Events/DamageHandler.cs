@@ -14,15 +14,7 @@ public class DamageHandler : MonoBehaviour {
 
     public void DoDamage(float damage)
     {
-        interactive.health -= damage;
-
-        ScreenShakeController.Instance.Trigger(interactive.transform, 1f, damage/200);
-
-        if (interactive.health <= 0)
-        {
-            interactive.health = 0f;
-            interactive.OnDestroy.Invoke();
-        }
+        interactive.TakeDamage(damage);
     }
 
     public void DoDestroy()
@@ -30,7 +22,7 @@ public class DamageHandler : MonoBehaviour {
         if (broken == null)
         {
             Debug.Log("BOOOM!!!");
-            SceneController.instance.airplane.OnDamage.Invoke(1f);
+            GameManager.instance.TakeDamage(1f);
             
             broken = Instantiate(Resources.Load<GameObject>("Broken"), this.transform.position, Quaternion.identity, this.transform);
         }

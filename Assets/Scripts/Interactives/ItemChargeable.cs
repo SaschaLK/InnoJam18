@@ -12,6 +12,11 @@ public class ItemChargeable : ItemHandler {
         item.CanUseWith = CanUseWith;
     }
 
+    public void ChargeUp(float charge)
+    {
+        this.GetComponent<InteractiveComponent>().ChargeUp(charge);
+    }
+
     public override void OnUseWith(InteractiveComponent with) {
         InteractiveCharger charger = with.GetComponent<InteractiveCharger>();
         if (charger == null)

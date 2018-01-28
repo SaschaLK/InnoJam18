@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class AirplaneFallHandler : MonoBehaviour {
+public class AirplaneFallHandler : NetworkBehaviour {
 
     private float timeToFail = 20f; //change this value to control event difficulty
 
@@ -26,12 +27,14 @@ public class AirplaneFallHandler : MonoBehaviour {
 
         fallLamb.OnActivation.Invoke();
 
-        Invoke("FallDown", timeToFail);
+        if(isServer)
+            Invoke("FallDown", timeToFail);
     }
 
     private void FallDown()
     {
-        af.OnFailed.Invoke();
+        if (isServer)
+            af.OnFailed.Invoke();
     }
 
 	public void FallEventFailed()

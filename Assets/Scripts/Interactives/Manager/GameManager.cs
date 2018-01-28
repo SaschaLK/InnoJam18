@@ -7,7 +7,39 @@ public class GameManager : NetworkBehaviour {
 
 	public static GameManager instance;
 
-	private void Awake()
+    [SyncVar]
+    private float hitPoints = 10;
+
+    public void TakeDamage(float dmg)
+    {
+        if (!isServer) return;
+        hitPoints -= dmg;
+        CmdTakeDamage(dmg);
+
+        Debug.Log("WE TOOK DAMAGE: " + dmg);
+
+        if (hitPoints <= 0)
+            GameManager.instance.EndGame();
+    }
+
+    public void TakeDamageInRange(float min, float max)
+    {
+        TakeDamage(Random.Range(5, 10));
+    }
+
+    [Command]
+    public void CmdTakeDamage(float damage)
+    {
+        RpcTakeDamageFeedback(damage);
+    }
+
+    [ClientRpc]
+    public void RpcTakeDamageFeedback(float damage)
+    {
+        ScreenShakeController.Instance.Trigger(Camera.main.transform, 0.5f, damage);
+    }
+
+    private void Awake()
 	{
 		instance = this;
 	}

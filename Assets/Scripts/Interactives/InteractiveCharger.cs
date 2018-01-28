@@ -38,11 +38,7 @@ public class InteractiveCharger : InteractiveBase
         if (Charging == null)
             return;
 
-        if (Charging.item.interactive.health < 0f)
-            Charging.item.interactive.health = 0f;
-        Charging.item.interactive.health += ChargePerSecond * Time.deltaTime;
-        if (Charging.item.interactive.health > 100f)
-            Charging.item.interactive.health = 100f;
+        Charging.ChargeUp(ChargePerSecond * Time.deltaTime);
     }
 
     public override bool CanMinigame(PlayerController player, InteractiveComponent with) {

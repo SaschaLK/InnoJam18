@@ -10,7 +10,7 @@ public class SceneController : NetworkBehaviour {
     private Camera gameCamera;
 
     public Airplane airplane;
-
+    
     [SerializeField]
     ControlLamp sinkingLamp;
 
@@ -20,11 +20,12 @@ public class SceneController : NetworkBehaviour {
     [SerializeField]
     ControlLamp evadeRightLamp;
 
-    private float minEventTime = 10f;
-    private float maxEventTime = 30f;
+    private float minEventTime = 5f;
+    private float maxEventTime = 12f;
 
     private float timer;
     private float timeEvent;
+    
 
     public bool evade = true;
 
@@ -32,14 +33,14 @@ public class SceneController : NetworkBehaviour {
 
     private void Awake()
     {
-        if (!isServer) return;
         instance = this;
         this.gameCamera = GetComponent<Camera>();
+        currentEvents = new List<GameEvent>();
     }
 
     void Start(){
         if (!isServer) return;
-
+        Debug.Log("START");
         timeEvent = Random.Range(minEventTime, maxEventTime);
     }
 
@@ -48,11 +49,11 @@ public class SceneController : NetworkBehaviour {
         if (!isServer) return;
 
         timer += Time.deltaTime;
-
+        Debug.Log("UPDATE");
         float difficultyIncrease = 0;
 
         // increase difficulty every 10 seconds
-        if(Mathf.FloorToInt(Time.timeSinceLevelLoad) % 10 == 0) {
+        if (Mathf.FloorToInt(Time.timeSinceLevelLoad) % 10 == 0) {
             difficultyIncrease++;
         }
 
@@ -65,7 +66,7 @@ public class SceneController : NetworkBehaviour {
 
     private void TriggerRandomEvent()   {
         if (!isServer) return;
-
+        Debug.Log("TRIGGER RANDOM");
         float rand = Random.Range(0, 100);
         if(rand <= 10) {
             CmdTriggerTurbulenceEvent();

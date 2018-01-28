@@ -5,16 +5,12 @@ using UnityEngine.Networking;
 
 public class Airplane : NetworkBehaviour {
 
-    [SyncVar]
-    public float hitPoints = 10;
 
     public List<InteractiveComponent> stations;
 
     public ControlLamp[] enemyLamps;
 
     public Transform enemyLampContainer;
-
-    public AirplaneDamageEvent OnDamage = new AirplaneDamageEvent();
 
     private void Awake()
     {
@@ -37,9 +33,4 @@ public class Airplane : NetworkBehaviour {
             lamp.OnDeactivation.Invoke();
         }
     }
-
-    private void CrashAirplane()
-	{
-		GameManager.instance.EndGame();
-	}
 }

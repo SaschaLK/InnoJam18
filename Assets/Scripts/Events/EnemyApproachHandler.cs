@@ -39,9 +39,10 @@ public class EnemyApproachHandler : NetworkBehaviour {
         if (success) return; // dont do damage after the players were successful
         List<InteractiveComponent> stations = airplane.stations;
 
-        int rand = Random.Range(0, stations.Count);
+        if (stations.Count == 0) return;
 
-        stations[rand].InflictDamage(stations[rand].health);
+        int rand = Random.Range(0, stations.Count);
+        stations[rand].TakeFatalDamage();
 
         invokeIterations--;
         if(invokeIterations > 0)

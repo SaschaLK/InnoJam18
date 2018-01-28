@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class EvadeLeftHandler : MonoBehaviour {
+public class EvadeLeftHandler : NetworkBehaviour {
 
     private float timeToFail = 20f; //change this value to control event difficulty
 
     Airplane airplane;
-
+    bool success = false;
     public EvadeLeft el;
 
     public ControlLamp evadeLeftLamb;
@@ -25,11 +26,26 @@ public class EvadeLeftHandler : MonoBehaviour {
         Debug.Log("evade left");
 
         evadeLeftLamb.OnActivation.Invoke();
-
-        Invoke("FallDown", timeToFail);
+        success = false;
+        if (isServer)
+            Invoke("FallDown", timeToFail);
     }
 
     private void FallDown()
+    {
+        if (success) return;
+        if (isServer)
+            CmdInvokeFailure();
+    }
+
+    [Command]
+    private void CmdInvokeFailure()
+    {
+        RpcInvolkeFailure();
+    }
+
+    [ClientRpc]
+    public void RpcInvolkeFailure()
     {
         el.OnFailed.Invoke();
     }
@@ -38,13 +54,15 @@ public class EvadeLeftHandler : MonoBehaviour {
     {
         SceneController.instance.currentEvents.Remove(el);
 
-        airplane.OnDamage.Invoke(2f);
+        if(GameManager.instance != null)
+            GameManager.instance.TakeDamage(2f);
 
         evadeLeftLamb.OnDeactivation.Invoke();
     }
 
     public void EvadeLeftEventSuccess()
     {
+        success = true;
         evadeLeftLamb.OnDeactivation.Invoke();
         SceneController.instance.currentEvents.Remove(el);
     }
