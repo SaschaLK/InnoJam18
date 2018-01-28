@@ -25,6 +25,10 @@ public class AirplaneFallHandler : NetworkBehaviour {
         SceneController.instance.currentEvents.Add(af);
         Debug.Log("airplane is falling");
 
+        AirplaneFallCameraScript camScript = Camera.main.transform.GetComponent<AirplaneFallCameraScript>();
+
+        camScript.StartTiltUp();
+
         fallLamb.OnActivation.Invoke();
 
         if(isServer)
