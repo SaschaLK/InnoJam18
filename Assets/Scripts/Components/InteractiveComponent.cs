@@ -29,7 +29,7 @@ public sealed class InteractiveComponent : NetworkBehaviour {
         TakeDamage(health);
     }
 
-        public void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         if (!isServer) return;
         health -= damage;
@@ -110,10 +110,8 @@ public sealed class InteractiveComponent : NetworkBehaviour {
         }
     }
 
-    public bool KeepLayer;
     private void Start() {
-        if (!KeepLayer)
-            transform.SetLayerByRegion();
+        transform.SetLayerByRegion();
     }
 
     private void LateUpdate() {

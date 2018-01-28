@@ -47,12 +47,25 @@ public class PlayerController : NetworkBehaviour {
     private void Start() {
         if (isLocalPlayer) {
             LocalPlayer = this;
+            
         }
+
+        GameObject model = this.transform.Find(isServer ? "Model2" : "Model").gameObject;
+        model.SetActive(false);
 
         PlayerNumber = transform.SetLayerByRegion();
     }
 
     void Update() {
+        // animate the player speed
+        GameObject model = this.transform.Find(isServer ? "Model" : "Model2").gameObject; 
+        if(model != null)
+        {
+            float speed = this.GetComponent<Rigidbody>().velocity.magnitude;
+            model.GetComponent<Animator>().SetFloat("speed", speed / 4);
+        }
+
+
         if (Locked || !isLocalPlayer)
             return;
 

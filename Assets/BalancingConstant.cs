@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class BalancingConstant : MonoBehaviour {
 
-    public static GameManager instance;
 
     public static float ENEMYAPPROACH_TIME = 20f;
     public static int ENEMYAPPROACH_ATTACKS = 3;
