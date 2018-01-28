@@ -137,7 +137,7 @@ public class PlayerController : NetworkBehaviour {
             }
 
             RaycastHit hit;
-            if (Physics.Raycast(pos3 + new Vector3(0f, -0.75f, 0f), (pos3 - interactivePos3).normalized, out hit) && hit.collider != interactives[i])
+            if (Physics.Raycast(interactivePos3 + new Vector3(0f, -0.8f, 0f), (interactivePos3 - pos3).normalized, out hit) && hit.collider != interactives[i])
                 continue;
 
             closestDist = dist;
