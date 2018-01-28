@@ -30,9 +30,11 @@ public class FogOfWar : MonoBehaviour {
 
         yield return new WaitForSeconds(delay);
 
-        if (PlayerController.LocalPlayer.PlayerNumber == PlayerNumber) {
+        if (PlayerController.LocalPlayer != null && PlayerController.LocalPlayer.PlayerNumber == PlayerNumber) {
             yield break;
         }
+
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraZoomer>().TriggerZoom();
 
         if (Glass != null)
             Destroy(Glass);

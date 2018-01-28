@@ -8,7 +8,14 @@ public class CameraZoomer : MonoBehaviour {
 
     void Start() {
         // TODO: Don't zoom on scene start, but zoom on round start!
+       
+    }
+    private bool hasStarted = false;
+    public void TriggerZoom()
+    {
+        if (hasStarted) return;
         Zoom();
+        hasStarted = true;
     }
 
     public void Zoom(float delay = 5f, float duration = 5f) {
