@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class LampHandler : MonoBehaviour {
 
-    private Light lamp;
+    private Light[] lamps;
 
     private void Awake()
     {
-        lamp = GetComponentInChildren<Light>();
-        lamp.enabled = false;
+        lamps = GetComponentsInChildren<Light>();
+        foreach(Light light in lamps)
+        {
+            light.enabled = false;
+        }
     }
 
     public void ActivateLamp()
@@ -19,8 +22,14 @@ public class LampHandler : MonoBehaviour {
 
     private IEnumerator LampLight()
     {
-        lamp.enabled = true;
+        foreach (Light light in lamps)
+        {
+            light.enabled = true;
+        }
         yield return new WaitForSeconds(2f);
-        lamp.enabled = false;
+        foreach (Light light in lamps)
+        {
+            light.enabled = false;
+        }
     }
 }
