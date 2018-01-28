@@ -29,6 +29,8 @@ public class PlayerController : NetworkBehaviour {
 
     public bool Locked;
 
+    public int PlayerNumber;
+
     void Awake() {
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
@@ -39,8 +41,12 @@ public class PlayerController : NetworkBehaviour {
 
         Locked = false;
     }
-	
-	void Update() {
+
+    private void Start() {
+        PlayerNumber = transform.SetLayerByRegion();
+    }
+
+    void Update() {
         if (Locked || !isLocalPlayer)
             return;
 
@@ -106,7 +112,16 @@ public class PlayerController : NetworkBehaviour {
         for (int i = 0; i < interactives.Length; i++) {
             InteractiveComponent interactive = interactives[i].GetComponent<InteractiveComponent>();
             if (interactive == null)
+                interactive = interactives[i].GetComponentInParent<InteractiveComponent>();
+            if (interactive == null)
                 continue;
+
+            string layer = LayerMask.LayerToName(interactive.gameObject.layer);
+            if (PlayerNumber == 1 && (layer == "Player 2" || layer == "Items 2"))
+                continue;
+            if (PlayerNumber == 2 && (layer == "Player 1" || layer == "Items 1"))
+                continue;
+
             Vector3 interactivePos3 = interactive.transform.position;
             Vector2 interactivePos = interactivePos3.XZ();
 
@@ -135,10 +150,6 @@ public class PlayerController : NetworkBehaviour {
             if (!canUse || dist > closestDist) {
                 continue;
             }
-
-            RaycastHit hit;
-            if (Physics.Raycast(pos3, (pos3 - interactivePos3).normalized, out hit) && hit.collider != interactives[i])
-                continue;
 
             closestDist = dist;
             closest = interactive;
@@ -191,7 +202,6 @@ public class PlayerController : NetworkBehaviour {
     {
         InteractiveComponent interactive = other.GetComponent<InteractiveComponent>();
        
-        interactive.OnInteract.Invoke(this);
         ItemComponent item = interactive.GetComponent<ItemComponent>();
         if (item != null) {
             // Don't run minigames when picking up an item.
@@ -228,7 +238,10 @@ public class PlayerController : NetworkBehaviour {
     [ClientRpc]
     public void RpcPickupItem(GameObject other)
     {
-        ItemComponent item = other.GetComponent<ItemComponent>();
+        LocalPickupItem(other.GetComponent<ItemComponent>());
+    }
+
+    public void LocalPickupItem(ItemComponent item) {
         ItemComponent prevItem = Item;
 
         if (prevItem != null) {
@@ -242,22 +255,24 @@ public class PlayerController : NetworkBehaviour {
         Item.Holder = this;
         Item.transform.parent = HoldingPoint;
         Item.transform.localPosition = Item.HoldOffset;
-        Item.transform.localRotation = Item.HoldRotation;
+        Item.transform.localEulerAngles = Item.HoldRotation;
 
-        Rigidbody body = Item.GetComponent<Rigidbody>();
-        if (body != null)
-            Destroy(body);
-        Collider collider = Item.GetComponent<Collider>();
-        if (collider != null)
+        Collider collider = Item.GetComponentInChildren<Collider>();
+        if (collider != null) {
             collider.enabled = false;
+            Rigidbody body = Item.GetComponent<Rigidbody>();
+            if (body != null)
+                Destroy(body);
+        }
 
         NetworkTransform ntrans = Item.GetComponent<NetworkTransform>();
-        if (ntrans != null)
-        {
+        if (ntrans != null) {
             ntrans.enabled = false;
         }
 
         item.OnPickup.Invoke();
+
+        item.transform.SetLayerDeep(LayerMask.NameToLayer("Player " + PlayerNumber));
     }
 
     /// <summary>
@@ -294,10 +309,13 @@ public class PlayerController : NetworkBehaviour {
             ntrans.enabled = true;
         }
 
-        Item.gameObject.AddComponent<Rigidbody>();
-        Collider collider = Item.GetComponent<Collider>();
-        if (collider != null)
+        Collider collider = Item.GetComponentInChildren<Collider>();
+        if (collider != null) {
             collider.enabled = true;
+            Item.gameObject.AddComponent<Rigidbody>();
+        }
+
+        Item.transform.SetLayerDeep(LayerMask.NameToLayer("Items " + PlayerNumber));
 
         Item = null;
     }
@@ -388,7 +406,32 @@ public class PlayerController : NetworkBehaviour {
         Gizmos.DrawWireSphere(transform.position, UsageRadius);
         Gizmos.color = Color.green;
         Gizmos.DrawLine(transform.position, transform.position + transform.right * UsageRadius);
+        Gizmos.color = Color.yellow;
+        float ground = 0.3f;
+        Gizmos.DrawLine(
+            new Vector3(
+                transform.position.x,
+                ground,
+                transform.position.z
+            ),
+            new Vector3(
+                transform.position.x,
+                ground,
+                transform.position.z
+            ) + transform.right * UsageRadius);
         if (closest != null) {
+            Vector3 posGrounded = new Vector3(
+                transform.position.x,
+                ground,
+                transform.position.z
+            );
+            Vector3 interactivePosGrounded = new Vector3(
+                closest.transform.position.x,
+                ground,
+                closest.transform.position.z
+            );
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(posGrounded, posGrounded + (interactivePosGrounded - posGrounded).normalized * 2f);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, closestDist);
             Gizmos.DrawWireCube(closest.transform.position, closest.transform.lossyScale);

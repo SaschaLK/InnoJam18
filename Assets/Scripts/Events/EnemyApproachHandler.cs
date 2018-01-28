@@ -13,6 +13,8 @@ public class EnemyApproachHandler : NetworkBehaviour {
 
     public EnemyApproach ea;
 
+    public AudioSource sirenAudio;
+
     public void BindEvent(EnemyApproach ea)
     {
         this.ea = ea;
@@ -31,6 +33,7 @@ public class EnemyApproachHandler : NetworkBehaviour {
             Invoke("CmdAttackShip", timeToFail / 4);
         }
 
+        sirenAudio.volume = 1;
         airplane.StartEnemyLamps();
     }
 
@@ -45,18 +48,25 @@ public class EnemyApproachHandler : NetworkBehaviour {
         stations[rand].TakeFatalDamage();
 
         invokeIterations--;
-        if(invokeIterations > 0)
+        if (invokeIterations > 0)
+        {
             Invoke("CmdAttackShip", timeToFail / 4);
+        }else
+        {
+            ea.OnFailed.Invoke();
+        }
     }
     
 	public void EnemyEventFailed()
     {
         SceneController.instance.currentEvents.Remove(ea);
+        sirenAudio.volume = 0;
         airplane.StopEnemyLamps();
     }
 
     public void EnemyEventSuccess()
     {
+        sirenAudio.volume = 0;
         airplane.StopEnemyLamps();
         success = true;
         SceneController.instance.currentEvents.Remove(ea);

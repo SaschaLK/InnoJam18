@@ -52,6 +52,8 @@ public class InteractiveItemContainer : InteractiveBase {
                 ItemComponent closest = null;
                 for (int i = 0; i < items.Length; i++) {
                     ItemComponent item = items[i].GetComponent<ItemComponent>();
+                    if (item == null)
+                        item = items[i].GetComponentInParent<ItemComponent>();
                     if (item == null || item.transform.parent != null || !IsValid(ci, item))
                         continue;
 
@@ -146,14 +148,15 @@ public class InteractiveItemContainer : InteractiveBase {
 
         item.transform.parent = Containers[ci];
         item.transform.localPosition = item.HoldOffset;
-        item.transform.localRotation = item.HoldRotation;
+        item.transform.localEulerAngles = item.HoldRotation;
 
-        Rigidbody body = item.GetComponent<Rigidbody>();
-        if (body != null)
-            Destroy(body);
-        Collider collider = item.GetComponent<Collider>();
-        if (collider != null)
+        Collider collider = item.GetComponentInChildren<Collider>();
+        if (collider != null) {
             collider.enabled = false;
+            Rigidbody body = item.GetComponent<Rigidbody>();
+            if (body != null)
+                Destroy(body);
+        }
 
         OnPickup.Invoke(ci, item);
     }
@@ -183,10 +186,11 @@ public class InteractiveItemContainer : InteractiveBase {
 
         item.transform.parent = null;
 
-        item.gameObject.AddComponent<Rigidbody>();
-        Collider collider = item.GetComponent<Collider>();
-        if (collider != null)
+        Collider collider = item.GetComponentInChildren<Collider>();
+        if (collider != null) {
             collider.enabled = true;
+            item.gameObject.AddComponent<Rigidbody>();
+        }
 
         Items[ci] = null;
     }

@@ -11,6 +11,24 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1742030735151242}
   m_IsPrefabParent: 1
+--- !u!1 &1105232203382608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4248058893026288}
+  - component: {fileID: 33185080959575570}
+  - component: {fileID: 23476240227309862}
+  - component: {fileID: 64552301178326892}
+  m_Layer: 8
+  m_Name: Stick_of_handling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1742030735151242
 GameObject:
   m_ObjectHideFlags: 0
@@ -19,16 +37,13 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4896445998526462}
-  - component: {fileID: 33067236768286480}
-  - component: {fileID: 65183745314226418}
-  - component: {fileID: 23450936559336624}
-  - component: {fileID: 54420207249620956}
   - component: {fileID: 114289672630411850}
   - component: {fileID: 114747835096109060}
   - component: {fileID: 114458879484175564}
   - component: {fileID: 114720432111694966}
   - component: {fileID: 114804898829900516}
   - component: {fileID: 114850736841674550}
+  - component: {fileID: 54617448760554082}
   m_Layer: 8
   m_Name: ItemStick
   m_TagString: Untagged
@@ -36,6 +51,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4248058893026288
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1105232203382608}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: -0, y: -0.5, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
+  m_Children: []
+  m_Father: {fileID: 4896445998526462}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4896445998526462
 Transform:
   m_ObjectHideFlags: 1
@@ -43,18 +71,19 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1742030735151242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11, y: 0, z: 4}
+  m_LocalPosition: {x: -9.235687, y: 0.5088553, z: -1.6143851}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4248058893026288}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23450936559336624
+--- !u!23 &23476240227309862
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1105232203382608}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +92,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e79b005c198924fbb828d9734bea8277, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -71,7 +100,7 @@ MeshRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_PreserveUVs: 1
+  m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
@@ -83,14 +112,14 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33067236768286480
+--- !u!33 &33185080959575570
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54420207249620956
+  m_GameObject: {fileID: 1105232203382608}
+  m_Mesh: {fileID: 4300000, guid: 416c739d9f7504d9fb17d67cb6d0318d, type: 3}
+--- !u!54 &54617448760554082
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -105,18 +134,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &65183745314226418
-BoxCollider:
+--- !u!64 &64552301178326892
+MeshCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1742030735151242}
+  m_GameObject: {fileID: 1105232203382608}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 416c739d9f7504d9fb17d67cb6d0318d, type: 3}
 --- !u!114 &114289672630411850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,7 +160,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: Stick Of Handling
-  health: 100
   Highlight: 0
   OnInteract:
     m_PersistentCalls:
