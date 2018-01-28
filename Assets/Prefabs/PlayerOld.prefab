@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114941038487018346}
   - component: {fileID: 114870687214161226}
   - component: {fileID: 225725196901151892}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: PlayerUIRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 224536502610211206}
   - component: {fileID: 222056177894283176}
   - component: {fileID: 114486839461329840}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: TooltipText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4395350230864850}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: HoldingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 224599339491955888}
   - component: {fileID: 222781363097239856}
   - component: {fileID: 114614542890388418}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 114039292108446634}
   - component: {fileID: 114195231573034530}
   - component: {fileID: 114620044007688074}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PlayerOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}

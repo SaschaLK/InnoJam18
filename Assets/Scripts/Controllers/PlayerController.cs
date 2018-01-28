@@ -29,6 +29,8 @@ public class PlayerController : NetworkBehaviour {
 
     public bool Locked;
 
+    public int PlayerNumber;
+
     void Awake() {
         collider = GetComponent<Collider>();
         rigidbody = GetComponent<Rigidbody>();
@@ -39,8 +41,12 @@ public class PlayerController : NetworkBehaviour {
 
         Locked = false;
     }
-	
-	void Update() {
+
+    private void Start() {
+        PlayerNumber = transform.SetLayerByRegion();
+    }
+
+    void Update() {
         if (Locked || !isLocalPlayer)
             return;
 
@@ -109,6 +115,13 @@ public class PlayerController : NetworkBehaviour {
                 interactive = interactives[i].GetComponentInParent<InteractiveComponent>();
             if (interactive == null)
                 continue;
+
+            string layer = LayerMask.LayerToName(interactive.gameObject.layer);
+            if (PlayerNumber == 1 && (layer == "Player 2" || layer == "Items 2"))
+                continue;
+            if (PlayerNumber == 2 && (layer == "Player 1" || layer == "Items 1"))
+                continue;
+
             Vector3 interactivePos3 = interactive.transform.position;
             Vector2 interactivePos = interactivePos3.XZ();
 
@@ -258,6 +271,8 @@ public class PlayerController : NetworkBehaviour {
         }
 
         item.OnPickup.Invoke();
+
+        item.transform.SetLayerDeep(LayerMask.NameToLayer("Player " + PlayerNumber));
     }
 
     /// <summary>
@@ -299,6 +314,8 @@ public class PlayerController : NetworkBehaviour {
             collider.enabled = true;
             Item.gameObject.AddComponent<Rigidbody>();
         }
+
+        Item.transform.SetLayerDeep(LayerMask.NameToLayer("Items " + PlayerNumber));
 
         Item = null;
     }

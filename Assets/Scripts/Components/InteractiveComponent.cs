@@ -110,6 +110,10 @@ public sealed class InteractiveComponent : NetworkBehaviour {
         }
     }
 
+    private void Start() {
+        transform.SetLayerByRegion();
+    }
+
     private void LateUpdate() {
         if (Outline != null) {
             Outline.enabled = Highlight;

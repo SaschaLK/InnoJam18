@@ -37,4 +37,8 @@ public sealed class ItemComponent : MonoBehaviour {
         interactive = GetComponent<InteractiveComponent>();
     }
 
+    private void Start() {
+        transform.SetLayerByRegion("Items");
+    }
+
 }
