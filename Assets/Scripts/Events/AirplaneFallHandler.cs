@@ -27,6 +27,7 @@ public class AirplaneFallHandler : NetworkBehaviour {
 
         // trigger camera animation here please!
         // camera isfalling = true
+        //Camera.main.GetComponent<A>
         fallLamb.OnActivation.Invoke();
         success = false;
         if (isServer)
