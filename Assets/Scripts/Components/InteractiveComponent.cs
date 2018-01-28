@@ -12,6 +12,7 @@ public sealed class InteractiveComponent : NetworkBehaviour {
 
     [SyncVar]
     private float health = 100;
+    public float Health { get { return health; } }
 
     public bool HealthLargerThan(float t)
     {
