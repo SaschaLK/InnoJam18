@@ -242,12 +242,12 @@ public class PlayerController : NetworkBehaviour {
         Item.Holder = this;
         Item.transform.parent = HoldingPoint;
         Item.transform.localPosition = Item.HoldOffset;
-        Item.transform.localRotation = Item.HoldRotation;
+        Item.transform.localEulerAngles = Item.HoldRotation;
 
         Collider collider = Item.GetComponentInChildren<Collider>();
         if (collider != null) {
             collider.enabled = false;
-            Rigidbody body = collider.GetComponent<Rigidbody>();
+            Rigidbody body = Item.GetComponent<Rigidbody>();
             if (body != null)
                 Destroy(body);
         }
@@ -297,7 +297,7 @@ public class PlayerController : NetworkBehaviour {
         Collider collider = Item.GetComponentInChildren<Collider>();
         if (collider != null) {
             collider.enabled = true;
-            collider.gameObject.AddComponent<Rigidbody>();
+            Item.gameObject.AddComponent<Rigidbody>();
         }
 
         Item = null;

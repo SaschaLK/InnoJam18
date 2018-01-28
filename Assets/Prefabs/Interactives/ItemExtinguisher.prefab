@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4995403920533560}
   - component: {fileID: 33241446810404908}
   - component: {fileID: 23328236351956962}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: fireEx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1977650529564500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0.32594427, y: 0.00000035762787, z: -1.8052936}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4995403920533560}

@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 4525038612704910}
   - component: {fileID: 33977477215626194}
   - component: {fileID: 23412379822562216}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Lord_Beardy_Bucket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1702311862153708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4688121, y: 0.00000023841858, z: -1.3056965}
+  m_LocalPosition: {x: 5.007141, y: 0.00000035762787, z: -1.8391786}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4525038612704910}

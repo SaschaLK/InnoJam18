@@ -307,9 +307,9 @@ MonoBehaviour:
   dithering:
     m_Enabled: 1
   monitors:
-    currentMonitorID: 0
+    currentMonitorID: 1
     refreshOnPlay: 0
-    histogramMode: 3
+    histogramMode: 4
     waveformExposure: 0.12
     waveformY: 0
     waveformR: 1

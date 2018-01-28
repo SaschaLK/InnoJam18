@@ -10,7 +10,7 @@ public sealed class ItemComponent : MonoBehaviour {
     public PlayerController Holder;
 
     public Vector3 HoldOffset;
-    public Quaternion HoldRotation;
+    public Vector3 HoldRotation;
 
     /// <summary>
     /// Invoked by PlayerController.PickupItem

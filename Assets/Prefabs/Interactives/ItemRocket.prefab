@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4163948729425212}
   - component: {fileID: 33041258448598606}
   - component: {fileID: 23838860657199998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rocketblend
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1938144013504398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -5.6047773, y: 0.30277923, z: -1.8054241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4163948729425212}

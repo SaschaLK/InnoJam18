@@ -148,12 +148,12 @@ public class InteractiveItemContainer : InteractiveBase {
 
         item.transform.parent = Containers[ci];
         item.transform.localPosition = item.HoldOffset;
-        item.transform.localRotation = item.HoldRotation;
+        item.transform.localEulerAngles = item.HoldRotation;
 
         Collider collider = item.GetComponentInChildren<Collider>();
         if (collider != null) {
             collider.enabled = false;
-            Rigidbody body = collider.GetComponent<Rigidbody>();
+            Rigidbody body = item.GetComponent<Rigidbody>();
             if (body != null)
                 Destroy(body);
         }
@@ -189,7 +189,7 @@ public class InteractiveItemContainer : InteractiveBase {
         Collider collider = item.GetComponentInChildren<Collider>();
         if (collider != null) {
             collider.enabled = true;
-            collider.gameObject.AddComponent<Rigidbody>();
+            item.gameObject.AddComponent<Rigidbody>();
         }
 
         Items[ci] = null;

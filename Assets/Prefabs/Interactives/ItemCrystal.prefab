@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 114371587023191994}
   - component: {fileID: 114156185258049426}
   - component: {fileID: 114006900227819252}
+  - component: {fileID: 54818796579055588}
   m_Layer: 8
   m_Name: ItemCrystal
   m_TagString: Untagged
@@ -45,8 +46,7 @@ GameObject:
   - component: {fileID: 33615556091478654}
   - component: {fileID: 23744313829104790}
   - component: {fileID: 64295955099100224}
-  - component: {fileID: 54480628125445628}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: crystal_of_doing_things
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1441696781388178}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4057254, y: 1.0339855, z: 0.0390549}
+  m_LocalPosition: {x: 2.9358737, y: 0.44875628, z: -2.029413}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4543470491151832}
@@ -121,12 +121,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1953074811790342}
   m_Mesh: {fileID: 4300000, guid: 39d803c6600de442f82bba36d63c0e83, type: 3}
---- !u!54 &54480628125445628
+--- !u!54 &54818796579055588
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1953074811790342}
+  m_GameObject: {fileID: 1441696781388178}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
