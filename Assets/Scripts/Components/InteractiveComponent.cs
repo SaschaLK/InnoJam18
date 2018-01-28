@@ -110,8 +110,10 @@ public sealed class InteractiveComponent : NetworkBehaviour {
         }
     }
 
+    public bool KeepLayer;
     private void Start() {
-        transform.SetLayerByRegion();
+        if (!KeepLayer)
+            transform.SetLayerByRegion();
     }
 
     private void LateUpdate() {
