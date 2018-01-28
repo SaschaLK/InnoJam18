@@ -24,7 +24,7 @@ public class InteractiveTransferStation : InteractiveBase {
     }
 
     public override bool CanInteract(PlayerController player) {
-        return true;
+        return player.Item != null;
     }
 
     public override void OnInteract(PlayerController player) {
