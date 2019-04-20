@@ -19,7 +19,17 @@ ModelImporter:
     3300002: module_ring
     4300000: module_ring
     4300002: module
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: module
+    second: {fileID: 2100000, guid: e3631ac610f0c48a1bb700535073aa1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: moduleRing
+    second: {fileID: 2100000, guid: 923f01387879c463ea70c60a5b2dc7f2, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -57,7 +67,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

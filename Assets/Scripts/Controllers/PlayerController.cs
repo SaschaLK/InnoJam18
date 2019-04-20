@@ -180,7 +180,7 @@ public class PlayerController : NetworkBehaviour {
         bool drop = Input.GetButtonDown("Fire2");
         if (closest != null) {
             closest.Highlight = true;
-            Tooltip.ShowText(closest.DisplayName);
+            Tooltip.ShowText(closest, closest.DisplayName);
             closestDist = Mathf.Pow(closestDist, 0.5f);
             if (use && !drop) {
                 if (Item != null && closest.GetComponent<ItemComponent>() == null) {
@@ -323,6 +323,11 @@ public class PlayerController : NetworkBehaviour {
 
         Item.Holder = null;
         Item.transform.parent = null;
+        Item.transform.position = new Vector3(
+            Item.transform.position.x,
+            2f,
+            Item.transform.position.z
+        );
 
         NetworkTransform ntrans = Item.GetComponent<NetworkTransform>();
         if(ntrans != null)

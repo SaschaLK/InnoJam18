@@ -35,7 +35,7 @@ public class InteractiveCharger : InteractiveBase
 
     public void Update() {
         if (Charging != null) {
-            interactive.DisplayName = _DisplayName + "\n(" + Charging.item.interactive.Health + " %)";
+            interactive.DisplayName = _DisplayName + "\n(" + Charging.item.interactive.Health.ToString("N2").Replace(',', '.') + " %)";
         } else {
             interactive.DisplayName = _DisplayName;
         }

@@ -74,8 +74,10 @@ public class InteractiveItemContainer : InteractiveBase {
             ItemComponent item;
             if (!Items.TryGetValue(ci, out item) || item == null)
                 continue;
-            if (item.transform.parent != Containers[ci])
+            if (item.transform.parent != Containers[ci]) {
+                OnDrop.Invoke(ci, Items[ci]);
                 Items[ci] = null;
+            }
         }
     }
 

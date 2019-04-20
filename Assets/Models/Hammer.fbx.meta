@@ -16,7 +16,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: 0a85aa12eb67a40d8b48f32d6ec2ffac, type: 2}
+    second: {fileID: 2100000, guid: d89d6f78a6106dc4aa51d9d947e892d9, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -54,7 +54,7 @@ ModelImporter:
     importCameras: 1
     importLights: 1
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0

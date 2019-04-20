@@ -17,7 +17,8 @@ public class PlayerUIController : MonoBehaviour {
     private Vector3 rotationEuler;
     private Vector3 offset;
 
-    private bool visibleText;
+    private Object lastVisibleText;
+    private Object visibleText;
     private bool visibleMinigame;
 
     private void Awake() {
@@ -38,12 +39,13 @@ public class PlayerUIController : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        if (visibleText || visibleMinigame) {
+        if (visibleText != null || visibleMinigame) {
             Group.alpha = Mathf.Clamp01(Group.alpha + Time.deltaTime / 0.1f);
         } else {
             Group.alpha = Mathf.Clamp01(Group.alpha - Time.deltaTime / 0.1f);
         }
-        visibleText = false;
+        lastVisibleText = visibleText;
+        visibleText = null;
 
         // transform.rotation = rotation;
         transform.eulerAngles = new Vector3(
@@ -54,19 +56,19 @@ public class PlayerUIController : MonoBehaviour {
         transform.position = parent.position + offset;
     }
 
-    public void ShowText(string text) {
+    public void ShowText(Object obj, string text) {
         if (visibleMinigame)
             return;
 
         TooltipText.enabled = true;
-        if (TooltipText.text != text)
+        if (obj != lastVisibleText)
             Group.alpha = 0f;
         TooltipText.text = text;
 
         Panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, TooltipText.preferredWidth + Padding);
         Panel.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, TooltipText.preferredHeight + Padding);
 
-        visibleText = true;
+        visibleText = obj;
     }
 
     public void ShowMinigame() {
